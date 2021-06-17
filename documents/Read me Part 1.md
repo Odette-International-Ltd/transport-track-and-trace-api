@@ -88,7 +88,7 @@ Although many applications claim to offer or support REST or RESTful services, t
 
 According to Leonhard Richardson1 one can assess the maturity of REST services by this model:  
 
-
+Include Figure
 
 The layers mean: 
 
@@ -175,7 +175,8 @@ There are several options available, among them:
 2. Type I UUID:
    An identifier created by concatenation of a timestamp and the MAC address of the creating system.
    Example: 470868c1-8194-4d22-8a7e-2a10144ae05d
-   This identification scheme is widely used in software systems to identify e.g. records or other information objects for pure technical reasons. Although usable for REST API interfaces as well, this kind of identification can be rather inconvenient in practical terms.
+   This identification scheme is widely used in software systems to identify e.g. records or other information objects for pure technical reasons. 
+   Although usable for REST API interfaces as well, this kind of identification can be rather inconvenient in practical terms.
 
 3. Uniform Resource Identifier – URI
    URI in conformance with RFC 3986 use a scheme identifier, an authority identifier, and a 
