@@ -261,7 +261,7 @@ Explanation:
 5.	The information is returned to the requester in the HTTP response (as a JSON structure).   
     Example:
     A potential user wants to know the details of a particular shipment with the ID 26KODA0010112345678.
-    The user initiates this with a GET operation:
+    The user's system initiates this with a GET operation:
 ```
     curl -X 'GET' \
     'https://virtserver.someapi.com/vda_odette_ttt/V1/consignments/26KODA0010112345678' \
@@ -272,8 +272,9 @@ Explanation:
 Request URL:
 ```
 https://virtserver.someapi.com/vda_odette_ttt/V1/consignments/26KODA0010112345678
-If the shipment is found, the server returns a HTTP code 200 (OK) and a JSON data structure describing the shipment:Rolands Bild einfügen
 ```
+If the shipment is found, the server returns a HTTP code 200 (OK) and a JSON data structure describing the shipment:Rolands Bild einfügen
+
 JSON code  
 ```
 {	
@@ -352,9 +353,9 @@ Explanation:
 
 Example:
 A potential user wants to add the customs assigned movement reference number to the details of shipment with the ID 26KODA0010112345678.
-The user initiates this with a PATCH operation and provides the data to be added (or changed):
+The user's system initiates this with a PATCH operation and provides the data to be added (or changed):
 Rolands Bild einfügen
-Praktisches Beispiel dokumentieren 
+
 ```
 curl -X 'PATCH' \
   'https://virtserver.someapi.com/vda_odette_ttt/V1/consignments/26KODA0010112345678' \
