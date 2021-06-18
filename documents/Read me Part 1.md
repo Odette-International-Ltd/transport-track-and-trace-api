@@ -6,7 +6,7 @@ Version 1.0, June 2021
 
 **Summary** 
 
-This Recommendation describes how to define and implement standardiseds REST-API interfaces for collaboration within the automotive industry and between the automotive industry and their logistics service providerspartners. 
+This Recommendation describes how to define and implement standardised REST-API interfaces for collaboration within the automotive industry and between the automotive industry and their logistics service providerspartners. 
 
 Part 1 of the recommendation focusses on technical rules common to all processes. 
 
