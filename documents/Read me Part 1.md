@@ -270,10 +270,12 @@ Explanation:
 ```
 
 Request URL:
+```
 https://virtserver.someapi.com/vda_odette_ttt/V1/consignments/26KODA0010112345678
 If the shipment is found, the server returns a HTTP code 200 (OK) and a JSON data structure describing the shipment:Rolands Bild einfügen
-
-JSON code  	
+```
+JSON code  
+```
 {	
  "ID": {	
     "content": "26KODA001012021123456"	##Shipment ID (primary key)
@@ -330,7 +332,8 @@ JSON code
       }	
     }	
  ],	
-}	
+}
+```
 Praktisches Beispiel dokumentieren 
 5.2	Push principle
 Use case diagram einfügen
@@ -352,6 +355,7 @@ A potential user wants to add the customs assigned movement reference number to 
 The user initiates this with a PATCH operation and provides the data to be added (or changed):
 Rolands Bild einfügen
 Praktisches Beispiel dokumentieren 
+```
 curl -X 'PATCH' \
   'https://virtserver.someapi.com/vda_odette_ttt/V1/consignments/26KODA0010112345678' \
   -H 'accept: application/json' \
@@ -362,13 +366,15 @@ curl -X 'PATCH' \
     "content": "MRN085-2021"
   },
 }'
+```
 If the operation is successful (the request was valid and could be processed), the server answers with code 200 – OK and the ID of the consignment, the update has been applied to:
+```
 {
   "ReturnedID": {
     "content": "26KODA0010112345678"
   }
 }
-
+```
 ## 5.3	Subscription
 
 A user may want to be informed when information of specific information objects has changed.
