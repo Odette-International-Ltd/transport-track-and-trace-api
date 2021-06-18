@@ -273,7 +273,7 @@ Request URL:
 ```
 https://virtserver.someapi.com/vda_odette_ttt/V1/consignments/26KODA0010112345678
 ```
-The *curl* program sends a HTTP GET command to the request URL. Since the shipment ID is included in the path as parameter, the server knows that the details of that particular shipment are requested. The first header (-H) line indicates that the requesting system expects a JSON structure as response and the second header line contains the authentication of the requesting system, here as Bsic (user ID and password in an encrypted string).
+The *curl* program sends a HTTP GET command to the request URL. Since the shipment ID is included in the path as parameter, the server knows that the details of that particular shipment are requested. The first header (-H) line indicates that the requesting system expects a JSON structure as response and the second header line contains the authentication of the requesting system, here as Basic (user ID and password in an encrypted string).
 
 If the shipment is found, the server returns a HTTP code 200 (OK) and a JSON data structure describing the shipment:Rolands Bild einfügen
 
