@@ -18,7 +18,7 @@ The VDA Recommendations are recommendations that may be freely adopted by anyone
 
 The recommendations take into account the prevailing technology at the time of publication. Use of the VDA Recommendations does not absolve anyone from responsibility for his/her own actions, and all users act at their own risk. Liability of VDA and those involved in drafting of VDA Recommendations is excluded. 
 
-Please note: This is a copy of the original VDA/Odette recommendation. The official versions are available at www.vda,de and www.odette.org . 
+Please note: This is a copy of the original VDA/Odette recommendation. The official versions are available at www.vda.de and www.odette.org . 
 
 |           |                                                              |
 | :-------- | ------------------------------------------------------------ |
