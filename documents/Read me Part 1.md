@@ -278,27 +278,27 @@ JSON code
 ```
 {	
  "ID": {	
-    "content": "26KODA001012021123456"	##Shipment ID (primary key)
+    "content": "26KODA001012021123456"				Shipment ID (primary key)
   },	
   "ConsignorAssignedID": {	
-    "content": "26KODA001012021123456"	Shipment ID 
+    "content": "26KODA001012021123456"				Shipment ID 
   },	
   "GrossWeightMeasure": {	
-    "content": 15000,	15000 kg gross weight
+    "content": 15000,						15000 kg gross weight
     "unitCode": "KGM"	
   },	
   "NetWeightMeasure": {	
-    "content": 14000,	14000 kg net weight
+    "content": 14000,						14000 kg net weight
     "unitCode": "KGM"	
   },	
   "ActualTransportStatus": {	
-    "content" : "DEPARTED",	Current status: departed
+    "content" : "DEPARTED",					Current status: departed
     "listAgencyID": "10"	
   },	
   "SpecifiedLogisticsTransportMovement": [	
     {	
       "ID": {	
-        "content": "JOURNEY123"	Journey ID
+        "content": "JOURNEY123"					Journey ID
       }	
     }	
   ],	
@@ -312,7 +312,7 @@ JSON code
     },	
     "RelevantTradeLocation": {	
       "ID": {	
-        "content": "BER-BER",	Location related to delivery terms
+        "content": "BER-BER",					Location related to delivery terms
         "schemeAgencyID": "6"	
       },	
       "Name": {	
@@ -321,10 +321,10 @@ JSON code
       }	
     }	
   },	
-  "RelatedEventTransportEvent": [	Reference to the transport event 
+  "RelatedEventTransportEvent": [				Reference to the transport event 
     {	reporting the departure
       "ID": {	
-        "content": "3421-1234-2145-98765"	The detail of the transport event can be retrieved using this ID
+        "content": "3421-1234-2145-98765"			The detail of the transport event can be retrieved using this ID
       },	
       "TypeCode": {	
         "content": "ACTUAL",	
