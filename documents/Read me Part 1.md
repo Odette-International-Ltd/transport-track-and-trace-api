@@ -1,12 +1,12 @@
 # **Automotive Supply Chain REST API**
 
-VDA 4998 / Odette XXXX Part 1
+VDA 4998 Part 1/ Odette OA01
 
 Version 1.0, June 2021
 
 **Summary** 
 
-This Recommendation describes how to define and implement standardiseds REST-API interfaces for collaboration within the automotive industry and between the automotive industry and their logistics service providerspartners. 
+This Recommendation describes how to define and implement standardised REST-API interfaces for collaboration within the automotive industry and between the automotive industry and their logistics service providerspartners. 
 
 Part 1 of the recommendation focusses on technical rules common to all processes. 
 
@@ -17,6 +17,8 @@ Part 2 describes the data model and functionality for the use of REST API in tra
 The VDA Recommendations are recommendations that may be freely adopted by anyone. Users are responsible for correct implementation of the recommendations as required on a case-by-case basis. 
 
 The recommendations take into account the prevailing technology at the time of publication. Use of the VDA Recommendations does not absolve anyone from responsibility for his/her own actions, and all users act at their own risk. Liability of VDA and those involved in drafting of VDA Recommendations is excluded. 
+
+Please note: This is a copy of the original VDA/Odette recommendation. The official versions are available at www.vda.de and www.odette.org . 
 
 |           |                                                              |
 | :-------- | ------------------------------------------------------------ |
@@ -88,7 +90,8 @@ Although many applications claim to offer or support REST or RESTful services, t
 
 According to Leonhard Richardson1 one can assess the maturity of REST services by this model:  
 
-Include Figure
+![RestAPI Layers](/figures/p1/p1f1.png)
+Figure 1
 
 The layers mean: 
 
@@ -259,41 +262,47 @@ Explanation:
 5.	The information is returned to the requester in the HTTP response (as a JSON structure).   
     Example:
     A potential user wants to know the details of a particular shipment with the ID 26KODA0010112345678.
-    The user initiates this with a GET operation:
+    The user's system initiates this with a GET operation:
+```
     curl -X 'GET' \
     'https://virtserver.someapi.com/vda_odette_ttt/V1/consignments/26KODA0010112345678' \
     -H 'accept: application/json' \
     -H 'Authorization: Basic VGVzdHVzZXI6dGVzdHBhc3N3b3Jk'
-
+```
 
 Request URL:
+```
 https://virtserver.someapi.com/vda_odette_ttt/V1/consignments/26KODA0010112345678
+```
+The *curl* program sends a HTTP GET command to the request URL. Since the shipment ID is included in the path as parameter, the server knows that the details of that particular shipment are requested. The first header (-H) line indicates that the requesting system expects a JSON structure as response and the second header line contains the authentication of the requesting system, here as Basic (user ID and password in an encrypted string).
+
 If the shipment is found, the server returns a HTTP code 200 (OK) and a JSON data structure describing the shipment:Rolands Bild einfügen
 
-JSON code  	
+JSON code  
+```
 {	
  "ID": {	
-    "content": "26KODA001012021123456"	##Shipment ID (primary key)
+    "content": "26KODA001012021123456"				Shipment ID (primary key)
   },	
   "ConsignorAssignedID": {	
-    "content": "26KODA001012021123456"	Shipment ID 
+    "content": "26KODA001012021123456"				Shipment ID 
   },	
   "GrossWeightMeasure": {	
-    "content": 15000,	15000 kg gross weight
+    "content": 15000,						15000 kg gross weight
     "unitCode": "KGM"	
   },	
   "NetWeightMeasure": {	
-    "content": 14000,	14000 kg net weight
+    "content": 14000,						14000 kg net weight
     "unitCode": "KGM"	
   },	
   "ActualTransportStatus": {	
-    "content" : "DEPARTED",	Current status: departed
+    "content" : "DEPARTED",					Current status: departed
     "listAgencyID": "10"	
   },	
   "SpecifiedLogisticsTransportMovement": [	
     {	
       "ID": {	
-        "content": "JOURNEY123"	Journey ID
+        "content": "JOURNEY123"					Journey ID
       }	
     }	
   ],	
@@ -307,7 +316,7 @@ JSON code
     },	
     "RelevantTradeLocation": {	
       "ID": {	
-        "content": "BER-BER",	Location related to delivery terms
+        "content": "BER-BER",					Location related to delivery terms
         "schemeAgencyID": "6"	
       },	
       "Name": {	
@@ -316,10 +325,10 @@ JSON code
       }	
     }	
   },	
-  "RelatedEventTransportEvent": [	Reference to the transport event 
+  "RelatedEventTransportEvent": [				Reference to the transport event 
     {	reporting the departure
       "ID": {	
-        "content": "3421-1234-2145-98765"	The detail of the transport event can be retrieved using this ID
+        "content": "3421-1234-2145-98765"			The detail of the transport event can be retrieved using this ID
       },	
       "TypeCode": {	
         "content": "ACTUAL",	
@@ -327,7 +336,8 @@ JSON code
       }	
     }	
  ],	
-}	
+}
+```
 Praktisches Beispiel dokumentieren 
 5.2	Push principle
 Use case diagram einfügen
@@ -346,9 +356,10 @@ Explanation:
 
 Example:
 A potential user wants to add the customs assigned movement reference number to the details of shipment with the ID 26KODA0010112345678.
-The user initiates this with a PATCH operation and provides the data to be added (or changed):
+The user's system initiates this with a PATCH operation and provides the data to be added (or changed):
 Rolands Bild einfügen
-Praktisches Beispiel dokumentieren 
+
+```
 curl -X 'PATCH' \
   'https://virtserver.someapi.com/vda_odette_ttt/V1/consignments/26KODA0010112345678' \
   -H 'accept: application/json' \
@@ -359,13 +370,15 @@ curl -X 'PATCH' \
     "content": "MRN085-2021"
   },
 }'
+```
 If the operation is successful (the request was valid and could be processed), the server answers with code 200 – OK and the ID of the consignment, the update has been applied to:
+```
 {
   "ReturnedID": {
     "content": "26KODA0010112345678"
   }
 }
-
+```
 ## 5.3	Subscription
 
 A user may want to be informed when information of specific information objects has changed.
