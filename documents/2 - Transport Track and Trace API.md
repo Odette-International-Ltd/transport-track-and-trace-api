@@ -1,8 +1,8 @@
-VDA 4998 Part 2/ Odette OA02
+## VDA 4998 Part 2/ Odette OA02
 
 Version 1.0, June 2021
 
-Summary
+**Summary**
 
 This Recommendation describes how to define and implement standardised REST-API interfaces for collaboration within the automotive industry and between the automotive industry and their partners.
 
@@ -10,7 +10,7 @@ Part 1 of the recommendation focusses on technical rules common to all processes
 
 Part 2 describes the data model and functionality for the use of REST API in transport processes as an extension to established EDI data exchange processes.
 
-Disclaimer
+**Disclaimer**
 
 The VDA Recommendations are recommendations that may be freely adopted by anyone. Users are responsible for correct implementation of the recommendations as required on a case-by-case basis.
 
