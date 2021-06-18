@@ -262,12 +262,12 @@ Explanation:
     Example:
     A potential user wants to know the details of a particular shipment with the ID 26KODA0010112345678.
     The user initiates this with a GET operation:
-...
+```
     curl -X 'GET' \
     'https://virtserver.someapi.com/vda_odette_ttt/V1/consignments/26KODA0010112345678' \
     -H 'accept: application/json' \
     -H 'Authorization: Basic VGVzdHVzZXI6dGVzdHBhc3N3b3Jk'
-...
+```
 
 Request URL:
 https://virtserver.someapi.com/vda_odette_ttt/V1/consignments/26KODA0010112345678
