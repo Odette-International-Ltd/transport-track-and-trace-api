@@ -86,7 +86,7 @@ The following rules for versioning
 
 Although many applications claim to offer or support REST or RESTful services, there are differences in the level of support. 
 
-According to Leonhard Richardson1 one can assess the maturity of REST services by this model:  
+According to Leonhard Richardson (https://www.crummy.com/writing/speaking/2008-QCon/act3.html), one can assess the maturity of REST services by this model:  
 
 ![RestAPI Layers](./figures/p1/p1f1.png)
 
