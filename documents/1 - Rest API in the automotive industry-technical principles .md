@@ -6,7 +6,7 @@ Version 1.0, June 2021
 
 **Summary** 
 
-This Recommendation describes how to define and implement standardised REST-API interfaces for collaboration within the automotive industry and between the automotive industry and their logistics service providerspartners. 
+This Recommendation describes how to define and implement standardised REST-API interfaces for collaboration within the automotive industry and between the automotive industry and their partners. 
 
 Part 1 of the recommendation focusses on technical rules common to all processes. 
 
@@ -36,7 +36,7 @@ If you notice any errors, omissions or ambiguities in these recommendations, ple
 
 Modern supply and production processes require a close integration between involved partners. Although a variety of classic EDI (namely UN/EDIFACT) and XML-messages are available and cover many processes and steps, the currently available infrastructure often does not satisfy the demand for transparency and flexibility. 
 
-With the technology of REpresentational State Transfer (REST) Application Programming Interfaces (API) there is an opportunity to enhance and amend currently available systems in a lightweight and , flexible, and state-of-the-art way. 
+With the technology of REpresentational State Transfer (REST) Application Programming Interfaces (API) there is an opportunity to enhance and amend currently available systems in a lightweight and flexible way. 
 
 However, if these enhancements are defined and designed by the business partners individually, it is very likely that the variety of used data structures and implementations increases complexity instead of decreasing it. 
 
@@ -44,9 +44,7 @@ With this recommendation the issuing organisations lay out the rules for a stand
 
 ## 1.2 Conventions 
 
-This document adheres to the use of key words 
-
-The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” as described in RFC 2119 (https://www.ietf.org/rfc/rfc2119.txt)-.-- 
+This document adheres to the use of key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” as described in RFC 2119 (https://www.ietf.org/rfc/rfc2119.txt)-.-- 
 
 ## 1.3 Licence model of technical artefacts 
 
@@ -106,7 +104,7 @@ REST API in the automotive industry shall support at least level 2.
 
 ### 2.2.1	POST
 
-An empty POST operation mustshall be used, if the unique ID of the information object in question is to be generated and provided by the service providing system. The system creates an empty data structure and returns the identifier. The client system then uses this identifier as parameter in a PUT operation to provide the necessary data.
+An empty POST operation must be used, if the unique ID of the information object in question is to be generated and provided by the service providing system. The system creates an empty data structure and returns the identifier. The client system then uses this identifier as parameter in a PUT operation to provide the necessary data.
 If the POST operation is used with an identifier of the information object, it transmits the complete data of the identified object. In the result of the operation a new object is created, and the transmitted data are stored in the service providing system.  
 
 ### 2.2.2	PUT
@@ -149,7 +147,7 @@ Figure 2
 
 In this concept, one central application provides the REST API and all involved partners use this system to store and update their relevant data (information objects) and respectively retrieve it.
 This central system could be provided, for instance, by a specialised IT company.
-In this architecture all relevant information must be included in the information objects (or provided separately) to generate a complete digital twin or the physical world. If, for instance, the ship-from provides the details of a consignment for instance, the consignment item details must be included in the consignment data structure completely or transmitted separately to the service providing system, if relevant for the business process. 
+In this architecture all relevant information must be included in the information objects (or provided separately) to generate a complete digital twin or the physical world. If, for instance, the ship-from provides the details of a consignment, the consignment item details must be included in the consignment data structure completely or transmitted separately to the service providing system, if relevant for the business process. 
 
 ### 3.1.2	Several interconnected service providers
 
@@ -163,7 +161,7 @@ Figure 3
 
 ### 3.1.3	Information hub architecture
 
-When many service providers are interconnected in a peer-to-peer fashion, the communication setup can be complex and challenging. Therefore, dedicated IT platforms offer a hub and spoke architecture. The advantage for participants: they only need to connect to one system physically while getting virtual access to a whole network. The disadvantage: while direct connections between service provider and consumer often enable synchronous interactions, the hub and spoke architecture most likely may also use asynchronous communication.
+When many service providers are interconnected in a peer-to-peer fashion, the communication setup can be complex and challenging. Therefore, dedicated IT platforms offer a hub and spoke architecture. The advantage for participants: they only need to connect to one system physically while getting virtual access to a whole network. The disadvantage: while direct connections between service provider and consumer often enable synchronous interactions, the hub and spoke architecture may also use asynchronous communication.
 Therefore, another layer in the data structure for messaging (i.e., an envelope-structure with sender and receiver information) is necessary and the Rest API intrinsic http response codes are only related to the communication between the hub and one spoke, for end-to-end responses another information artifact is necessary.
 
 ![Hub and spoke](./figures/p1/p1f4.png)
@@ -175,11 +173,11 @@ Figure 4
 To store and retrieve information objects in several distributed systems and to avoid the necessity to assign separate identifiers in each local system, they must be identified with globally unique identifiers.
 There are several options available, among them:
 
-1. Identification in compliance with ISO 15459XXXX / ANSI MH10.8.2 
+1. Identification in compliance with ISO 15459 / ANSI MH10.8.2 
    Here, the uniqueness is achieved by using globally unique company identifiers and serial numbers issued by the specified company. This principle is already used in various situations.
-   Examples
-   O0177A00100 – identifies Odette International Ltd. in the Odette Identification system
-   1JUN498765432000001234 – Identifies an innermost package, serial number assigned by a company registered at D.U.N.S. with the number 498765432.
+   Examples:
+   ```O0177A00100``` – identifies Odette International Ltd. in the Odette Identification system
+   ```1JUN498765432000001234``` – Identifies an innermost package, serial number assigned by a company registered at D.U.N.S. with the number 498765432.
 
 2. Type I UUID:
    An identifier created by concatenation of a timestamp and the MAC address of the creating system.
@@ -204,17 +202,17 @@ As stated above, this recommendation is based on UN/CEFACT RDM2API methodology. 
 If an object contains several associations to the same component object, which represent different semantic meaning, there are two types of associations available and used:
 
 - An association class, using an attribute with a value list of applicable qualifiers (e.g. Party Role Code, Event Type Code etc.).
-
 - Explicitly named associations to the component object (e.g. Buyer Party, Seller Party, Estimated Event, Actual Event).
-  In the context of this recommendation type the option 1 is preferred and should be used, to allow semantic extensions to existing data structures without the necessity to considerably extend the programming code of existing implementations.  
+
+In the context of this recommendation type 1 is preferred and should be used, to allow semantic extensions to existing data structures without the necessity to considerably extend the programming code of existing implementations.  
 
 
 
 ## 3.4	Semantic validation
 
-The applied modelling principle allows utmost flexibility of implementation scenarios and process orchestration. The downside of this methodology: the status information of attributes in the information objects apart from identifiers is mostly optional. For semantic validation it is often necessary to check if specific attributes are available because otherwise the information object cannot be processed correctlyproperly.
-It is recommended to add an implementation specific validation layer when using the OopenAPI files provided in the scope of this project for implementations.
-This validation can be done in several ways, of course. However, a very simple and straightforward way would be to use JSON sSemantic vValidationor through schematron techniques (https://www.npmjs.com/package/jsontron) on the data received. The output of this validation process can be used as error description in the response, should the validation fail.
+The applied modelling principle allows utmost flexibility of implementation scenarios and process orchestration. The downside of this methodology: the status information of attributes in the information objects apart from identifiers is mostly optional. For semantic validation it is often necessary to check if specific attributes are available because otherwise the information object cannot be processed correctly.
+It is recommended to add an implementation specific validation layer when using the OpenAPI files provided in the scope of this project for implementations.
+This validation can be done in several ways, of course. However, a very simple and straightforward way would be to use JSON Semantic Validation through schematron techniques on the data received. The output of this validation process can be used as error description in the response, should the validation fail.
 
 # 4	Security
 
@@ -242,15 +240,16 @@ Therefore, the following rules apply:
 
 ## 4.2	Application security
 
-One way to authenticate a client system (i.e. ensure the clients identity) is to use Client Authentication in the TLS protocol. In this case not only the server uses a security certificate but also the client. Client Certificates must also be issued by a trusted CA as well or by the service provider itself. A trusted CA certificate is preferable, since it can be used with many service providers (unless the service provider itself is member of the trust listTSL).
+One way to authenticate a client system (i.e. ensure the clients identity) is to use Client Authentication in the TLS protocol. In this case not only the server uses a security certificate but also the client. Client Certificates must also be issued by a trusted CA or by the service provider itself. A trusted CA certificate is preferable, since it can be used with many service providers (unless the service provider itself is member of the TSL).
+
 The application layer offers several options for identification and authorisation.
 Basic Authentication:
 The client uses user-ID and a password.
 API-Key:
 An asymmetric key, issued by the REST API Service Provider, is used to identify the client contacting the service provider.
 OAuth:
-Within OAuth infrastructure the responsibility for identification and authorisation is delegates to a third-party. The third-party issues tokens, which allowgain the client access to the service. By these means an SSO-principle can be established and through it access can be granted to many services offered by different providers. If even more security is required through authentication, the open Id Connect standard provides a means of combining OAuth 2.0 with ID tokens.
-To be compliant with this recommendation, at least one of the above mentionedabove-mentioned features must be used to ensuregrant security and confidentiality of data exchanged through REST API services.  
+Within OAuth infrastructure the responsibility for identification and authorisation is delegates to a third-party. The third-party issues tokens, which allow the client access to the service. By these means an SSO-principle can be established and through it access can be granted to many services offered by different providers. If even more security is required through authentication, the open Id Connect standard provides a means of combining OAuth 2.0 with ID tokens.
+To be compliant with this recommendation, at least one of the above-mentioned features must be used to ensure security and confidentiality of data exchanged through REST API services.  
  
 
 # 5	Communication flow
@@ -283,8 +282,7 @@ https://virtserver.someapi.com/vda_odette_ttt/V1/consignments/26KODA001011234567
 ```
 The *curl* program sends a HTTP GET command to the request URL. Since the shipment ID is included in the path as parameter, the server knows that the details of that particular shipment are requested. The first header (-H) line indicates that the requesting system expects a JSON structure as response and the second header line contains the authentication of the requesting system, here as Basic (user ID and password in an encrypted string).
 
-If the shipment is found, the server returns a HTTP code 200 (OK) and a JSON data structure describing the shipment:Rolands Bild einfügen
-
+If the shipment is found, the server returns a HTTP code 200 (OK) and a JSON data structure describing the shipment:
 JSON code  
 ```
 {	
@@ -367,7 +365,6 @@ Explanation:
 Example:
 A potential user wants to add the customs assigned movement reference number to the details of shipment with the ID 26KODA0010112345678.
 The user's system initiates this with a PATCH operation and provides the data to be added (or changed):
-Rolands Bild einfügen
 
 ```
 curl -X 'PATCH' \
