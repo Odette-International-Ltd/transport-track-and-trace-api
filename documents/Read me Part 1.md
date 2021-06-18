@@ -143,6 +143,7 @@ Given the complexity of contemporary supply chains, many partners are involved w
 
 ### 3.1.1	One central service provider
 
+![One central service provider](./figures/p1/p1f2.png)
 
 Figure 2
 
@@ -156,12 +157,16 @@ Since many partners are involved in the supply chain, it is unlikely that only o
 One rather finds a situation, where many partners operate systems that fulfil both roles, acting as consumer and as provider.
 In such a system it is possible to limit the content of the information objects: all objects, for which details are retrievable from a separate service provider, only need to be identified in a way that the details can be gathered separately once they are needed (linked data principle).
 
+![Several interconnected service providers](./figures/p1/p1f3.png)
+
 Figure 3
 
 ### 3.1.3	Information hub architecture
 
 When many service providers are interconnected in a peer-to-peer fashion, the communication setup can be complex and challenging. Therefore, dedicated IT platforms offer a hub and spoke architecture. The advantage for participants: they only need to connect to one system physically while getting virtual access to a whole network. The disadvantage: while direct connections between service provider and consumer often enable synchronous interactions, the hub and spoke architecture most likely may also use asynchronous communication.
 Therefore, another layer in the data structure for messaging (i.e., an envelope-structure with sender and receiver information) is necessary and the Rest API intrinsic http response codes are only related to the communication between the hub and one spoke, for end-to-end responses another information artifact is necessary.
+
+![Hub and spoke](./figures/p1/p1f4.png)
 
 Figure 4
 
@@ -252,8 +257,9 @@ To be compliant with this recommendation, at least one of the above mentionedabo
 
 ## 5.1	Pull principle
 
-Use case diagram einfügen
 In communications following the Pull principle the consumer contacts the service provider and requests information. This is realised via HTTP GET operation. 
+
+![Pull principle](./figures/p1/p1f5.png)
 
 Explanation:
 1.	The user contacts the server providing the service with a GET request and a URL, which tells the server, what kind of information is requested. In the call the user credentials are included.
@@ -339,12 +345,15 @@ JSON code
  ],	
 }
 ```
-Praktisches Beispiel dokumentieren 
-5.2	Push principle
-Use case diagram einfügen
-Activity diagram ?
+
+## 5.2	Push principle
+
 In communications following the Push principle the consumer contacts the service provider and pushes information onto the server
 HTTP operations POST, PUT, PATCH are suitable for this process. DELETE falls into this category as well, but for transparency reasons information once provided SHALL NOT be deleted, rather invalidated by a change of status.
+
+![Pull principle](./figures/p1/p1f6.png)
+
+Figure 6
 
 Explanation:
 1.	The TMS of the client starts using the API to update information stored on the server. 
