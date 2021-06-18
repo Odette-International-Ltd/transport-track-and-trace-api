@@ -90,7 +90,8 @@ Although many applications claim to offer or support REST or RESTful services, t
 
 According to Leonhard Richardson1 one can assess the maturity of REST services by this model:  
 
-Include Figure
+![RestAPI Layers](/figures/p1/p1f1.png)
+Figure 1
 
 The layers mean: 
 
