@@ -1,6 +1,6 @@
 # **Automotive Supply Chain REST API**
 
-VDA 4998 / Odette OA01 Part 1
+VDA 4998 Part 1/ Odette OA01
 
 Version 1.0, June 2021
 
