@@ -56,7 +56,8 @@ The API consumer must be able to link transport movements of means of transport 
 As described in Part 1 of this recommendation, there are several architectural options to orchestrate communication between partners in the supply chain via API.
 This version of the recommendation intends to define data structures, functions, and architecture for a minimum viable product (MVP), i.e. to support the above described information flow with minimal effort.
 It assumes the Transport Service Providers (TSP) to be  as the main API service providers as well (although other parties MAY host this kind of service as well). In combination with other, independently available services to track transport means such as like trucks, vessels, aircrafts, and trains (out of scope of this project), this will enable transparency of the whole transport chain.
- 
+
+![Information flow](./figures/p2/p1f1.png)
 Figure 2
 
 The following table describes the required functionality of the T&T API.
