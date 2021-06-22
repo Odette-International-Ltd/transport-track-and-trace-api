@@ -17,7 +17,7 @@ The VDA Recommendations are recommendations that may be freely adopted by anyone
 
 The recommendations take into account the prevailing technology at the time of publication. Use of the VDA Recommendations does not absolve anyone from responsibility for his/her own actions, and all users act at their own risk. Liability of VDA and those involved in drafting of VDA Recommendations is excluded.
 
-Please note: This is a copy of the original VDA/Odette recommendation. The official versions are available at www.vda.de and www.odette.org .
+Please note: This is an informal copy of the original VDA/Odette recommendation. The official versions are available at www.vda.de and www.odette.org .
 
 |           |                                                              |
 | :-------- | ------------------------------------------------------------ |
@@ -26,8 +26,6 @@ Please note: This is a copy of the original VDA/Odette recommendation. The offic
 | Version   | Version 1.0, June 2021                                       |
 
 If you notice any errors, omissions or ambiguities in these recommendations, please contact VDA without delay so that these errors can be rectified. 
-
-If you notice any errors, omissions or ambiguities in these recommendations, please contact VDA without delay so that these errors can be rectified.
 
 # 1	Introduction and Scope
 This part of the recommendation specifies the functionality of a standardised API for Tracking and Tracing shipments on their way from the supplier / ship-from to the customer / ship-to.
@@ -348,6 +346,5 @@ Figure  SEQ Figure \\* ARABIC 11: Business Proczess 3.1-3.4 Transport Status Mes
 
 # Annexe
 
-- Annexe 1: Data model detail documentation
-
-Annexe 2: Glossary of used terms
+* Annexe 1: Data model detail documentation
+* Annexe 2: Glossary of used terms
