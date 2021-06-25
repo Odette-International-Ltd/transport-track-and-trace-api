@@ -139,8 +139,8 @@ In the UN/CEFACT Multi Modal Transport reference data model the consignment subj
 ![Consignment](./figures/p2/p2f3.gif)
 
 Figure 3: Consignment details
-### 2.2.2 Consignment item (Transport handling unit -TLU)
-A TLU is the part of a shipment, that is individually moved or movable by e.g. a fork lifter. Each TLU shall be uniquely identified by an identifier according to ISO 15459 / ANSI MH 10.8.2, the licence plate. For further details refer to Global Transport Label recommendation VDA 4994 or Odette LL08 respectively. Data Model is shown in Figure 4.
+### 2.2.2 Consignment item (Transport handling unit -THU)
+A THU is the part of a shipment, that is individually moved or movable by e.g. a fork lifter. Each THU shall be uniquely identified by an identifier according to ISO 15459 / ANSI MH 10.8.2, the licence plate. For further details refer to Global Transport Label recommendation VDA 4994 or Odette LL08 respectively. Data Model is shown in Figure 4.
 
 ![Consignment Item](./figures/p2/p2f4.gif)
 
@@ -189,7 +189,7 @@ This chapter describes the business process related to be supported by API commu
 - Detailed information of the actual despatched shipment will be communicated by the ship-from party by using VDA 4987 Global Despatch Advice / as recommended by JAIF, Odette or VDA to the ship-to party.
 - A shipment will not be split during the entire transport execution process.
 - If contractual responsibility is separated for one or more transport legs, it is assumed that the handover from one party and the takeover of the following party is reported as well.
-- Events can be communicated for shipment items (TLU), shipments, and transport movements.
+- Events can be communicated for shipment items (THU), shipments, and transport movements.
 - The data model describes the content of the information of each information object in scope.
 - The business partners agree upon individual content of the communication to be set up according to the contracts and the business needs.
 ## 3.2 Movements
