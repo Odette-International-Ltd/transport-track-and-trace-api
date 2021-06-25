@@ -125,7 +125,7 @@ Each individual information object shall be identified by a unique identifier. T
 Example: A journey identifier assigned by a logistics service provider XYZ could be generated as follows:
 *urn:xyz.com/movements/123-ABC-567*
 
-## 2.2 Information Objects Details
+## 2.2 Information objects details
 ### 2.2.1 Consignment (Shipment)
 
 on Means of transport
