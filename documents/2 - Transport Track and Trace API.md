@@ -33,7 +33,9 @@ It is intended to extend existing, mostly EDI-based systems and to gain more tra
 
 ## 1.1	Typical information flow in a transport process
 Figure 1 illustrates the typical information flow accompanying the transport process. Flows marked as API are to be added and shall be harmonised by this recommendation.
+
 ![Information flow](./figures/p2/p2f1.jpg)
+
 Figure 1
 ## 1.2	Functional scope of this specification
 The API is designed toshall support track and trace operations during the transport execution phase (see also chapter 3.3.2). Optionally, the ordering phase may be supported by a transport capacity reservation.
@@ -56,13 +58,12 @@ This version of the recommendation intends to define data structures, functions,
 It assumes the Transport Service Providers (TSP) to be  as the main API service providers as well (although other parties MAY host this kind of service as well). In combination with other, independently available services to track transport means such as like trucks, vessels, aircrafts, and trains (out of scope of this project), this will enable transparency of the whole transport chain.
 
 ![MVP](./figures/p2/p2f2a.jpg)
+
 Figure 2
 
 The following table describes the required functionality of the T&T API.
 Operations marked with status M are mandatory, operations marked with O are optional, D stands for dependent.
  
-
-
 |Path|Operation|Status|Description|
 | :- | :- | :- | :- |
 |/consignments|GET|M|Returns a list of consignment Ids; filter to be applied|
@@ -133,39 +134,54 @@ on Means of transport, each consignment is identified by a unique reference numb
 
 Consignment is the term preferred by transport industry and used in the UN/CEFACT multi-modal transport reference data model whereas shipment is often the preferred term in the automotive industry. Both terms denominate the same object.
 
-In the UN/CEFACT Multi Modal Transport reference data model the consignment subject area and its entities will allow for the identification of the shipment that a user may want to track, along with all the instances of equipment that have been used to fulfil the shipment and all the locations that are called at, by the specific instances of transport involved in the delivery of that shipment. For overall structure, refer Figure 3.
-![Consignment](./figures/p2/p2f3.gif)
-Figure 3: Consignment 
+In the UN/CEFACT Multi Modal Transport reference data model the consignment subject area and its entities will allow for the identification of the shipment that a user may want to track, along with all the instances of equipment that have been used to fulfil the shipment and all the locations that are called at, by the specific instances of transport involved in the delivery of that shipment. For overall structure, refer to Figure 3.
 
+![Consignment](./figures/p2/p2f3.gif)
+
+Figure 3: Consignment 
 ### Consignment item (Transport loading unit -TLU)
 A TLU is the part of a shipment, that is individually moved or movable by e.g. a fork lifter. Each TLU shall be uniquely identified by an identifier according to ISO 15459 / ANSI MH 10.8.2, the licence plate. For further details refer to Global Transport Label recommendation VDA 4994 or Odette LL08 respectively. Data Model is shown in Figure 4.
+
 ![Consignment Item](./figures/p2/p2f4.gif)
+
 Figure 4: Consignment Item Details
 ### Transport event
 Transport event is an information object to communicate requested, scheduled, or actual events along the transport chain. The structure can include binary object so that it is possible to include pictures, for example. Details are shown in Figure 5.
+
 ![Transport Event](./figures/p2/p2f5.gif)
+
 Figure 5: Transport Event Details
 ### Transport movement
 The transport movement includes information related to the conveyance (physical carriage) of goods. In a segmented transport process, each leg relates to a separate transport movement. Details are shown in Figure 6.
+
 ![Transport Movement](./figures/p2/p2f6.gif)
+
 Figure 6: Transport Movement 
 ### Means of transport
 Means of transport is the motor vehicle, rail vehicle, aircraft or watercraft used for the transport of goods (and persons).
 Details are shown in Figure 7.
+
 ![Transport Means](./figures/p2/p2f7.gif)
+
 Figure 7: Means of Transport Details
 ### Transport equipment
 Additional equipment affixed to or used by the means of transport for loading, unloading, or carrying the cargo.
 Details are shown in Figure 8.
+
 ![Transport Equipment](./figures/p2/p2f8.gif)
+
 Figure 8: Transport Equipment Details
 ### Transport Capacity Reservation
 Transport Capacity Reservation is used to indicate the demand of transport capacity for a certain date or period. It is not yet a firm transport order but helps to ensure enough transport capacity is available when needed. Details are shown in Figure 9.
+
 ![Transport Movement](./figures/p2/p2f9.gif)
+
 Figure 9: Transport Capacity Reservation Details
 ### Exchanged Envelope
 If the API is used in a Hub/Spoke architecture (see chapter XX in Part 1), then an envelope with routing information is necessary for communication. Any of the above listed information objects can be child of the APIPayload-element. The envelope structure is shown in Figure 10.
+
 ![Exchanged Envelope](./figures/p2/p2f10.gif)
+
 Figure 10: Exchanged Envelope
 # Process model
 This chapter describes the business process related to be supported by API communication. Because of the complexity of the logistics transport chain the described solution in this document is limited to use cases of transport planning and notification, transport execution and receipt at the ship to party.
