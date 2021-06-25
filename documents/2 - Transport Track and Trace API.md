@@ -99,7 +99,7 @@ The Logical Data Model is split into subject areas (information objects) to prov
 ### 2.1.1 Information Objects
 Subject areas in the Logical Data Models are described in the following sections. Each of the subject areas and their relating data entities and data attributes will be described in the following order:
 
-1. Consignment Item (Transport Loading Unit)
+1. Consignment Item (Transport Handling Unit)
 1. Consignment (Shipment)
 1. Transport Events
 1. Transport Movement
@@ -139,7 +139,7 @@ In the UN/CEFACT Multi Modal Transport reference data model the consignment subj
 ![Consignment](./figures/p2/p2f3.gif)
 
 Figure 3: Consignment details
-### 2.2.2 Consignment item (Transport loading unit -TLU)
+### 2.2.2 Consignment item (Transport handling unit -TLU)
 A TLU is the part of a shipment, that is individually moved or movable by e.g. a fork lifter. Each TLU shall be uniquely identified by an identifier according to ISO 15459 / ANSI MH 10.8.2, the licence plate. For further details refer to Global Transport Label recommendation VDA 4994 or Odette LL08 respectively. Data Model is shown in Figure 4.
 
 ![Consignment Item](./figures/p2/p2f4.gif)
