@@ -258,7 +258,9 @@ To be compliant with this recommendation, at least one of the above-mentioned fe
 
 In communications following the Pull principle the consumer contacts the service provider and requests information. This is realised via HTTP GET operation. 
 
-![Pull principle](./figures/p1/p1f5.jpg)
+![Pull principle](./figures/p1/p1f5.png)
+
+Figure 5
 
 Explanation:
 1.	The user contacts the server providing the service with a GET request and a URL, which tells the server, what kind of information is requested. In the call the user credentials are included.
@@ -350,7 +352,7 @@ JSON code
 In communications following the Push principle the consumer contacts the service provider and pushes information onto the server
 HTTP operations POST, PUT, PATCH are suitable for this process. DELETE falls into this category as well, but for transparency reasons information once provided SHALL NOT be deleted, rather invalidated by a change of status.
 
-![Pull principle](./figures/p1/p1f6.jpg)
+![Pull principle](./figures/p1/p1f6.png)
 
 Figure 6
 
