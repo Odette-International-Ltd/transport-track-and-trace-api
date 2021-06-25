@@ -284,15 +284,15 @@ Figure 18: Business Process 2.3 Confirm loading of shipment onto means of transp
 
 ![Shipment Movement #3](./figures/p2/p2f19.png)
 
-Figure 19: Business Prozess 2.4-2.5. and 2.8-2.9 Transport status message of shipment by Logistics Service Provider Transport
+Figure 19: Business Process 2.4-2.5. and 2.8-2.9 Transport status message of shipment by Logistics Service Provider Transport
 
 ![Shipment Movement #4](./figures/p2/p2f20.png)
 
-Figure 20: Business Prozess 2.6-2.7 Transport status message of shipment by Logistics Service Provider HUB
+Figure 20: Business Process 2.6-2.7 Transport status message of shipment by Logistics Service Provider HUB
 
 ![Shipment Movement #5](./figures/p2/p2f21.png)
 
-Figure 21: Business Prozess 2.10 Reception of shipment at ship to party
+Figure 21: Business Process 2.10 Reception of shipment at ship to party
 
 
 ### 3.4.3 Means of Transport and Transport (Equipment) Movement 
@@ -307,7 +307,7 @@ Figure 22: Means of Transport movement milestones
 #### Means of Transport Movement Process Flow
 
 ![MoT Movement #1](./figures/p2/p2f23.png)
-Figure 23: Business Proczess 3.1-3.4 Transport Status Message of MoT issued by Transport LSP
+Figure 23: Business Process 3.1-3.4 Transport Status Message of MoT issued by Transport LSP
 
 # 4. Annexe
 
