@@ -133,9 +133,9 @@ on Means of transport, each consignment is identified by a unique reference numb
 
 Consignment is the term preferred by transport industry and used in the UN/CEFACT multi-modal transport reference data model whereas shipment is often the preferred term in the automotive industry. Both terms denominate the same object.
 
-In the UN/CEFACT Multi Modal Transport reference data model the consignment subject area and its entities will allow for the identification of the shipment that a user may want to track, along with all the instances of equipment that have been used to fulfil the shipment and all the locations that are called at, by the specific instances of transport involved in the delivery of that shipment. 
-
-For overall structure, refer to  REF \_Ref72220895 \h Figure 3  REF \_Ref71720168 \h **.**
+In the UN/CEFACT Multi Modal Transport reference data model the consignment subject area and its entities will allow for the identification of the shipment that a user may want to track, along with all the instances of equipment that have been used to fulfil the shipment and all the locations that are called at, by the specific instances of transport involved in the delivery of that shipment. For overall structure, refer Figure 3.
+![Consignment](./figures/p2/p2f3.gif)
+Figure 3
 
 ### Consignment item (Transport loading unit -TLU)
 A TLU is the part of a shipment, that is individually moved or movable by e.g. a fork lifter. Each TLU shall be uniquely identified by an identifier according to ISO 15459 / ANSI MH 10.8.2, the licence plate. For further details refer to Global Transport Label recommendation VDA 4994 or Odette LL08 respectively.
