@@ -266,9 +266,10 @@ Explanation:
 3.	If the result of step 2 is positive, the request is passed through to the actual web service (API).
 4.	The server retrieves the requested information from the backend system.
 5.	The information is returned to the requester in the HTTP response (as a JSON structure).   
-    Example:
-    A potential user wants to know the details of a particular shipment with the ID 26KODA0010112345678.
-    The user's system initiates this with a GET operation:
+
+Example:
+A potential user wants to know the details of a particular shipment with the ID 26KODA0010112345678.
+The user's system initiates this using the curl programme with a GET operation:
 ```
     curl -X 'GET' \
     'https://virtserver.someapi.com/vda_odette_ttt/V1/consignments/26KODA0010112345678' \
@@ -280,7 +281,7 @@ Request URL:
 ```
 https://virtserver.someapi.com/vda_odette_ttt/V1/consignments/26KODA0010112345678
 ```
-The *curl* program sends a HTTP GET command to the request URL. Since the shipment ID is included in the path as parameter, the server knows that the details of that particular shipment are requested. The first header (-H) line indicates that the requesting system expects a JSON structure as response and the second header line contains the authentication of the requesting system, here as Basic (user ID and password in an encrypted string).
+The *curl* programme sends a HTTP GET command to the request URL. Since the shipment ID is included in the path as parameter, the server knows that the details of that particular shipment are requested. The first header (-H) line indicates that the requesting system expects a JSON structure as response and the second header line contains the authentication of the requesting system, here as Basic (user ID and password in an encrypted string).
 
 If the shipment is found, the server returns a HTTP code 200 (OK) and a JSON data structure describing the shipment:
 JSON code  
