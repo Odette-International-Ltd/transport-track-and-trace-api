@@ -90,8 +90,8 @@ Operations marked with status M are mandatory, operations marked with O are opti
 |/transport-equipments/{ident}|GET|O|Returns a list of means of transport IDs; filter to be applied.|
 |/transport-means|GET|O|Returns the details of the identified means of transport.|
 |/transport-means/{ident}|GET|O|Returns a list of transport movement IDs; filter to be applied.|
-|/transport-movements|GET|O|Returns the details of the identified transport movement.|
-|/transport-movements/{ident}||||
+|/transport-movements|GET|O|Returns a list transport movements; filter to be applied.|
+|/transport-movements/{ident}|GET|O|Returns the details of the identified transport movement.|
 
 # Data model 
 ## Basic principles
@@ -138,51 +138,51 @@ In the UN/CEFACT Multi Modal Transport reference data model the consignment subj
 
 ![Consignment](./figures/p2/p2f3.gif)
 
-Figure 3: Consignment 
+Figure 3: Consignment details
 ### Consignment item (Transport loading unit -TLU)
 A TLU is the part of a shipment, that is individually moved or movable by e.g. a fork lifter. Each TLU shall be uniquely identified by an identifier according to ISO 15459 / ANSI MH 10.8.2, the licence plate. For further details refer to Global Transport Label recommendation VDA 4994 or Odette LL08 respectively. Data Model is shown in Figure 4.
 
 ![Consignment Item](./figures/p2/p2f4.gif)
 
-Figure 4: Consignment Item Details
+Figure 4: ConsignmentItem details
 ### Transport event
 Transport event is an information object to communicate requested, scheduled, or actual events along the transport chain. The structure can include binary object so that it is possible to include pictures, for example. Details are shown in Figure 5.
 
 ![Transport Event](./figures/p2/p2f5.gif)
 
-Figure 5: Transport Event Details
+Figure 5: TransportEvent details
 ### Transport movement
 The transport movement includes information related to the conveyance (physical carriage) of goods. In a segmented transport process, each leg relates to a separate transport movement. Details are shown in Figure 6.
 
 ![Transport Movement](./figures/p2/p2f6.gif)
 
-Figure 6: Transport Movement 
+Figure 6: TransportMovement details 
 ### Means of transport
 Means of transport is the motor vehicle, rail vehicle, aircraft or watercraft used for the transport of goods (and persons).
 Details are shown in Figure 7.
 
-![Transport Means](./figures/p2/p2f7.gif)
+![TransportMeans](./figures/p2/p2f7.gif)
 
-Figure 7: Means of Transport Details
+Figure 7: TransportMeans details
 ### Transport equipment
 Additional equipment affixed to or used by the means of transport for loading, unloading, or carrying the cargo.
 Details are shown in Figure 8.
 
 ![Transport Equipment](./figures/p2/p2f8.gif)
 
-Figure 8: Transport Equipment Details
+Figure 8: TransportEquipment details
 ### Transport Capacity Reservation
 Transport Capacity Reservation is used to indicate the demand of transport capacity for a certain date or period. It is not yet a firm transport order but helps to ensure enough transport capacity is available when needed. Details are shown in Figure 9.
 
-![Transport Movement](./figures/p2/p2f9.gif)
+![Transport Capacity Reservation](./figures/p2/p2f9.gif)
 
-Figure 9: Transport Capacity Reservation Details
+Figure 9: TransportCapacityReservation details
 ### Exchanged Envelope
 If the API is used in a Hub/Spoke architecture (see chapter XX in Part 1), then an envelope with routing information is necessary for communication. Any of the above listed information objects can be child of the APIPayload-element. The envelope structure is shown in Figure 10.
 
 ![Exchanged Envelope](./figures/p2/p2f10.gif)
 
-Figure 10: Exchanged Envelope
+Figure 10: ExchangedEnvelope details
 # Process model
 This chapter describes the business process related to be supported by API communication. Because of the complexity of the logistics transport chain the described solution in this document is limited to use cases of transport planning and notification, transport execution and receipt at the ship to party.
 ## General assumptions
@@ -200,12 +200,6 @@ Movement defines the entity being tracked as well as the specific events within 
 - Means of Ttransport Movement 
 
 Movement identification: Every movement is identified with a transport movement ID, which stands for a variety of business terms such as journey number, flight number, route number etc.
-
-The colours in the movement figures shown in subchapter  REF \_Ref74396092 \r \h ‎3.4  REF \_Ref74396092 \h Movement Figures and Process Flows have the meaning as below described.
-
-|| |
-| :- | :- |
-
 
 ## General Process phases
 The general process phases apply to all movement levels.
@@ -239,16 +233,17 @@ This process phase describes all possible events that may occur from despatch of
 The ship-from confirms the loading of shipment into means of transport or equipment. With this confirmation the connection between shipment and means of transport or shipment and transport equipment must be established. 
 
 ### Reception
-This process phase describes the reception at the final destination of the shipment/-item 
-
+This process phase describes the reception at the final destination of the shipment/-item .
 The ship-to confirms the reception of the shipment/-item and therefore documents the end of the actual transport process. 
-
 
 ## Movement Figures and Process Flows
 ### Shipment Item Movement 
 The structure of the shipment item movement defines the understanding of events occurring to one or several shipment items (Transport Loading Units) from transport planning and notification at the Ship-From party as well as events that may occur during the transport execution up to the receipt of a shipment item at the Ship-To party. To support the use cases defined in this document a shipment item has tomust be assigned to a shipment latest at despatch fromat the Ship-From party and must not be split from the shipment until the delivery toat the Ship to party regardless of the numberamount of transport legs. 
 #### Shipment Item Movement Milestones
-Figure  SEQ Figure \\* ARABIC 12: Shipment Item Movement Milestones
+
+![Shipment Item Movement](./figures/p2/p2f12.png)
+
+Figure 12: Shipment Item Movement Milestones
 
 
 
