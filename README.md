@@ -1,5 +1,5 @@
 # transport-track-and-trace-api
-This Recommendation describes how to define and implement standardised REST-API interfaces for collaboration within the automotive industry and between the automotive industry and their partners.
+This recommendation describes how to define and implement standardised REST-API interfaces for collaboration within the automotive industry and between the automotive industry and their partners.
 
 documents:    
 Part 1 of the recommendation focusses on technical rules common to all processes.
