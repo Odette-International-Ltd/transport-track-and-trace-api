@@ -93,10 +93,10 @@ Operations marked with status M are mandatory, operations marked with O are opti
 |/transport-movements|GET|O|Returns a list transport movements; filter to be applied.|
 |/transport-movements/{ident}|GET|O|Returns the details of the identified transport movement.|
 
-# Data model 
-## Basic principles
+# 2. Data model 
+## 2.1 Basic principles
 The Logical Data Model is split into subject areas (information objects) to provide a more focused overview of each part of the model, as illustrated in figures below. Each subject area consists of one or more data entities and the related references. 
-### Information Objects
+### 2.1.1 Information Objects
 Subject areas in the Logical Data Models are described in the following sections. Each of the subject areas and their relating data entities and data attributes will be described in the following order:
 
 1. Consignment Item (Transport Loading Unit)
@@ -111,7 +111,7 @@ Within each subject area, a class diagram of the structure of the object is prov
 Further details for each object are listed in Annexe 1.
 
 At least objects under 1, 2 and 3 shall be accessible via an own interface (i.e. path in the API specification), the other objects are optional (see MVP). 
-### Message like structures
+### 2.1.2 Message like structures
 Furthermore, this specification provides a methodology to transmit message-like structures such as 
 
 1. Transport Capacity Reservation and Confirmation
@@ -119,14 +119,14 @@ Furthermore, this specification provides a methodology to transmit message-like 
 1. Transport Status Information.
 
 Especially in environments with indirect communication between the service provider and the service consumer, e.g., via a HUB, this feature may be necessary to enable API based communication.   
-### Identification
+### 2.1.3 Identification
 Each individual information object shall be identified by a unique identifier. To make these identifiers globally unique and usable across various information systems, they can be prefixed by an URN or URI.
 
 Example: A journey identifier assigned by a logistics service provider XYZ could be generated as follows:
 *urn:xyz.com/movements/123-ABC-567*
 
-
-### Consignment (Shipment)
+## 2.2 Information Objects Details
+### 2.2.1 Consignment (Shipment)
 
 on Means of transport
 
@@ -139,60 +139,60 @@ In the UN/CEFACT Multi Modal Transport reference data model the consignment subj
 ![Consignment](./figures/p2/p2f3.gif)
 
 Figure 3: Consignment details
-### Consignment item (Transport loading unit -TLU)
+### 2.2.2 Consignment item (Transport loading unit -TLU)
 A TLU is the part of a shipment, that is individually moved or movable by e.g. a fork lifter. Each TLU shall be uniquely identified by an identifier according to ISO 15459 / ANSI MH 10.8.2, the licence plate. For further details refer to Global Transport Label recommendation VDA 4994 or Odette LL08 respectively. Data Model is shown in Figure 4.
 
 ![Consignment Item](./figures/p2/p2f4.gif)
 
 Figure 4: ConsignmentItem details
-### Transport event
+### 2.2.3 Transport event
 Transport event is an information object to communicate requested, scheduled, or actual events along the transport chain. The structure can include binary object so that it is possible to include pictures, for example. Details are shown in Figure 5.
 
 ![Transport Event](./figures/p2/p2f5.gif)
 
 Figure 5: TransportEvent details
-### Transport movement
+### 2.2.4 Transport movement
 The transport movement includes information related to the conveyance (physical carriage) of goods. In a segmented transport process, each leg relates to a separate transport movement. Details are shown in Figure 6.
 
 ![Transport Movement](./figures/p2/p2f6.gif)
 
 Figure 6: TransportMovement details 
-### Means of transport
+### 2.2.5 Means of transport
 Means of transport is the motor vehicle, rail vehicle, aircraft or watercraft used for the transport of goods (and persons).
 Details are shown in Figure 7.
 
 ![TransportMeans](./figures/p2/p2f7.gif)
 
 Figure 7: TransportMeans details
-### Transport equipment
+### 2.2.6 Transport equipment
 Additional equipment affixed to or used by the means of transport for loading, unloading, or carrying the cargo.
 Details are shown in Figure 8.
 
 ![Transport Equipment](./figures/p2/p2f8.gif)
 
 Figure 8: TransportEquipment details
-### Transport Capacity Reservation
+### 2.2.7 Transport Capacity Reservation
 Transport Capacity Reservation is used to indicate the demand of transport capacity for a certain date or period. It is not yet a firm transport order but helps to ensure enough transport capacity is available when needed. Details are shown in Figure 9.
 
 ![Transport Capacity Reservation](./figures/p2/p2f9.gif)
 
 Figure 9: TransportCapacityReservation details
-### Exchanged Envelope
+### 2.2.8 Exchanged Envelope
 If the API is used in a Hub/Spoke architecture (see chapter XX in Part 1), then an envelope with routing information is necessary for communication. Any of the above listed information objects can be child of the APIPayload-element. The envelope structure is shown in Figure 10.
 
 ![Exchanged Envelope](./figures/p2/p2f10.gif)
 
 Figure 10: ExchangedEnvelope details
-# Process model
+# 3. Process model
 This chapter describes the business process related to be supported by API communication. Because of the complexity of the logistics transport chain the described solution in this document is limited to use cases of transport planning and notification, transport execution and receipt at the ship to party.
-## General assumptions
+## 3.1 General assumptions
 - Detailed information of the actual despatched shipment will be communicated by the ship-from party by using VDA 4987 Global Despatch Advice / as recommended by JAIF, Odette or VDA to the ship-to party.
 - A shipment will not be split during the entire transport execution process.
 - If contractual responsibility is separated for one or more transport legs, it is assumed that the handover from one party and the takeover of the following party is reported as well.
 - Events can be communicated for shipment items (TLU), shipments, and transport movements.
 - The data model describes the content of the information of each information object in scope.
 - The business partners agree upon individual content of the communication to be set up according to the contracts and the business needs.
-  ## Movements
+  ## 3.2 Movements
 Movement defines the entity being tracked as well as the specific events within the movement. The use cases in scope are supporting the following movements:
 
 - Shipment Item Movement
@@ -201,20 +201,20 @@ Movement defines the entity being tracked as well as the specific events within 
 
 Movement identification: Every movement is identified with a transport movement ID, which stands for a variety of business terms such as journey number, flight number, route number etc.
 
-## General Process phases
+## 3.3 General Process phases
 The general process phases apply to all movement levels.
-### Transport planning and notification
+### 3.3.1 Transport planning and notification
 This phase is covering the transport planning process to identify the transport demand and the notification. The supported use cases are:
-#### Transport capacity order and confirmation
+#### 3.3.1.1 Transport capacity order and confirmation
 In a transport capacity order the ordering party does only orders a certain freight capacity for a certain ship- to party forto be picked up on a specificed date ore within a specificed period without specifying the shipment to be loaded. 
 
 The logistic service provider is planning means of transport and transport equipment based on the provided information and confirms the pickup with assigned generic means of transport and if applicable, equipment. In this case the ship from will specify the shipment at the start of the transport execution phase, e.g. with the confirmation of despatch advice message.
 
-#### Detailed transport order / transport order confirmation
+#### 3.3.1.2 Detailed transport order / transport order confirmation
 In this case the transport ordering process will be supported by the usage of VDA 4933 (EDIFACT message transport order based on Global DESADV) containing all details of the shipment planned to be despatched.
 
 The logistics service provider plans means of transport and transport equipment based on the provided information and confirms the pickup with assigned generic means of transport and if applicable, equipment. In this case the ship from will update the information according to the actual shipment at the start of the transport execution phase with the confirmation of despatch.
-### Transport execution
+### 3.3.2 Transport execution
 This process phase describes all possible events that may occur from despatch of the shipment at the ship-from party to the delivery at the ship to
 
 The ship-from confirms the loading of shipment into means of transport or equipment. With this confirmation the connection between shipment and means of transport or shipment and transport equipment must be established. 
@@ -227,90 +227,72 @@ The transport service provider confirms the pick-up of shipment to means of tran
 
 On arrival at Ship-To the transport service provider confirms the delivery of the shipment or transport loading unit with a proof of delivery.
 
-### Transport execution
+### 3.3.3 Transport execution
 This process phase describes all possible events that may occur from despatch of the shipment at the ship-from party to the delivery at the ship to
 
 The ship-from confirms the loading of shipment into means of transport or equipment. With this confirmation the connection between shipment and means of transport or shipment and transport equipment must be established. 
 
-### Reception
+### 3.3.4 Reception
 This process phase describes the reception at the final destination of the shipment/-item .
 The ship-to confirms the reception of the shipment/-item and therefore documents the end of the actual transport process. 
 
-## Movement Figures and Process Flows
-### Shipment Item Movement 
+## 3.4 Movement figures and process flows
+### 3.4.1 Shipment Item movement 
 The structure of the shipment item movement defines the understanding of events occurring to one or several shipment items (Transport Loading Units) from transport planning and notification at the Ship-From party as well as events that may occur during the transport execution up to the receipt of a shipment item at the Ship-To party. To support the use cases defined in this document a shipment item has tomust be assigned to a shipment latest at despatch fromat the Ship-From party and must not be split from the shipment until the delivery toat the Ship to party regardless of the numberamount of transport legs. 
-#### Shipment Item Movement Milestones
+#### 3.4.1.1 Shipment Item movement milestones
 
 ![Shipment Item Movement Milestones](./figures/p2/p2f11.png)
 
 Figure 11: Shipment Item Movement Milestones
 
+#### 3.4.1.2 Shipment Item movement process flow
+
+![Shipment Item Movement#1](./figures/p2/p2f12.png)
+
+Figure 12: Business Process 1.1 Assign shipment item to Shipment/1.2 Load shipment item at ship from
+
+![Shipment Item Movement#2](./figures/p2/p2f13.png)
+
+Figure 13: Business Process 1.3-1.4. and 1.7-1.8  Transport status message of shipment item by Logistics Service Provider Transport
+
+![Shipment Item Movement#3](./figures/p2/p2f14.png)
+
+Figure 14: Business Process 1.5-1.6  Transport status message of shipment item by Logistics Service Provider HUB
+
+![Shipment Item Movement#5](./figures/p2/p2f15.png)
+
+Figure 15: Business Process 1.9 Reception of shipment item at ship to party
 
 
-#### Shipment Item movement process flow
-
-
-Figure  SEQ Figure \\* ARABIC 13: Business Process 1.1 Assign shipment item to Shipment/1.2 Load shipment item at ship from
-
-
-
-
-
-
-Figure  SEQ Figure \\* ARABIC 11: Business Process 1.3-1.4. and 1.7-1.8  Transport status message of shipment item by Logistics Service Provider Transport
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Figure  SEQ Figure \\* ARABIC 11: Business Process 1.5-1.6  Transport status message of shipment item by Logistics Service Provider HUB
-
-Figure  SEQ Figure \\* ARABIC 11: Business Process 1.9 Reception of shipment item at ship to party
-
-
-### ` `Shipment movement
+### 3.4.2 Shipment movement
 The structure of the shipment movement defines the understanding of the events occurring from transport planning and notification at the ship from party as well as the events that may occur during transport execution up to the receipt of a shipment at the Ship to party. A shipment can whether consist of less than truck load(LTL)/full truck load (FTL) or less than container load (LCL)/ full container load (FCL). In order to support the use cases defined in this document a shipment has tomust be assigned to a means of transport (with or without equipment) when loading at the beginning of one transport leg and has tomust be unassigned when unloading at the end of the transport leg. 
-#### Shipment movement milestones
+#### 3.4.2.1 Shipment movement milestones
 
-Figure  SEQ Figure \\* ARABIC 11: Shipment movement milestones
+![Shipment Movement Milestones](./figures/p2/p2f16.png)
 
-#### Shipment movement process flow
+Figure 16: Shipment movement milestones
 
+#### 3.4.2.2 Shipment movement process flow
 
-Figure  SEQ Figure \\* ARABIC 11: Business process 2.1-2.2 Validate, plan and confirm transport order
+![Shipment Movement #1](./figures/p2/p2f17.png)
 
+Figure 17: Business process 2.1-2.2 Validate, plan and confirm transport order
 
+![Shipment Movement #2](./figures/p2/p2f18.png)
 
+Figure 18: Business Process 2.3 Confirm loading of shipment onto means of transport at ship from party
 
+![Shipment Movement #3](./figures/p2/p2f19.png)
 
-Figure  SEQ Figure \\* ARABIC 11: Business Process 2.3 Confirm loading of shipment onto means of transport at ship from party
+Figure 19: Business Prozess 2.4-2.5. and 2.8-2.9 Transport status message of shipment by Logistics Service Provider Transport
 
+![Shipment Movement #4](./figures/p2/p2f20.png)
 
+Figure 20: Business Prozess 2.6-2.7 Transport status message of shipment by Logistics Service Provider HUB
 
+![Shipment Movement #5](./figures/p2/p2f21.png)
 
-
-
-
-Figure  SEQ Figure \\* ARABIC 11: Business Prozess 2.4-2.5. and 2.8-2.9 Transport status message of shipment by Logistics Service Provider Transport
-
-
-
-
-Figure  SEQ Figure \\* ARABIC 11: Business Prozess 2.6-2.7 Transport status message of shipment by Logistics Service Provider HUB
-
-
-
-Figure  SEQ Figure \\* ARABIC 11: Business Prozess 2.10 Reception of shipment at ship to party
+Figure 21: Business Prozess 2.10 Reception of shipment at ship to party
 
 
 ### Means of Transport and Transport (Equipment) Movement 
