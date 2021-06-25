@@ -192,7 +192,7 @@ This chapter describes the business process related to be supported by API commu
 - Events can be communicated for shipment items (TLU), shipments, and transport movements.
 - The data model describes the content of the information of each information object in scope.
 - The business partners agree upon individual content of the communication to be set up according to the contracts and the business needs.
-  ## 3.2 Movements
+## 3.2 Movements
 Movement defines the entity being tracked as well as the specific events within the movement. The use cases in scope are supporting the following movements:
 
 - Shipment Item Movement
@@ -309,9 +309,7 @@ Figure 22: Means of Transport movement milestones
 ![MoT Movement #1](./figures/p2/p2f23.png)
 Figure 23: Business Proczess 3.1-3.4 Transport Status Message of MoT issued by Transport LSP
 
-
-
-# Annexe
+# 4. Annexe
 
 * Annexe 1: Data model detail documentation
 * Annexe 2: Glossary of used terms
