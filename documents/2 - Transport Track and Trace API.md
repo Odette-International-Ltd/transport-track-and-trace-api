@@ -241,9 +241,9 @@ The ship-to confirms the reception of the shipment/-item and therefore documents
 The structure of the shipment item movement defines the understanding of events occurring to one or several shipment items (Transport Loading Units) from transport planning and notification at the Ship-From party as well as events that may occur during the transport execution up to the receipt of a shipment item at the Ship-To party. To support the use cases defined in this document a shipment item has tomust be assigned to a shipment latest at despatch fromat the Ship-From party and must not be split from the shipment until the delivery toat the Ship to party regardless of the numberamount of transport legs. 
 #### Shipment Item Movement Milestones
 
-![Shipment Item Movement](./figures/p2/p2f12.png)
+![Shipment Item Movement Milestones](./figures/p2/p2f11.png)
 
-Figure 12: Shipment Item Movement Milestones
+Figure 11: Shipment Item Movement Milestones
 
 
 
