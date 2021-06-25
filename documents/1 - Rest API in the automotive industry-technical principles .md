@@ -226,7 +226,7 @@ Depending on the business process and confidentiality of data content in a busin
 •	Authentication between consumer and REST API Publisher (API Gateway or Firewall)
 •	And more …
 
-## 4.1	Server Authentication and Transport Security
+## 4.1	Server Authentication and transport security
 
 The transport of business data via public internet is vulnerable to interception, tempering and other unwonted activities of “man in the middle” unless security measures are taken.
 Therefore, the following rules apply:
