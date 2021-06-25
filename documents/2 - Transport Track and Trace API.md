@@ -295,19 +295,19 @@ Figure 20: Business Prozess 2.6-2.7 Transport status message of shipment by Logi
 Figure 21: Business Prozess 2.10 Reception of shipment at ship to party
 
 
-### Means of Transport and Transport (Equipment) Movement 
+### 3.4.3 Means of Transport and Transport (Equipment) Movement 
 
 The Means of Transport and Transport Equipment Movement (Equipment) describes all events starting with the loading of the means of transport at the beginning of a transport leg, through the transport execution to the discharge of the means of transport at the end of the transport leg.
-#### Means of Transport Movement Milestones
+#### 3.4.3.1 Means of Transport Movement Milestones
 
-Figure  SEQ Figure \\* ARABIC 11: 3. Means of Transport Movement Milestones
+![MOT Milestones](./figures/p2/p2f22.png)
 
-
+Figure 22: Means of Transport movement milestones
 
 #### Means of Transport Movement Process Flow
 
-
-Figure  SEQ Figure \\* ARABIC 11: Business Proczess 3.1-3.4 Transport Status Message of Means of Transport by Logistics Service Provider Transport
+![MoT Movement #1](./figures/p2/p2f23.png)
+Figure 23: Business Proczess 3.1-3.4 Transport Status Message of MoT issued by Transport LSP
 
 
 
