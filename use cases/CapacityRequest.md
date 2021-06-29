@@ -108,7 +108,7 @@ Frequency|	As necessary
         "content": "SF",
         "listAgencyID": "6"
       },
-      "PostalAddressTradeAddress": [
+      "PostalAddress": [
         {
           "PostcodeCode": {
             "content": "SW1P 2BN"
