@@ -143,7 +143,7 @@ Frequency|	As necessary
     {
       "ID": {
         "content": "Tor3"
-      }
+      },
       "TypeCode": {
         "content": "7",
         "listAgencyID": "6"
