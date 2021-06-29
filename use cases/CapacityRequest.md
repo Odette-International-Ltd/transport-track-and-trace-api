@@ -20,10 +20,10 @@ Frequency|	As necessary
   "TransactionStatusCode": {
     "content": "REQUESTED"
   },
-  "IssueDateDateTime": {
+  "IssueDateTime": {
     "content": "2021-07-01T15:44:00Z"
   },
-  "PositioningDateDateTime": {
+  "PositioningDateTime": {
     "content": "2021-07-02T07:30:00Z"
   },
   "TransportMeansTypeCode": {
@@ -33,15 +33,15 @@ Frequency|	As necessary
   "TransportMeansNumberNumeric": {
     "content": 1
   },
-  "GrossWeightMeasureMeasure": {
+  "GrossWeightMeasure": {
     "content": 15000,
     "unitCode": "KGM"
   },
-  "LoadingMetersMeasureMeasure": {
+  "LoadingMetersMeasure": {
     "content": 10,
     "unitCode": "MTR"
   },
-  "GrossVolumeMeasureMeasure": {
+  "GrossVolumeMeasure": {
     "content": 20,
     "unitCode": "MTQ"
   },
@@ -55,7 +55,7 @@ Frequency|	As necessary
     "content": "string",
     "languageID": "aa"
   },
-  "SpecifiedPartyTradeParty": [
+  "SpecifiedTradeParty": [
     {
       "ID": {
         "content": "987654321",
@@ -88,8 +88,7 @@ Frequency|	As necessary
       "UniversalCommunication": [
         {
           "ChannelCode": {
-            "content": "TE",
-            "listAgencyID": "6"
+            "content": "TE"
           },
           "CompleteNumber": {
             "content": "0049 39 8978 420"
@@ -130,7 +129,7 @@ Frequency|	As necessary
   "LogisticsLocation": [
     {
       "ID": {
-        "content": "Dock 15"
+        "content": "Loading Dock 15"
       },
       "Name": {
         "content": "Dock 15"
@@ -142,10 +141,10 @@ Frequency|	As necessary
     },
     {
       "ID": {
-        "content": "Tor3"
+        "content": "Abladestelle 23"
       },
       "TypeCode": {
-        "content": "7",
+        "content": "11",
         "listAgencyID": "6"
       }
     }
