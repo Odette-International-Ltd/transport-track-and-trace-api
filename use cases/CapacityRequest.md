@@ -15,1199 +15,141 @@ Frequency|	As necessary
 ```JSON
 {
   "ID": {
-    "content": "string"
+    "content": "d9cb4b05-6d4d-420a-a18c-0b3875ee828c"
   },
-  "TypeCode": {
-    "content": "1",
+  "TransactionStatusCode": {
+    "content": "REQUESTED"
+  },
+  "IssueDateDateTime": {
+    "content": "2021-07-01T15:44:00Z"
+  },
+  "PositioningDateDateTime": {
+    "content": "2021-07-02T07:30:00Z"
+  },
+  "TransportMeansTypeCode": {
+    "content": "T01",
     "listAgencyID": "6"
   },
-  "IssueDateTime": {
+  "TransportMeansNumberNumeric": {
+    "content": 1
+  },
+  "GrossWeightMeasureMeasure": {
+    "content": 15000,
+    "unitCode": "KGM"
+  },
+  "LoadingMetersMeasureMeasure": {
+    "content": 10,
+    "unitCode": "MTR"
+  },
+  "GrossVolumeMeasureMeasure": {
+    "content": 20,
+    "unitCode": "MTQ"
+  },
+  "DeliveryTermsCode": {
+    "content": "EXW"
+  },
+  "ContractReferenceID": {
+    "content": "string"
+  },
+  "SpecialInstructions": {
     "content": "string",
-    "format": "102"
+    "languageID": "aa"
   },
-  "IssuerTradeParty": {
-    "ID": {
-      "content": "string",
-      "schemeAgencyID": "1"
-    }
-  },
-  "RecipientTradeParty": [
+  "SpecifiedPartyTradeParty": [
     {
       "ID": {
-        "content": "string",
-        "schemeAgencyID": "1"
-      }
-    }
-  ],
-  "APIPayload": {
-    "ConsignmentItem": {
-      "ID": {
-        "content": "string"
+        "content": "987654321",
+        "schemeAgencyID": "16"
       },
-      "SequenceNumeric": {
-        "content": 0
+      "Name": {
+        "content": "Vereinigter Fahrzeugbau Berlin"
       },
-      "TypeCode": {
-        "content": "ZZZ"
+      "RoleCode": {
+        "content": "ST",
+        "listAgencyID": "6"
       },
-      "GrossWeightMeasure": {
-        "content": 0,
-        "unitCode": "KGM"
-      },
-      "NetWeightMeasure": {
-        "content": 0,
-        "unitCode": "KGM"
-      },
-      "GrossVolumeMeasure": {
-        "content": 0,
-        "unitCode": "CMQ"
-      },
-      "PackageType": {
-        "content": "string",
-        "languageID": "aa"
-      },
-      "ConsignmentID": {
-        "content": "string"
-      },
-      "StatusCode": {
-        "content": "ACCEPTANCE_REFUSED_BY_SHIP_TO"
-      },
-      "LinearSpatialDimension": {
-        "WidthMeasure": {
-          "content": 0,
-          "unitCode": "CMT"
-        },
-        "LengthMeasure": {
-          "content": 0,
-          "unitCode": "CMT"
-        },
-        "HeightMeasure": {
-          "content": 0,
-          "unitCode": "CMT"
-        },
-        "DiameterMeasure": {
-          "content": 0,
-          "unitCode": "CMT"
-        }
-      },
-      "OriginTradeCountry": {
-        "ID": {
-          "content": "AD",
-          "schemeAgencyID": "5"
-        },
-        "Name": {
-          "content": "string",
-          "languageID": "aa"
-        }
-      },
-      "RelatedEventTransportEvent": [
+      "PostalAddress": [
         {
-          "ID": {
-            "content": "string"
-          }
-        }
-      ],
-      "LogisticsLabelLogisticsShippingMarks": [
-        {
-          "Marking": {
-            "content": "string",
-            "languageID": "aa"
-          },
-          "LogisticsLabel": {
-            "ID": {
-              "content": "string",
-              "schemeAgencyID": "1"
-            },
-            "LayoutTypeCode": {
-              "content": "ETI9"
-            },
-            "SizeCode": {
-              "content": "A5"
-            },
-            "TechnologyCode": {
-              "content": "BARCODE",
-              "listAgencyID": "10"
-            }
-          }
-        }
-      ],
-      "HandlingInstructions": {
-        "Description": {
-          "content": "string",
-          "languageID": "aa"
-        },
-        "DescriptionCode": {
-          "content": "string",
-          "listAgencyID": "1"
-        },
-        "MaximumStackabilityWeightApplicableMeasure": {
-          "content": 0,
-          "unitCode": "KGM"
-        },
-        "MaximumStackabilityApplicableQuantity": {
-          "content": 0
-        },
-        "MaximumStorageHumidityApplicableMeasure": {
-          "content": 0,
-          "unitCode": "P1"
-        },
-        "MinimumStorageHumidityApplicableMeasure": {
-          "content": 0,
-          "unitCode": "P1"
-        },
-        "InstructedTemperature": [
-          {
-            "MaximumValueMeasure": {
-              "content": 0,
-              "unitCode": "CEL"
-            },
-            "MinimumValueMeasure": {
-              "content": 0,
-              "unitCode": "CEL"
-            },
-            "TypeCode": {
-              "content": "STORAGE",
-              "listAgencyID": "10"
-            }
-          }
-        ]
-      }
-    },
-    "Consignment": {
-      "ID": {
-        "content": "string"
-      },
-      "ConsignorAssignedID": {
-        "content": "string"
-      },
-      "ConsigneeAssignedID": {
-        "content": "string"
-      },
-      "CustomsID": {
-        "content": "string"
-      },
-      "CarrierAssignedID": {
-        "content": "string"
-      },
-      "FreightForwarderAssignedID": {
-        "content": "string"
-      },
-      "TradedParcelID": {
-        "content": "string"
-      },
-      "LoadingSequenceNumeric": {
-        "content": 0
-      },
-      "GrossWeightMeasure": {
-        "content": 0,
-        "unitCode": "KGM"
-      },
-      "NetWeightMeasure": {
-        "content": 0,
-        "unitCode": "KGM"
-      },
-      "GrossVolumeMeasure": {
-        "content": 0,
-        "unitCode": "CMQ"
-      },
-      "LoadingLengthMeasure": {
-        "content": 0,
-        "unitCode": "CMT"
-      },
-      "ChargeableWeightMeasure": {
-        "content": 0,
-        "unitCode": "KGM"
-      },
-      "ConsignmentItemQuantity": {
-        "content": 0
-      },
-      "StatusCode": {
-        "content": "NO_STATUS"
-      },
-      "AssociatedReferencedDocument": [
-        {
-          "ID": {
-            "content": "string"
-          },
-          "ReferenceTypeCode": {
-            "content": "AAA",
-            "listAgencyID": "6"
-          },
-          "LanguageID": {
-            "content": "aa"
-          },
-          "FormattedIssueDateTime": {
-            "content": "string"
-          },
-          "SubordinateLineID": {
-            "content": "string"
-          },
-          "AttachedSpecifiedBinaryFile": [
-            {
-              "ID": {
-                "content": "string"
-              },
-              "Title": {
-                "content": "string",
-                "languageID": "aa"
-              },
-              "FileName": {
-                "content": "string",
-                "languageID": "aa"
-              },
-              "URIID": {
-                "content": "string"
-              },
-              "MIMECode": {
-                "content": "string",
-                "listAgencyID": "1"
-              },
-              "EncodingCode": {
-                "content": "string",
-                "listAgencyID": "1"
-              },
-              "CharacterSetCode": {
-                "content": "string",
-                "listAgencyID": "1"
-              },
-              "IncludedBinaryObject": {
-                "content": "string",
-                "format": "string"
-              },
-              "Access": {
-                "content": "string",
-                "languageID": "aa"
-              },
-              "Description": {
-                "content": "string",
-                "languageID": "aa"
-              },
-              "SizeMeasure": {
-                "content": 0,
-                "unitCode": "10"
-              }
-            }
-          ]
-        }
-      ],
-      "UtilizedLogisticsTransportEquipment": [
-        {
-          "ID": {
-            "content": "string"
-          },
-          "CategoryCode": {
-            "content": "AA",
-            "listAgencyID": "6"
-          },
-          "CharacteristicCode": {
-            "content": "1",
-            "listAgencyID": "6"
-          }
-        }
-      ],
-      "SpecifiedLogisticsTransportMovement": [
-        {
-          "StageCode": {
-            "content": "12",
-            "listAgencyID": "6"
-          },
-          "ModeCode": {
-            "content": "0",
-            "listAgencyID": "6"
-          },
-          "ID": {
-            "content": "string"
-          }
-        }
-      ],
-      "SpecifiedTradeDeliveryTerms": {
-        "DeliveryTypeCode": {
-          "content": "1",
-          "listAgencyID": "6"
-        },
-        "Description": {
-          "content": "string"
-        },
-        "PartialDeliveryAllowedIndicator": {
-          "content": "string"
-        },
-        "RelevantTradeLocation": {
-          "ID": {
-            "content": "string",
-            "schemeAgencyID": "1"
-          },
-          "Name": {
-            "content": "string",
-            "languageID": "aa"
-          }
-        }
-      },
-      "SpecifiedSupplyChainReference": [
-        {
-          "TypeCode": {
-            "content": "AAA",
-            "listAgencyID": "6"
-          },
-          "ID": {
-            "content": "string"
-          }
-        }
-      ],
-      "IncludedConsignmentItem": [
-        {
-          "ID": {
-            "content": "string"
-          },
-          "SequenceNumeric": {
-            "content": 0
-          },
-          "TypeCode": {
-            "content": "ZZZ"
-          },
-          "GrossWeightMeasure": {
-            "content": 0,
-            "unitCode": "KGM"
-          },
-          "NetWeightMeasure": {
-            "content": 0,
-            "unitCode": "KGM"
-          },
-          "GrossVolumeMeasure": {
-            "content": 0,
-            "unitCode": "CMQ"
-          },
-          "PackageType": {
-            "content": "string",
-            "languageID": "aa"
-          },
-          "ConsignmentID": {
-            "content": "string"
-          },
-          "StatusCode": {
-            "content": "ACCEPTANCE_REFUSED_BY_SHIP_TO"
-          },
-          "LinearSpatialDimension": {
-            "WidthMeasure": {
-              "content": 0,
-              "unitCode": "CMT"
-            },
-            "LengthMeasure": {
-              "content": 0,
-              "unitCode": "CMT"
-            },
-            "HeightMeasure": {
-              "content": 0,
-              "unitCode": "CMT"
-            },
-            "DiameterMeasure": {
-              "content": 0,
-              "unitCode": "CMT"
-            }
-          },
-          "OriginTradeCountry": {
-            "ID": {
-              "content": "AD",
-              "schemeAgencyID": "5"
-            },
-            "Name": {
-              "content": "string",
-              "languageID": "aa"
-            }
-          },
-          "RelatedEventTransportEvent": [
-            {
-              "ID": {
-                "content": "string"
-              }
-            }
-          ],
-          "LogisticsLabelLogisticsShippingMarks": [
-            {
-              "Marking": {
-                "content": "string",
-                "languageID": "aa"
-              },
-              "LogisticsLabel": {
-                "ID": {
-                  "content": "string",
-                  "schemeAgencyID": "1"
-                },
-                "LayoutTypeCode": {
-                  "content": "ETI9"
-                },
-                "SizeCode": {
-                  "content": "A5"
-                },
-                "TechnologyCode": {
-                  "content": "BARCODE",
-                  "listAgencyID": "10"
-                }
-              }
-            }
-          ],
-          "HandlingInstructions": {
-            "Description": {
-              "content": "string",
-              "languageID": "aa"
-            },
-            "DescriptionCode": {
-              "content": "string",
-              "listAgencyID": "1"
-            },
-            "MaximumStackabilityWeightApplicableMeasure": {
-              "content": 0,
-              "unitCode": "KGM"
-            },
-            "MaximumStackabilityApplicableQuantity": {
-              "content": 0
-            },
-            "MaximumStorageHumidityApplicableMeasure": {
-              "content": 0,
-              "unitCode": "P1"
-            },
-            "MinimumStorageHumidityApplicableMeasure": {
-              "content": 0,
-              "unitCode": "P1"
-            },
-            "InstructedTemperature": [
-              {
-                "MaximumValueMeasure": {
-                  "content": 0,
-                  "unitCode": "CEL"
-                },
-                "MinimumValueMeasure": {
-                  "content": 0,
-                  "unitCode": "CEL"
-                },
-                "TypeCode": {
-                  "content": "STORAGE",
-                  "listAgencyID": "10"
-                }
-              }
-            ]
-          }
-        }
-      ],
-      "RelatedEventTransportEvent": [
-        {
-          "ID": {
-            "content": "string"
-          }
-        }
-      ],
-      "ConsignmentParty": {
-        "ID": {
-          "content": "string",
-          "schemeID": "string",
-          "schemeAgencyID": "1"
-        },
-        "Name": {
-          "content": "string",
-          "languageID": "aa"
-        },
-        "RoleCode": {
-          "content": "CA",
-          "listAgencyID": "6"
-        },
-        "PostalTradeAddress": {
-          "ID": {
-            "content": "string",
-            "schemeAgencyID": "1"
-          },
           "PostcodeCode": {
-            "content": "string"
+            "content": "10117"
           },
           "StreetName": {
-            "content": "string"
+            "content": "Behrenstraße 35"
           },
           "CityName": {
-            "content": "string"
+            "content": "Berlin"
           },
           "CountryID": {
-            "content": "AD",
+            "content": "DE",
             "schemeAgencyID": "5"
-          },
-          "CountryName": {
-            "content": "string"
-          },
-          "CountrySubDivisionName": {
-            "content": "string"
-          }
-        },
-        "UniversalCommunication": [
-          {
-            "URIID": {
-              "content": "string",
-              "schemeID": "string",
-              "schemeAgencyID": "1"
-            },
-            "ChannelCode": {
-              "content": "AL"
-            },
-            "CompleteNumber": {
-              "content": "string",
-              "languageID": "aa"
-            }
-          }
-        ]
-      },
-      "LogisticsLocation": {
-        "ID": {
-          "content": "string",
-          "schemeAgencyID": "1"
-        },
-        "Name": {
-          "content": "string",
-          "languageID": "aa"
-        },
-        "TypeCode": {
-          "content": "9",
-          "listAgencyID": "6"
-        },
-        "CountryID": {
-          "content": "AD",
-          "schemeAgencyID": "5"
-        },
-        "CountrySubDivisionID": {
-          "content": "string",
-          "schemeID": "string",
-          "schemeName": "string",
-          "schemeAgencyID": "1",
-          "schemeAgencyName": "string",
-          "schemeVersionID": "string",
-          "schemeDataURI": "string",
-          "schemeURI": "string"
-        },
-        "PhysicalGeographicalCoordinate": {
-          "AltitudeMeasure": {
-            "content": 0,
-            "unitCode": "MTR"
-          },
-          "LatitudeMeasure": {
-            "content": 0,
-            "unitCode": "DD"
-          },
-          "LongitudeMeasure": {
-            "content": 0,
-            "unitCode": "DD"
-          },
-          "LatitudeDirectionIndicator": {
-            "content": "string"
-          },
-          "LongitudeDirectionIndicator": {
-            "content": "string"
-          },
-          "SystemID": {
-            "content": "string",
-            "schemeAgencyID": "1"
-          }
-        }
-      },
-      "HandlingInstructions": {
-        "Description": {
-          "content": "string",
-          "languageID": "aa"
-        },
-        "DescriptionCode": {
-          "content": "string",
-          "listAgencyID": "1"
-        },
-        "MaximumStackabilityWeightApplicableMeasure": {
-          "content": 0,
-          "unitCode": "KGM"
-        },
-        "MaximumStackabilityApplicableQuantity": {
-          "content": 0
-        },
-        "MaximumStorageHumidityApplicableMeasure": {
-          "content": 0,
-          "unitCode": "P1"
-        },
-        "MinimumStorageHumidityApplicableMeasure": {
-          "content": 0,
-          "unitCode": "P1"
-        },
-        "InstructedTemperature": [
-          {
-            "MaximumValueMeasure": {
-              "content": 0,
-              "unitCode": "CEL"
-            },
-            "MinimumValueMeasure": {
-              "content": 0,
-              "unitCode": "CEL"
-            },
-            "TypeCode": {
-              "content": "STORAGE",
-              "listAgencyID": "10"
-            }
-          }
-        ]
-      }
-    },
-    "TransportMovement": {
-      "StageCode": {
-        "content": "1",
-        "listAgencyID": "6"
-      },
-      "ModeCode": {
-        "content": "0",
-        "listAgencyID": "6"
-      },
-      "Mode": {
-        "content": "string",
-        "languageID": "aa"
-      },
-      "ID": {
-        "content": "string"
-      },
-      "Information": {
-        "content": "string",
-        "languageID": "aa"
-      },
-      "CargoDescription": {
-        "content": "string",
-        "languageID": "aa"
-      },
-      "DangerousGoodsIndicator": {
-        "content": "string"
-      },
-      "StatusCode": {
-        "content": "ARRIVAL_COMPLETED",
-        "listAgencyID": "6"
-      },
-      "UsedTransportMeans": {
-        "TypeCode": {
-          "content": "T01",
-          "listAgencyID": "6"
-        },
-        "Type": {
-          "content": "string",
-          "languageID": "aa"
-        },
-        "ID": {
-          "content": "string",
-          "schemeAgencyID": "1"
-        },
-        "Name": {
-          "content": "string",
-          "languageID": "aa"
-        }
-      },
-      "IncludedConsignment": [
-        {
-          "ID": {
-            "content": "string"
-          },
-          "ConsignorAssignedID": {
-            "content": "string"
-          },
-          "StatusCode": {
-            "content": "NO_STATUS"
           }
         }
       ],
-      "TransportPartyConsignmentParty": [
+      "UniversalCommunication": [
         {
-          "ID": {
-            "content": "string",
-            "schemeID": "string",
-            "schemeAgencyID": "1"
-          },
-          "Name": {
-            "content": "string",
-            "languageID": "aa"
-          },
-          "RoleCode": {
-            "content": "CA",
+          "ChannelCode": {
+            "content": "TE",
             "listAgencyID": "6"
           },
-          "PostalTradeAddress": {
-            "ID": {
-              "content": "string",
-              "schemeAgencyID": "1"
-            },
-            "PostcodeCode": {
-              "content": "string"
-            },
-            "StreetName": {
-              "content": "string"
-            },
-            "CityName": {
-              "content": "string"
-            },
-            "CountryID": {
-              "content": "AD",
-              "schemeAgencyID": "5"
-            },
-            "CountryName": {
-              "content": "string"
-            },
-            "CountrySubDivisionName": {
-              "content": "string"
-            }
-          },
-          "UniversalCommunication": [
-            {
-              "URIID": {
-                "content": "string",
-                "schemeID": "string",
-                "schemeAgencyID": "1"
-              },
-              "ChannelCode": {
-                "content": "AL"
-              },
-              "CompleteNumber": {
-                "content": "string",
-                "languageID": "aa"
-              }
-            }
-          ]
-        }
-      ],
-      "RelatedEventTransportEvent": [
-        {
-          "ID": {
-            "content": "string"
+          "CompleteNumber": {
+            "content": "0049 39 8978 420"
           }
         }
       ]
     },
-    "TransportCapacityReservation": {
+    {
       "ID": {
-        "content": "string"
+        "content": "444555666",
+        "schemeAgencyID": "16"
       },
-      "TransactionStatusCode": {
-        "content": "CONFIRMATION_PENDING"
+      "Name": {
+        "content": "Automotive Supplier Ltd."
       },
-      "IssueDateDateTime": {
-        "content": "string"
-      },
-      "PositioningDateDateTime": {
-        "content": "string"
-      },
-      "TransportMeansTypeCode": {
-        "content": "T01",
+      "RoleCode": {
+        "content": "SF",
         "listAgencyID": "6"
       },
-      "TransportMeansNumberNumeric": {
-        "content": 0
-      },
-      "GrossWeightMeasureMeasure": {
-        "content": 0,
-        "unitCode": "KGM"
-      },
-      "LoadingMetersMeasureMeasure": {
-        "content": 0,
-        "unitCode": "MTR"
-      },
-      "GrossVolumeMeasureMeasure": {
-        "content": 0,
-        "unitCode": "LTR"
-      },
-      "DeliveryTermsCode": {
-        "content": "1"
-      },
-      "ContractReferenceID": {
-        "content": "string"
-      },
-      "SpecialInstructions": {
-        "content": "string",
-        "languageID": "aa"
-      },
-      "SpecifiedPartyTradeParty": [
+      "PostalAddressTradeAddress": [
         {
-          "IDID": {
-            "content": "string",
-            "schemeAgencyID": "10"
+          "PostcodeCode": {
+            "content": "SW1P 2BN"
           },
-          "Name": {
-            "content": "string",
-            "languageID": "aa",
-            "languageLocaleID": "string"
+          "StreetName": {
+            "content": "71 Great Peter Street"
           },
-          "RoleCode": {
-            "content": "OB",
-            "listAgencyID": "6"
-          },
-          "PostalAddressTradeAddress": [
-            {
-              "ID": {
-                "content": "string",
-                "schemeAgencyID": "1"
-              },
-              "PostcodeCode": {
-                "content": "string"
-              },
-              "StreetName": {
-                "content": "string"
-              },
-              "CityName": {
-                "content": "string"
-              },
-              "CountryID": {
-                "content": "AD",
-                "schemeAgencyID": "5"
-              },
-              "CountryName": {
-                "content": "string"
-              },
-              "CountrySubDivisionName": {
-                "content": "string"
-              }
-            }
-          ],
-          "UniversalCommunication": [
-            {
-              "URIID": {
-                "content": "string",
-                "schemeID": "string",
-                "schemeAgencyID": "1"
-              },
-              "ChannelCode": {
-                "content": "AA",
-                "listAgencyID": "6"
-              },
-              "CompleteNumber": {
-                "content": "string",
-                "languageID": "aa"
-              }
-            }
-          ]
-        },
-        {
-          "IDID": {
-            "content": "string",
-            "schemeAgencyID": "10"
-          },
-          "Name": {
-            "content": "string",
-            "languageID": "aa",
-            "languageLocaleID": "string"
-          },
-          "RoleCode": {
-            "content": "OB",
-            "listAgencyID": "6"
-          },
-          "PostalAddressTradeAddress": [
-            {
-              "ID": {
-                "content": "string",
-                "schemeAgencyID": "1"
-              },
-              "PostcodeCode": {
-                "content": "string"
-              },
-              "StreetName": {
-                "content": "string"
-              },
-              "CityName": {
-                "content": "string"
-              },
-              "CountryID": {
-                "content": "AD",
-                "schemeAgencyID": "5"
-              },
-              "CountryName": {
-                "content": "string"
-              },
-              "CountrySubDivisionName": {
-                "content": "string"
-              }
-            }
-          ],
-          "UniversalCommunication": [
-            {
-              "URIID": {
-                "content": "string",
-                "schemeID": "string",
-                "schemeAgencyID": "1"
-              },
-              "ChannelCode": {
-                "content": "AA",
-                "listAgencyID": "6"
-              },
-              "CompleteNumber": {
-                "content": "string",
-                "languageID": "aa"
-              }
-            }
-          ]
-        }
-      ],
-      "LogisticsLocation": [
-        {
-          "ID": {
-            "content": "string",
-            "schemeAgencyID": "1"
-          },
-          "Name": {
-            "content": "string",
-            "languageID": "aa"
-          },
-          "TypeCode": {
-            "content": "9",
-            "listAgencyID": "6"
+          "CityName": {
+            "content": "London"
           },
           "CountryID": {
-            "content": "AD",
-            "schemeAgencyID": "5"
-          },
-          "CountrySubDivisionID": {
-            "content": "string",
-            "schemeID": "string",
-            "schemeName": "string",
-            "schemeAgencyID": "1",
-            "schemeAgencyName": "string",
-            "schemeVersionID": "string",
-            "schemeDataURI": "string",
-            "schemeURI": "string"
-          },
-          "PhysicalGeographicalCoordinate": {
-            "AltitudeMeasure": {
-              "content": 0,
-              "unitCode": "MTR"
-            },
-            "LatitudeMeasure": {
-              "content": 0,
-              "unitCode": "DD"
-            },
-            "LongitudeMeasure": {
-              "content": 0,
-              "unitCode": "DD"
-            },
-            "LatitudeDirectionIndicator": {
-              "content": "string"
-            },
-            "LongitudeDirectionIndicator": {
-              "content": "string"
-            },
-            "SystemID": {
-              "content": "string",
-              "schemeAgencyID": "1"
-            }
-          },
-          "PostalTradeAddress": {
-            "ID": {
-              "content": "string",
-              "schemeAgencyID": "1"
-            },
-            "PostcodeCode": {
-              "content": "string"
-            },
-            "StreetName": {
-              "content": "string"
-            },
-            "CityName": {
-              "content": "string"
-            },
-            "CountryID": {
-              "content": "AD",
-              "schemeAgencyID": "5"
-            },
-            "CountryName": {
-              "content": "string"
-            },
-            "CountrySubDivisionName": {
-              "content": "string"
-            }
+            "content": "GB"
           }
         }
-      ]
-    },
-    "TransportEvent": {
+      ],
+    }
+  ],
+  "LogisticsLocation": [
+    {
       "ID": {
-        "content": "string"
+        "content": "Dock 15"
+      },
+      "Name": {
+        "content": "Dock 15"
       },
       "TypeCode": {
-        "content": "ACTUAL",
-        "listAgencyID": "10"
-      },
-      "ReportedConditionTypeCode": {
-        "content": "ACCEPTANCE_REFUSED_BY_SHIP_TO",
+        "content": "9",
         "listAgencyID": "6"
-      },
-      "OccurenceDateTimeDateTime": {
-        "content": "string"
-      },
-      "OccurrenceLogisticsLocation": {
-        "ID": {
-          "content": "string",
-          "schemeAgencyID": "1"
-        },
-        "Name": {
-          "content": "string",
-          "languageID": "aa"
-        },
-        "TypeCode": {
-          "content": "1",
-          "listAgencyID": "6"
-        },
-        "CountryID": {
-          "content": "AD",
-          "schemeAgencyID": "5"
-        },
-        "CountrySubDivisionID": {
-          "content": "string"
-        },
-        "PhysicalGeographicalCoordinate": {
-          "AltitudeMeasure": {
-            "content": 0,
-            "unitCode": "10"
-          },
-          "LatitudeMeasure": {
-            "content": 0,
-            "unitCode": "DD"
-          },
-          "LongitudeMeasure": {
-            "content": 0,
-            "unitCode": "DD"
-          },
-          "LatitudeDirectionIndicator": {
-            "content": "string"
-          },
-          "LongitudeDirectionIndicator": {
-            "content": "string"
-          },
-          "SystemID": {
-            "content": "string",
-            "schemeAgencyID": "1"
-          }
-        }
-      },
-      "RelatedSpecifiedObservation": [
-        {
-          "ID": {
-            "content": "string"
-          },
-          "Description": {
-            "content": "string",
-            "languageID": "aa"
-          },
-          "RelatedSpecifiedBinaryFile": [
-            {
-              "ID": {
-                "content": "string"
-              },
-              "Title": {
-                "content": "string",
-                "languageID": "aa"
-              },
-              "FileName": {
-                "content": "string",
-                "languageID": "aa"
-              },
-              "URIID": {
-                "content": "string"
-              },
-              "MIMECode": {
-                "content": "string",
-                "listAgencyID": "1"
-              },
-              "EncodingCode": {
-                "content": "string",
-                "listAgencyID": "1"
-              },
-              "CharacterSetCode": {
-                "content": "string",
-                "listAgencyID": "1"
-              },
-              "IncludedBinaryObject": {
-                "content": "string",
-                "format": "string"
-              },
-              "Description": {
-                "content": "string",
-                "languageID": "aa"
-              },
-              "SizeMeasure": {
-                "content": 0,
-                "unitCode": "4L"
-              }
-            }
-          ],
-          "ApplicableNote": [
-            {
-              "Subject": {
-                "content": "string",
-                "languageID": "aa"
-              },
-              "Content": {
-                "content": "string",
-                "languageID": "aa"
-              }
-            }
-          ]
-        }
-      ],
-      "ReportingMonitoringIOTDevice": [
-        {
-          "ID": {
-            "content": "string"
-          },
-          "TypeCode": {
-            "content": "string"
-          }
-        }
-      ],
-      "ReferencedTransportMovement": {
-        "StageCode": {
-          "content": "1",
-          "listAgencyID": "6"
-        },
-        "ModeCode": {
-          "content": "0",
-          "listAgencyID": "6"
-        },
-        "ID": {
-          "content": "string"
-        },
-        "UsedTransportMeans": {
-          "TypeCode": {
-            "content": "T01",
-            "listAgencyID": "6"
-          },
-          "Type": {
-            "content": "string",
-            "languageID": "aa"
-          },
-          "ID": {
-            "content": "string",
-            "schemeAgencyID": "1"
-          },
-          "Name": {
-            "content": "string",
-            "languageID": "aa"
-          }
-        }
-      },
-      "ReferencedConsignment": [
-        {
-          "ID": {
-            "content": "string"
-          },
-          "StatusCode": {
-            "content": "NO_STATUS"
-          },
-          "IncludedConsignmentItem": [
-            {
-              "ID": {
-                "content": "string"
-              }
-            }
-          ]
-        }
-      ],
-      "ReferencedConsignmentItem": [
-        {
-          "ID": {
-            "content": "string"
-          }
-        }
-      ]
+      }
+    },
+    {
+      "ID": {
+        "content": "Tor3"
+      }
+      "TypeCode": {
+        "content": "7",
+        "listAgencyID": "6"
+      }
     }
-  }
+  ]
 }
-
 ```   
 
