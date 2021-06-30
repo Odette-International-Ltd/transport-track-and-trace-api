@@ -46,7 +46,7 @@ info:
     name: The specification is published under the General Public License (GPL 3.0)
   version: 1.0.0
 servers:
-  - url: 'https://virtserver.swaggerhub.com/JoergWaltherOdette/vda_odette_ttt/1.0.0'
+  - url: '/vda_odette_ttt/V1'
 paths:
   /:
     summary: 'Provides information about the API-Version'
