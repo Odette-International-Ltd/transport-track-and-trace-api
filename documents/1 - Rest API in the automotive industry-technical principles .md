@@ -22,7 +22,7 @@ Please note: This is a copy of the original VDA/Odette recommendation. The offic
 
 |           |                                                              |
 | :-------- | ------------------------------------------------------------ |
-| Publisher | Verband der Automobilindustrie e.V. (VDA)  <br />Behrenstrasse 35, 10117 Berlin <br />www.vda.de <br />This recommendation was developed by AK SID together with an Odette project group. |
+| Publisher | Verband der Automobilindustrie e.V. (VDA)  <br />Behrenstrasse 35, 10117 Berlin <br />www.vda.de  |
 | Copyright | Odette International & Verband der Automobilindustrie e.V. (VDA) <br />Reprint, also in extracts, is only permitted, if the source is stated. Copyright |
 | Version   | Version 1.0, June 2021                                       |
 
