@@ -66,11 +66,11 @@ paths:
                 $ref: '#/components/schemas/Info'
               example: |
                 {
-                  "api_name": "VDA/ODETTE Transport T+T OpenAPI 3.01 interface",
-                  "api_version": "1.0.0",
-                  "api_released": "2021-06-30",
-                  "api_documentation": "https://github.com/Odette-International-Ltd/transport-track-and-trace-api",
-                  "api_status": "DRAFT"
+                   "APIName": "VDA/ODETTE Transport T+T OpenAPI 3.01 interface",
+                   "APIVersion": "1.0.0",
+                   "APIReleasedDate": "2021-06-30T17:00:00Z",
+                   "APIDocumentation": "https://github.com/Odette-International-Ltd/transport-track-and-trace-api",            
+                   "APIStatus": "DRAFT"
                 }
   /consignments:
     description: |
@@ -2600,6 +2600,12 @@ components:
       type: object
       properties:
         content:
+          enum:
+            - DEPRECATED  # When a specification is superseded by a new major version then the previous major version is deprecated
+            - DRAFT  # When a specification is completed and testable (i.e., it has a working test harness), then it becomes draft.
+            - RAW  # Every new specification or major version starts with raw status.
+            - RETIRED  # when a specification is obsolete and should no longer be used in any production deployment then it becomes retired
+            - STABLE  # When a specification has a successful third-party implementation (i.e., passes conformance test cases) then it becomes stable.
           type: string
       required:
         - content
