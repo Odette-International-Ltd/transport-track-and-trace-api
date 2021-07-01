@@ -51,10 +51,6 @@ Frequency|	As necessary
   "ContractReferenceID": {
     "content": "string"
   },
-  "SpecialInstructions": {
-    "content": "string",
-    "languageID": "aa"
-  },
   "SpecifiedTradeParty": [
     {
       "ID": {
