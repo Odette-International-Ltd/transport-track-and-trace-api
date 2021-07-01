@@ -49,8 +49,7 @@ curl -X 'PUT' \
     "content": "2021-07-02T07:30:00Z"
   },
   "TransportMeansTypeCode": {
-    "content": "T01",
-    "listAgencyID": "6"
+    "content": "T01"
   },
   "TransportMeansNumberNumeric": {
     "content": 1
@@ -169,4 +168,20 @@ curl -X 'PUT' \
   ]
 }
 ```   
+Once the transport service provider has processed the request they can update the status of the reservation, e.g. with a PATCH command:
 
+```  
+curl -X 'PATCH' \
+  'https://virtserver.swaggerhub.com/JoergWaltherOdette/vda_odette_ttt/1.0.0/transport-capacity-reservations/d9cb4b05-6d4d-420a-a18c-0b3875ee828c' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "ID": {
+    "content": "d9cb4b05-6d4d-420a-a18c-0b3875ee828c"
+  },
+  "TransactionStatusCode": {
+    "content": "CONFIRMED"
+  }
+}'
+```  
+If the requesting system later issues a GET command the returned data set will contain the status "CONFIRMED" instead of "REQUESTED".
