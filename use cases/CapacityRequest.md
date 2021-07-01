@@ -11,9 +11,31 @@ Functions|	Create, Update, Read
 Process|	Sender: ship-from, Receiver: LSP,	Opt. Receiver: ship-to, transport ordering party    
 Alternative|	VDA 4933 T1 & T2 (transport order & confirmation)  resp. Odette pendants     
 Motivation |	Automated, accelerated communication    
-Frequency|	As necessary      
-```JSON
+Frequency|	As necessary   
+
+A requesting party would first use a POST command to get a unique ID for the capacity reservation:    
+```
+curl -X 'POST' \
+  'https://virtserver.swaggerhub.com/JoergWaltherOdette/vda_odette_ttt/1.0.0/transport-capacity-reservations' \
+  -H 'accept: application/json' \
+  -d ''
+  ```   
+The server returns the ID in a JSON structure:
+```   
 {
+  "ReturnedID": {
+    "content": "d9cb4b05-6d4d-420a-a18c-0b3875ee828c"
+  }
+}
+```
+Then the requesting system uses this ID as path parameter to provide the complete data set with a PUT command: 
+ 
+```JSON
+curl -X 'PUT' \
+  'https://virtserver.swaggerhub.com/JoergWaltherOdette/vda_odette_ttt/1.0.0/transport-capacity-reservations/d9cb4b05-6d4d-420a-a18c-0b3875ee828c' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d {
   "ID": {
     "content": "d9cb4b05-6d4d-420a-a18c-0b3875ee828c"
   },
