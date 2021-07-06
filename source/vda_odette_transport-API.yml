@@ -43,7 +43,7 @@ info:
       ODETTE International Ltd.
     email: 'gp_logistik@vda.de'
   license:
-    name: The specification is published under the General Public License (GPL 3.0)
+    name: The specification is published under the General Public License (GPL 3.0)   
   version: 1.0.0
 servers:
   - url: '/vda_odette_ttt/V1'
