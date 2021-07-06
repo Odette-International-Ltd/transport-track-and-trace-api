@@ -313,4 +313,4 @@ Figure 23: Business Process 3.1-3.4 Transport Status Message of MoT issued by Tr
 
 * Annexe 1: Data model detail documentation 
   [Link](https://github.com/Odette-International-Ltd/transport-track-and-trace-api/blob/main/documents/2a%20-%20Data%20Model%20Details.pdf)
-* Annexe 2: Glossary of used terms
+* Annexe 2: Glossary of used terms  
