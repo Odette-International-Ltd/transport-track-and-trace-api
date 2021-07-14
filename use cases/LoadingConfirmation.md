@@ -1,0 +1,5 @@
+# Use Case Loading Confirmation issued by Ship-from
+
+Use-case | Loading confirmation
+---------|---------------------    
+Description| The ship-from-party notifies which shipments TLU has loaded on a means of transport   
