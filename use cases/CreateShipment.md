@@ -32,191 +32,51 @@ curl -X 'PUT' \
   -H 'Content-Type: application/json' \
   -d '{
   "ID": {
-    "content": "string"
+    "content": "2KODA05303020210003"
   },
   "ConsignorAssignedID": {
-    "content": "string"
-  },
-  "ConsigneeAssignedID": {
-    "content": "string"
-  },
-  "CustomsID": {
-    "content": "string"
-  },
-  "CarrierAssignedID": {
-    "content": "string"
-  },
-  "FreightForwarderAssignedID": {
-    "content": "string"
-  },
-  "TradedParcelID": {
-    "content": "string"
-  },
-  "LoadingSequenceNumeric": {
-    "content": 0
+    "content": "2KODA05303020210003"
   },
   "GrossWeightMeasure": {
-    "content": 0,
-    "unitCode": "KGM"
-  },
-  "NetWeightMeasure": {
-    "content": 0,
+    "content": 15000,
     "unitCode": "KGM"
   },
   "GrossVolumeMeasure": {
-    "content": 0,
-    "unitCode": "CMQ"
-  },
-  "LoadingLengthMeasure": {
-    "content": 0,
-    "unitCode": "CMT"
-  },
-  "ChargeableWeightMeasure": {
-    "content": 0,
-    "unitCode": "KGM"
+    "content": 18,
+    "unitCode": "MTQ"
   },
   "ConsignmentItemQuantity": {
-    "content": 0
+    "content": 10
   },
   "StatusCode": {
     "content": "NO_STATUS"
   },
-  "AssociatedDocument": [
-    {
-      "ID": {
-        "content": "string"
-      },
-      "ReferenceTypeCode": {
-        "content": "AAA"
-      },
-      "LanguageID": {
-        "content": "aa"
-      },
-      "FormattedIssueDateTime": {
-        "content": "string"
-      },
-      "SubordinateLineID": {
-        "content": "string"
-      },
-      "AttachedBinaryFile": [
-        {
-          "ID": {
-            "content": "string"
-          },
-          "Title": {
-            "content": "string",
-            "languageID": "aa"
-          },
-          "FileName": {
-            "content": "string"
-          },
-          "URIID": {
-            "content": "string"
-          },
-          "MIMECode": {
-            "content": "application/pdf"
-          },
-          "EncodingCode": {
-            "content": "1"
-          },
-          "CharacterSetCode": {
-            "content": "3"
-          },
-          "IncludedBinaryObject": {
-            "content": "string"
-          },
-          "Access": {
-            "content": "string",
-            "languageID": "aa"
-          },
-          "Description": {
-            "content": "string",
-            "languageID": "aa"
-          },
-          "SizeMeasure": {
-            "content": 0,
-            "unitCode": "4L"
-          }
-        }
-      ]
-    }
-  ],
-  "UtilizedTransportEquipment": [
-    {
-      "ID": {
-        "content": "string"
-      },
-      "CategoryCode": {
-        "content": "AE"
-      }
-    }
-  ],
-  "SpecifiedTransportMovement": [
-    {
-      "StageCode": {
-        "content": "12",
-        "listAgencyID": "6"
-      },
-      "ModeCode": {
-        "content": "0"
-      },
-      "ID": {
-        "content": "string"
-      }
-    }
-  ],
   "SpecifiedDeliveryTerms": {
     "DeliveryTypeCode": {
-      "content": "1"
+      "content": "EXW"
     },
     "Description": {
-      "content": "string"
+      "content": "Ex work London"
     },
-    "PartialDeliveryAllowedIndicator": {
-      "content": "string"
-    },
-    "RelevantLocation": {
-      "ID": {
-        "content": "string"
-      },
-      "Name": {
-        "content": "string",
-        "languageID": "aa"
-      }
-    }
-  },
-  "SpecifiedReference": [
-    {
-      "TypeCode": {
-        "content": "AAA"
-      },
-      "ID": {
-        "content": "string"
-      }
-    }
-  ],
   "IncludedConsignmentItem": [
     {
       "ID": {
-        "content": "string"
+        "content": "6JODA05303000000001"
       },
       "SequenceNumeric": {
-        "content": 0
-      },
-      "TypeCode": {
-        "content": "ZZZ"
+        "content": 1
       },
       "GrossWeightMeasure": {
         "content": 0,
         "unitCode": "KGM"
       },
       "NetWeightMeasure": {
-        "content": 0,
+        "content": 1500,
         "unitCode": "KGM"
       },
       "GrossVolumeMeasure": {
-        "content": 0,
-        "unitCode": "CMQ"
+        "content": 1.8,
+        "unitCode": "MTQ"
       },
       "PackageType": {
         "content": "string",
@@ -226,107 +86,42 @@ curl -X 'PUT' \
         "content": "string"
       },
       "StatusCode": {
-        "content": "ACCEPTANCE_REFUSED_BY_SHIP_TO"
+        "content": "NO_STATUS"
       },
       "LinearDimension": {
         "WidthMeasure": {
-          "content": 0,
+          "content": 100,
           "unitCode": "CMT"
         },
         "LengthMeasure": {
-          "content": 0,
+          "content": 120,
           "unitCode": "CMT"
         },
         "HeightMeasure": {
-          "content": 0,
+          "content": 150,
           "unitCode": "CMT"
         },
-        "DiameterMeasure": {
-          "content": 0,
-          "unitCode": "CMT"
-        }
       },
       "OriginCountry": {
         "ID": {
-          "content": "AD"
+          "content": "GB"
         },
-        "Name": {
-          "content": "string",
-          "languageID": "aa"
-        }
       },
-      "RelatedEvent": [
-        {
-          "ID": {
-            "content": "string"
-          }
-        }
-      ],
       "LogisticsLabelShippingMarks": [
         {
-          "Marking": {
-            "content": "string",
-            "languageID": "aa"
-          },
           "LogisticsLabel": {
             "ID": {
-              "content": "string"
+              "content": "6JODA05303000000001"
             },
             "LayoutTypeCode": {
-              "content": "ETI9"
+              "content": "GTL3"
             },
             "SizeCode": {
               "content": "A5"
             },
-            "TechnologyCode": {
-              "content": "BARCODE"
-            }
           }
         }
       ],
-      "HandlingInstructions": {
-        "Description": {
-          "content": "string",
-          "languageID": "aa"
-        },
-        "MaximumStackabilityWeightApplicableMeasure": {
-          "content": 0,
-          "unitCode": "KGM"
-        },
-        "MaximumStackabilityApplicableQuantity": {
-          "content": 0
-        },
-        "MaximumStorageHumidityApplicableMeasure": {
-          "content": 0,
-          "unitCode": "P1"
-        },
-        "MinimumStorageHumidityApplicableMeasure": {
-          "content": 0,
-          "unitCode": "P1"
-        },
-        "InstructedTemperature": [
-          {
-            "MaximumValueMeasure": {
-              "content": 0,
-              "unitCode": "CEL"
-            },
-            "MinimumValueMeasure": {
-              "content": 0,
-              "unitCode": "CEL"
-            },
-            "TypeCode": {
-              "content": "STORAGE"
-            }
-          }
-        ]
-      }
-    }
-  ],
-  "RelatedEvent": [
-    {
-      "ID": {
-        "content": "string"
-      }
     }
   ],
   "ConsignmentParty": {
