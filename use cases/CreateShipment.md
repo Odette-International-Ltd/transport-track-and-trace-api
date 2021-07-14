@@ -18,5 +18,10 @@ Unloading location: | Abladestelle 23
 Gross weight: | 15000 kg
 Gross volume: | 18 m3
 Number of TLU: | 10 (1.2 x 1.0 x 1.5 m each) 
+TLU-ID: | 6J (master label) ODA05303000000001..ODA05303000000010
+
+It is assumed that the receiving system checks internally, whether or not the TLU data exists in the system already.
+If yes, the ConsignmentID has to be checked/updated, if not, the records have to be created by the system.
+
 
 
