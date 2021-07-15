@@ -13,10 +13,14 @@ Post-condition| Shipment and or Shipment Item status changed to "loaded"
 
 
 ```   
-
-{
+curl -X 'PUT' \
+  'https://api.sample.com/vda_odette_ttt/V1/transport-events/d9cb4b05-6d4d-420a-a18c-0b3875ee828c' \
+  -H 'accept: application/json' \
+  -H 'X-API-KEY: adsas' \
+  -H 'Content-Type: application/json' \
+  -d '{
  "ID": {
-  "content": "string"
+  "content": "d9cb4b05-6d4d-420a-a18c-0b3875ee828c"
  },
  "TypeCode": {
   "content": "ACTUAL"
