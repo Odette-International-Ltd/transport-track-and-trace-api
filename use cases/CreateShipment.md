@@ -20,16 +20,18 @@ Gross volume: | 18 m3
 Number of TLU: | 10 (1.2 x 1.0 x 1.5 m each) 
 TLU-ID: | 6J (master label) ODA05303000000001..ODA05303000000010    
     
-It is assumed that the receiving system checks internally, whether or not the TLU records exist in the system already.    
-If yes, the ConsignmentIDs (and potentially other data) have to be checked/updated, if not, the records have to be created by the system itself.    
-    
+It is assumed that the receiving system checks internally, whether or not the transport handling unit    
+(THU, i.e. ConsignmentItem) records exist in the system.    
+If yes, the ConsignmentID within each ConsignmentItem has to be checked/updated,   
+if not, the records have to be created by the system itself and filled with the data provided in the Consignment data set.    
 
- ```
+```
 
 curl -X 'PUT' \
   'https://virtserver.swaggerhub.com/JoergWaltherOdette/vda_odette_ttt/1.0.0/consignments/2KODA05303020210003' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
+  -H 'X-API-KEY: asdfgh' \
   -d '{
  "ID": {
   "content": "2KODA05303020210003"
