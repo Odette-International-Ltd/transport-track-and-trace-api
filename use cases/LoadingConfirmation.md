@@ -39,7 +39,7 @@ curl -X 'PUT' \
   -d '{
  "ID": {"content": "d9cb4b05-6d4d-420a-a18c-0b3875ee828c"},
  "TypeCode": {"content": "ACTUAL"},
- "ReportedConditionTypeCode": {"content": "LOADED"},
+ "ReportedConditionTypeCode": {"content": "ISSUE_COMPLETED"},
  "OccurenceDateTime": {"content": "2021-07-02T08:35:00Z"},
  "OccurrenceLocation": {
   "ID": {"content": "DOCK 15"},
