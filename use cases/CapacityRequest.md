@@ -18,6 +18,7 @@ A requesting party would first use a POST command to get a unique ID for the cap
 curl -X 'POST' \
   'https://virtserver.swaggerhub.com/JoergWaltherOdette/vda_odette_ttt/1.0.0/transport-capacity-reservations' \
   -H 'accept: application/json' \
+  -H 'X-API-KEY: adsas' \    
   -d ''
   ```   
 The server returns the ID in a JSON structure:
@@ -35,6 +36,7 @@ curl -X 'PUT' \
   'https://virtserver.swaggerhub.com/JoergWaltherOdette/vda_odette_ttt/1.0.0/transport-capacity-reservations/d9cb4b05-6d4d-420a-a18c-0b3875ee828c' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
+  -H 'X-API-KEY: adsas' \   
   -d {
   "ID": {
     "content": "d9cb4b05-6d4d-420a-a18c-0b3875ee828c"
