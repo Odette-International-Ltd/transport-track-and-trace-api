@@ -43,10 +43,10 @@ info:
       ODETTE International Ltd.
     email: 'gp_logistik@vda.de'
   license:
-    name: The specification is published under the General Public License (GPL 3.0)   
+    name: The specification is published under the General Public License (GPL 3.0)
   version: 1.0.0
 servers:
-  - url: '/vda_odette_ttt/V1'
+  - url: /vda_odette_ttt/V1
 paths:
   /:
     summary: 'Provides information about the API-Version'
@@ -69,8 +69,7 @@ paths:
                    "APIName": "VDA/ODETTE Transport T+T OpenAPI 3.01 interface",
                    "APIVersion": "1.0.0",
                    "APIReleasedDate": "2021-06-30T17:00:00Z",
-                   "APIDocumentation": "https://github.com/Odette-International-Ltd/transport-track-and-trace-api",            
-                   "APIStatus": "DRAFT"
+                   "APIDocumentation": "https://github.com/Odette-International-Ltd/transport-track-and-trace-api",             "APIStatus": "DRAFT"
                 }
   /consignments:
     description: |
@@ -1702,7 +1701,10 @@ components:
             $ref: '#/components/schemas/TransportEvent_2'
           minItems: 0
         ConsignmentParty:
-          $ref: '#/components/schemas/ConsignmentParty'
+          type: array
+          items:
+            $ref: '#/components/schemas/ConsignmentParty'
+          minItems: 0
         LogisticsLocation:
           $ref: '#/components/schemas/LogisticsLocation'
         HandlingInstructions:
@@ -1977,18 +1979,14 @@ components:
       properties:
         OperationCode:
           $ref: '#/components/schemas/Code_2'  # description: Denominates the operation to be applied to the payload instance
-        ConsignmentItem:
-          $ref: '#/components/schemas/ConsignmentItem'
-        Consignment:
-          $ref: '#/components/schemas/Consignment'
-        TransportMovement:
-          $ref: '#/components/schemas/TransportMovement'
-        TransportCapacityReservation:
-          $ref: '#/components/schemas/TransportCapacityReservation'
-        TransportEvent:
-          $ref: '#/components/schemas/TransportEvent'
       required:
         - OperationCode
+      oneOf:
+        - $ref: '#/components/schemas/ConsignmentItem'
+        - $ref: '#/components/schemas/Consignment'
+        - $ref: '#/components/schemas/TransportMovement'
+        - $ref: '#/components/schemas/TransportCapacityReservation'
+        - $ref: '#/components/schemas/TransportEvent'
     CL4053Code:
       type: object
       properties:
