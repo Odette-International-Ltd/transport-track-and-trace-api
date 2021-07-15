@@ -269,4 +269,6 @@ curl -X 'PUT' \
  }
 }   
 ```   
+The system is expected to return code 201 "Created" since the Consignment object did not exist before   
+in the database and had to be created with the provided ID as key (see also the comments on PUT in the yml file).   
 
