@@ -7,7 +7,7 @@ Proposed on| 11.09.2020
 Description| The ship-from-party notifies which shipments TLU has loaded on a means of transport   
 Actors| Ship-from, LSP, optional: ship-to, transport ordering party  
 Pre-condition| Loading details and transport means ID are known   
-Post-condition| Shipment and or Shipment Item status changed to "loaded"   
+Post-condition| Shipment and or Shipment Item status changed to "LOADED"   
 
 Note: 
 
