@@ -86,7 +86,8 @@ curl -X 'PUT' \
     "content": "2KODA05303020210003"
    },
    "StatusCode": {
-    "content": "READY_FOR_PICKUP"
+    "content": "NO_STATUS" 
+    // default situation for THUs: NO_STATUS, i.e. the status of the consignment applies to the consignment item
    },
    "LinearDimension": {
     "WidthMeasure": {
