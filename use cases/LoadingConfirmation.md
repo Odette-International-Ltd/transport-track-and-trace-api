@@ -45,10 +45,9 @@ curl -X 'PUT' \
  },
  "ReportedConditionTypeCode": {
   "content": "LOADED"
-  /* Note:
-  The referenced consignment object (see below) has to be updated by the tartget system    
-  in the background accordingly.
-  */
+  // Note:
+  // The referenced consignment object (see below) has to be updated by the tartget system    
+  // in the background accordingly.
  },
  "OccurenceDateTime": {
   "content": "2021-07-02T08:35:00Z"
