@@ -104,9 +104,6 @@ curl -X 'PUT' \
    "ID": {
     "content": "2KODA05303020210003"
    },
-   "StatusCode": {
-    "content": "LOADED"
-   },
    "IncludedConsignmentItem": [
     {
      "ID": {
