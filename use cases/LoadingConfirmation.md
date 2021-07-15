@@ -1,4 +1,4 @@
-# Use Case Loading Confirmation issued by Ship-from
+# Use Case Loading Confirmation for Shipment issued by Ship-from
 
 Use-case | Loading confirmation
 -----------|---------------------    
@@ -9,8 +9,26 @@ Actors| Ship-from, LSP, optional: ship-to, transport ordering party
 Pre-condition| Loading details and transport means ID are known   
 Post-condition| Shipment and or Shipment Item status changed to "loaded"   
 
-  
+Note: 
 
+First, the ship-from party uses a POST command without a parameter on path .../transport-events
+to generate an empty object in the target system.
+```  
+curl -X 'POST' \
+  'https://api.sample.com/vda_odette_ttt/V1/transport-events' \
+  -H 'accept: */*' \
+  -H 'X-API-KEY: adsas' \
+  -d ''
+```  
+The server returns the unique ID of the TransportEvent object:
+```  
+{
+  "ReturnedID": {
+    "content": "d9cb4b05-6d4d-420a-a18c-0b3875ee828c"
+  }
+}
+```  
+The ship-from party then uses a PUT command with the ID as parameter and sends the data of the event:
 
 ```   
 curl -X 'PUT' \
