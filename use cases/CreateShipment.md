@@ -248,13 +248,6 @@ curl -X 'PUT' \
   }
  ],
  "HandlingInstructions": {
-  "Description": {
-   "content": "string",
-   "languageID": "aa"
-  },
-  "DescriptionCode": {
-   "content": "string"
-  },
   "MaximumStackabilityWeightApplicableMeasure": {
    "content": 3000,
    "unitCode": "KGM"
