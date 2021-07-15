@@ -1706,7 +1706,10 @@ components:
             $ref: '#/components/schemas/ConsignmentParty'
           minItems: 0
         LogisticsLocation:
-          $ref: '#/components/schemas/LogisticsLocation'
+          type: array
+          items:
+            $ref: '#/components/schemas/LogisticsLocation'
+          minItems: 0
         HandlingInstructions:
           $ref: '#/components/schemas/HandlingInstructions'
     ConsignmentItem:
