@@ -20,16 +20,18 @@ Gross volume: | 18 m3
 Number of TLU: | 10 (1.2 x 1.0 x 1.5 m each) 
 TLU-ID: | 6J (master label) ODA05303000000001..ODA05303000000010    
     
-It is assumed that the receiving system checks internally, whether or not the TLU records exist in the system already.    
-If yes, the ConsignmentIDs (and potentially other data) have to be checked/updated, if not, the records have to be created by the system itself.    
-    
+It is assumed that the receiving system checks internally, whether or not the transport handling unit    
+(THU, i.e. ConsignmentItem) records exist in the system.    
+If yes, the ConsignmentID within each ConsignmentItem has to be checked/updated,   
+if not, the records have to be created by the system itself and filled with the data provided in the Consignment data set.    
 
- ```
+```
 
 curl -X 'PUT' \
   'https://virtserver.swaggerhub.com/JoergWaltherOdette/vda_odette_ttt/1.0.0/consignments/2KODA05303020210003' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
+  -H 'X-API-KEY: asdfgh' \
   -d '{
  "ID": {
   "content": "2KODA05303020210003"
@@ -83,9 +85,6 @@ curl -X 'PUT' \
    "ConsignmentID": {
     "content": "2KODA05303020210003"
    },
-   "StatusCode": {
-    "content": "READY_FOR_PICKUP"
-   },
    "LinearDimension": {
     "WidthMeasure": {
      "content": 100,
@@ -138,9 +137,6 @@ curl -X 'PUT' \
    },
    "ConsignmentID": {
     "content": "2KODA05303020210003"
-   },
-   "StatusCode": {
-    "content": "READY_FOR_PICKUP"
    },
    "LinearDimension": {
     "WidthMeasure": {
@@ -252,13 +248,6 @@ curl -X 'PUT' \
   }
  ],
  "HandlingInstructions": {
-  "Description": {
-   "content": "string",
-   "languageID": "aa"
-  },
-  "DescriptionCode": {
-   "content": "string"
-  },
   "MaximumStackabilityWeightApplicableMeasure": {
    "content": 3000,
    "unitCode": "KGM"
@@ -267,5 +256,8 @@ curl -X 'PUT' \
    "content": 3
   }
  }
-}```   
+}   
+```   
+The system is expected to return code 201 "Created" since the Consignment object did not exist before   
+in the database and had to be created with the provided ID as key (see also the comments on PUT in the yml file).   
 
