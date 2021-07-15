@@ -31,222 +31,241 @@ curl -X 'PUT' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
-  "ID": {
-    "content": "2KODA05303020210003"
+ "ID": {
+  "content": "2KODA05303020210003"
+ },
+ "ConsignorAssignedID": {
+  "content": "2KODA05303020210003"
+ },
+ "GrossWeightMeasure": {
+  "content": 15,
+  "unitCode": "TNE"
+ },
+ "GrossVolumeMeasure": {
+  "content": 18,
+  "unitCode": "MTQ"
+ },
+ "ConsignmentItemQuantity": {
+  "content": 10
+ },
+ "StatusCode": {
+  "content": "NO_STATUS"
+ },
+ "SpecifiedDeliveryTerms": {
+  "DeliveryTypeCode": {
+   "content": "EXW"
   },
-  "ConsignorAssignedID": {
-    "content": "2KODA05303020210003"
+  "Description": {
+   "content": "Ex works"
   },
-  "GrossWeightMeasure": {
-    "content": 15000,
+  "RelevantLocation": {
+   "Name": {
+    "content": "London"
+   }
+  }
+ },
+ "IncludedConsignmentItem": [
+  {
+   "ID": {
+    "content": "ODA05303000000001"
+   },
+   "SequenceNumeric": {
+    "content": 1
+   },
+   "GrossWeightMeasure": {
+    "content": 1500,
     "unitCode": "KGM"
-  },
-  "GrossVolumeMeasure": {
-    "content": 18,
+   },
+   "GrossVolumeMeasure": {
+    "content": 1.8,
     "unitCode": "MTQ"
-  },
-  "ConsignmentItemQuantity": {
-    "content": 10
-  },
-  "StatusCode": {
-    "content": "NO_STATUS"
-  },
-  "SpecifiedDeliveryTerms": {
-    "DeliveryTypeCode": {
-      "content": "EXW"
+   },
+   "ConsignmentID": {
+    "content": "2KODA05303020210003"
+   },
+   "StatusCode": {
+    "content": "READY_FOR_PICKUP"
+   },
+   "LinearDimension": {
+    "WidthMeasure": {
+     "content": 100,
+     "unitCode": "CMT"
     },
-    "Description": {
-      "content": "Ex work London"
+    "LengthMeasure": {
+     "content": 120,
+     "unitCode": "CMT"
     },
-  "IncludedConsignmentItem": [
-    {
-      "ID": {
-        "content": "6JODA05303000000001"
-      },
-      "SequenceNumeric": {
-        "content": 1
-      },
-      "GrossWeightMeasure": {
-        "content": 0,
-        "unitCode": "KGM"
-      },
-      "NetWeightMeasure": {
-        "content": 1500,
-        "unitCode": "KGM"
-      },
-      "GrossVolumeMeasure": {
-        "content": 1.8,
-        "unitCode": "MTQ"
-      },
-      "PackageType": {
-        "content": "string",
-        "languageID": "aa"
-      },
-      "ConsignmentID": {
-        "content": "string"
-      },
-      "StatusCode": {
-        "content": "NO_STATUS"
-      },
-      "LinearDimension": {
-        "WidthMeasure": {
-          "content": 100,
-          "unitCode": "CMT"
-        },
-        "LengthMeasure": {
-          "content": 120,
-          "unitCode": "CMT"
-        },
-        "HeightMeasure": {
-          "content": 150,
-          "unitCode": "CMT"
-        },
-      },
-      "OriginCountry": {
-        "ID": {
-          "content": "GB"
-        },
-      },
-      "LogisticsLabelShippingMarks": [
-        {
-          "LogisticsLabel": {
-            "ID": {
-              "content": "6JODA05303000000001"
-            },
-            "LayoutTypeCode": {
-              "content": "GTL3"
-            },
-            "SizeCode": {
-              "content": "A5"
-            },
-          }
-        }
-      ],
+    "HeightMeasure": {
+     "content": 150,
+     "unitCode": "CMT"
     }
-  ],
-  "ConsignmentParty": {
+   },
+   "OriginCountry": {
     "ID": {
-      "content": "string",
-      "schemeAgencyID": "10"
-    },
-    "Name": {
-      "content": "string",
-      "languageID": "aa"
-    },
-    "RoleCode": {
-      "content": "CA"
-    },
-    "PostalAddress": {
-      "PostcodeCode": {
-        "content": "string"
+     "content": "GB"
+    }
+   },
+   "LogisticsLabelShippingMarks": [
+    {
+     "LogisticsLabel": {
+      "ID": {
+       "content": "6JODA05303000000001"
       },
-      "StreetName": {
-        "content": "string"
+      "LayoutTypeCode": {
+       "content": "GTL3"
       },
-      "CityName": {
-        "content": "string"
-      },
-      "CountryID": {
-        "content": "AD"
-      },
-      "CountryName": {
-        "content": "string"
-      },
-      "CountrySub-DivisionName": {
-        "content": "string"
+      "SizeCode": {
+       "content": "A5"
       }
-    },
-    "UniversalCommunication": [
-      {
-        "ChannelCode": {
-          "content": "AL"
-        },
-        "CompleteNumber": {
-          "content": "string",
-          "languageID": "aa"
-        }
-      }
-    ]
+     }
+    }
+   ]
   },
-  "LogisticsLocation": {
+  {
+   "ID": {
+    "content": "ODA05303000000002"
+   },
+   "SequenceNumeric": {
+    "content": 2
+   },
+   "GrossWeightMeasure": {
+    "content": 1500,
+    "unitCode": "KGM"
+   },
+   "GrossVolumeMeasure": {
+    "content": 1.8,
+    "unitCode": "MTQ"
+   },
+   "ConsignmentID": {
+    "content": "2KODA05303020210003"
+   },
+   "StatusCode": {
+    "content": "READY_FOR_PICKUP"
+   },
+   "LinearDimension": {
+    "WidthMeasure": {
+     "content": 100,
+     "unitCode": "CMT"
+    },
+    "LengthMeasure": {
+     "content": 120,
+     "unitCode": "CMT"
+    },
+    "HeightMeasure": {
+     "content": 150,
+     "unitCode": "CMT"
+    }
+   },
+   "OriginCountry": {
     "ID": {
-      "content": "string"
+     "content": "GB"
+    }
+   },
+   "LogisticsLabelShippingMarks": [
+    {
+     "LogisticsLabel": {
+      "ID": {
+       "content": "6JODA05303000000002"
+      },
+      "LayoutTypeCode": {
+       "content": "GTL3"
+      },
+      "SizeCode": {
+       "content": "A5"
+      }
+     }
+    }
+   ]
+  }
+ ],
+ // And so on for all 10 THU
+ "ConsignmentParty": [
+  {
+   "ID": {
+    "content": "A05303",
+    "schemeAgencyID": "10"
+   },
+   "Name": {
+    "content": "Automotive Supplier Ltd."
+   },
+   "RoleCode": {
+    "content": "SF"
+   },
+   "PostalAddress": {
+    "PostcodeCode": {
+     "content": "SW1P 2BN"
     },
-    "Name": {
-      "content": "string",
-      "languageID": "aa"
+    "StreetName": {
+     "content": "71 Great Peter Street"
     },
-    "TypeCode": {
-      "content": "9"
+    "CityName": {
+     "content": "London"
     },
     "CountryID": {
-      "content": "AD"
-    },
-    "CountrySub-DivisionID": {
-      "content": "string"
-    },
-    "PhysicalGeographicalCoordinate": {
-      "AltitudeMeasure": {
-        "content": 0,
-        "unitCode": "MTR"
-      },
-      "LatitudeMeasure": {
-        "content": 0,
-        "unitCode": "DD"
-      },
-      "LongitudeMeasure": {
-        "content": 0,
-        "unitCode": "DD"
-      },
-      "LatitudeDirectionIndicator": {
-        "content": "string"
-      },
-      "LongitudeDirectionIndicator": {
-        "content": "string"
-      },
-      "SystemID": {
-        "content": "string"
-      }
+     "content": "GB"
     }
+   }
   },
-  "HandlingInstructions": {
-    "Description": {
-      "content": "string",
-      "languageID": "aa"
+  {
+   "ID": {
+    "content": "987654321 ",
+    "schemeAgencyID": "16"
+   },
+   "Name": {
+    "content": "Vereinigte Fahrzeugwerke Berlin"
+   },
+   "RoleCode": {
+    "content": "ST"
+   },
+   "PostalAddress": {
+    "PostcodeCode": {
+     "content": "10117"
     },
-    "DescriptionCode": {
-      "content": "string"
+    "StreetName": {
+     "content": "Behrenstraße 35"
     },
-    "MaximumStackabilityWeightApplicableMeasure": {
-      "content": 0,
-      "unitCode": "KGM"
+    "CityName": {
+     "content": "Berlin"
     },
-    "MaximumStackabilityApplicableQuantity": {
-      "content": 0
-    },
-    "MaximumStorageHumidityApplicableMeasure": {
-      "content": 0,
-      "unitCode": "P1"
-    },
-    "MinimumStorageHumidityApplicableMeasure": {
-      "content": 0,
-      "unitCode": "P1"
-    },
-    "InstructedTemperature": [
-      {
-        "MaximumValueMeasure": {
-          "content": 0,
-          "unitCode": "CEL"
-        },
-        "MinimumValueMeasure": {
-          "content": 0,
-          "unitCode": "CEL"
-        },
-        "TypeCode": {
-          "content": "STORAGE"
-        }
-      }
-    ]
+    "CountryID": {
+     "content": "DE"
+    }
+   }
   }
-}'
-```
+ ],
+ "LogisticsLocation": [
+  {
+   "ID": {
+    "content": "Dock 15"
+   },
+   "TypeCode": {
+    "content": "9"
+   }
+  },
+  {
+   "ID": {
+    "content": "Abladestelle 23"
+   },
+   "TypeCode": {
+    "content": "11"
+   }
+  }
+ ],
+ "HandlingInstructions": {
+  "Description": {
+   "content": "string",
+   "languageID": "aa"
+  },
+  "DescriptionCode": {
+   "content": "string"
+  },
+  "MaximumStackabilityWeightApplicableMeasure": {
+   "content": 3000,
+   "unitCode": "KGM"
+  },
+  "MaximumStackabilityApplicableQuantity": {
+   "content": 3
+  }
+ }
+}```   
+
