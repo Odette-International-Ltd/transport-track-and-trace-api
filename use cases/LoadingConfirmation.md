@@ -43,27 +43,20 @@ curl -X 'PUT' \
  "OccurenceDateTime": {"content": "2021-07-02T08:35:00Z"},
  "OccurrenceLocation": {
   "ID": {"content": "DOCK 15"},
-  "TypeCode": {"content": "9"},
-   // Loading location
+  "TypeCode": {"content": "9"}, // Loading location
   "PhysicalGeographicalCoordinate": {
-   //51.49674858715566, -0.1313110731869426
    "LatitudeMeasure": {"content": 51.49674858715566, "unitCode": "DD"},
    "LongitudeMeasure": {"content": 0.1313110731869426,"unitCode": "DD"},
    "LatitudeDirectionIndicator": {"content": "N"},
-   "LongitudeDirectionIndicator": {"content": "W"}
-  }
- },
+   "LongitudeDirectionIndicator": {"content": "W"}}},
  "ReferencedTransportMovement": {
   "StageCode": {"content": "12"},//At departure
   "ModeCode": {"content": "3"},  //Road transport
   "UsedTransportMeans": {
    "TypeCode": {"content": "T01"   },
    "Type": {"content": "Eurotrailer H 2.6, W 2.48, L 13.6 tarpauline or box", "languageID": "en"},
-   "ID": {"content": "SW5 3PX"}
-  }
- },
- "ReferencedConsignment": [
-  {
+   "ID": {"content": "SW5 3PX"}}},
+ "ReferencedConsignment": [{
    "ID": {"content": "2KODA05303020210003"},
    "ConsignmentItemQuantity": { "content": 10},
    "StatusCode": { "content": "LOADED"},
@@ -77,9 +70,6 @@ curl -X 'PUT' \
     { "ID": { "content": "ODA05303000000007" }},
     { "ID": { "content": "ODA05303000000008" }},
     { "ID": { "content": "ODA05303000000009" }},
-    { "ID": { "content": "ODA05303000000010" }}
-   ]
-  }
- ]
+    { "ID": { "content": "ODA05303000000010" }}]}]
 }
 ```   
