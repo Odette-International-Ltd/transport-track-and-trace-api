@@ -104,6 +104,9 @@ curl -X 'PUT' \
    "ID": {
     "content": "2KODA05303020210003"
    },
+   "ConsignmentItemQuantity": {
+    "content": 10
+   },
    "IncludedConsignmentItem": [
     {
      "ID": {
