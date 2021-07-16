@@ -77,6 +77,6 @@ curl -X 'PUT' \
     { "ID": { "content": "ODA05303000000010" }}]}],
   "ReferencedConsignmentItem": [
     { "ID": { "content": "ODA05303000000003"}, "StatusCode": {"content": "MISSING"}}]
-}
+}'
 ```
 
