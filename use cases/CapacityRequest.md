@@ -37,138 +37,47 @@ curl -X 'PUT' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -H 'X-API-KEY: adsas' \   
-  -d {
-  "ID": {
-    "content": "d9cb4b05-6d4d-420a-a18c-0b3875ee828c"
-  },
-  "TransactionStatusCode": {
-    "content": "REQUESTED"
-  },
-  "IssueDateTime": {
-    "content": "2021-07-01T15:44:00Z"
-  },
-  "PositioningDateTime": {
-    "content": "2021-07-02T07:30:00Z"
-  },
-  "TransportMeansTypeCode": {
-    "content": "T01"
-  },
-  "TransportMeansNumberNumeric": {
-    "content": 1
-  },
-  "GrossWeightMeasure": {
-    "content": 15000,
-    "unitCode": "KGM"
-  },
-  "LoadingMetersMeasure": {
-    "content": 10,
-    "unitCode": "MTR"
-  },
-  "GrossVolumeMeasure": {
-    "content": 20,
-    "unitCode": "MTQ"
-  },
-  "DeliveryTermsCode": {
-    "content": "EXW"
-  },
-  "ContractReferenceID": {
-    "content": "string"
-  },
-  "SpecifiedTradeParty": [
+  -d '{
+  "ID": {"content": "d9cb4b05-6d4d-420a-a18c-0b3875ee828c"},
+  "TransactionStatusCode": {"content": "REQUESTED"},
+  "IssueDateTime": {"content": "2021-07-01T15:44:00Z"},
+  "PositioningDateTime": {"content": "2021-07-02T07:30:00Z"},
+  "TransportMeansTypeCode": {"content": "T01"},
+  "TransportMeansNumberNumeric": {"content": 1},
+  "GrossWeightMeasure": {"content": 15000, "unitCode": "KGM"},
+  "LoadingMetersMeasure": {"content": 10, "unitCode": "MTR"},
+  "GrossVolumeMeasure": {"content": 20, "unitCode": "MTQ"},
+  "DeliveryTermsCode": {"content": "EXW"},
+  "ContractReferenceID": {"content": "ABC123"},
+  "SpecifiedTradeParty": [{
+      "ID": {"content": "987654321", "schemeAgencyID": "16"},
+      "Name": {"content": "Vereinigter Fahrzeugbau Berlin"},
+      "RoleCode": {"content": "ST", "listAgencyID": "6"},
+      "PostalAddress": [{
+          "PostcodeCode": {"content": "10117"},
+          "StreetName": {"content": "Behrenstraße 35"},
+          "CityName": {"content": "Berlin"},
+          "CountryID": {"content": "DE", "schemeAgencyID": "5" }}],
+      "UniversalCommunication": [{
+          "ChannelCode": {"content": "TE"},
+          "CompleteNumber": {"content": "0049 39 8978 420"}}]},
     {
-      "ID": {
-        "content": "987654321",
-        "schemeAgencyID": "16"
-      },
-      "Name": {
-        "content": "Vereinigter Fahrzeugbau Berlin"
-      },
-      "RoleCode": {
-        "content": "ST",
-        "listAgencyID": "6"
-      },
-      "PostalAddress": [
-        {
-          "PostcodeCode": {
-            "content": "10117"
-          },
-          "StreetName": {
-            "content": "Behrenstraße 35"
-          },
-          "CityName": {
-            "content": "Berlin"
-          },
-          "CountryID": {
-            "content": "DE",
-            "schemeAgencyID": "5"
-          }
-        }
-      ],
-      "UniversalCommunication": [
-        {
-          "ChannelCode": {
-            "content": "TE"
-          },
-          "CompleteNumber": {
-            "content": "0049 39 8978 420"
-          }
-        }
-      ]
-    },
+      "ID": {"content": "A05303","schemeAgencyID": "10"},
+      "Name": {"content": "Automotive Supplier Ltd."},
+      "RoleCode": {"content": "SF", "listAgencyID": "6"},
+      "PostalAddress": [{
+          "PostcodeCode": {"content": "SW1P 2BN"},
+          "StreetName": {"content": "71 Great Peter Street"},
+          "CityName": {"content": "London"},
+          "CountryID": {"content": "GB"}}],}],
+  "LogisticsLocation": [{
+      "ID": {"content": "Loading Dock 15"},
+      "Name": {"content": "Dock 15"},
+      "TypeCode": {"content": "9", "listAgencyID": "6"}},
     {
-      "ID": {
-        "content": "444555666",
-        "schemeAgencyID": "16"
-      },
-      "Name": {
-        "content": "Automotive Supplier Ltd."
-      },
-      "RoleCode": {
-        "content": "SF",
-        "listAgencyID": "6"
-      },
-      "PostalAddress": [
-        {
-          "PostcodeCode": {
-            "content": "SW1P 2BN"
-          },
-          "StreetName": {
-            "content": "71 Great Peter Street"
-          },
-          "CityName": {
-            "content": "London"
-          },
-          "CountryID": {
-            "content": "GB"
-          }
-        }
-      ],
-    }
-  ],
-  "LogisticsLocation": [
-    {
-      "ID": {
-        "content": "Loading Dock 15"
-      },
-      "Name": {
-        "content": "Dock 15"
-      },
-      "TypeCode": {
-        "content": "9",
-        "listAgencyID": "6"
-      }
-    },
-    {
-      "ID": {
-        "content": "Abladestelle 23"
-      },
-      "TypeCode": {
-        "content": "11",
-        "listAgencyID": "6"
-      }
-    }
-  ]
-}
+      "ID": {"content": "Abladestelle 23"},
+      "TypeCode": {"content": "11","listAgencyID": "6"}}]
+}'
 ```   
 Once the transport service provider has processed the request they can update the status of the reservation, e.g. with a PATCH command:
 
@@ -181,9 +90,7 @@ curl -X 'PATCH' \
   "ID": {
     "content": "d9cb4b05-6d4d-420a-a18c-0b3875ee828c"
   },
-  "TransactionStatusCode": {
-    "content": "CONFIRMED"
-  }
-}'
+  "TransactionStatusCode": {"content": "CONFIRMED"}
+  }'
 ```  
 If the requesting system later issues a GET command the returned data set will contain the status "CONFIRMED" instead of "REQUESTED".
