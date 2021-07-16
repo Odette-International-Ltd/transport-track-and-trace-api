@@ -63,7 +63,7 @@ curl -X 'PUT' \
  "ReferencedConsignment": [{
    "ID": {"content": "2KODA05303020210003"},
    "ConsignmentItemQuantity": { "content": 10},
-   "StatusCode": { "content": "LOADED"},
+   "StatusCode": { "content": "ISSUE_COMPLETED"},
    "IncludedConsignmentItem": [
     { "ID": { "content": "ODA05303000000001" }},
     { "ID": { "content": "ODA05303000000002" }},
