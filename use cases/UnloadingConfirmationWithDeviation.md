@@ -47,7 +47,7 @@ curl -X 'PUT' \
    "LongitudeMeasure": {"content": 13.393288898331475,"unitCode": "DD"},
    "LatitudeDirectionIndicator": {"content": "N"},
    "LongitudeDirectionIndicator": {"content": "E"}}},
- "ReportingParty": {
+ "SpecifiedParty": {
   "ID": {"content": "A05303"},
   "Name": {"content": "Vereinigte Fahrzeugwerke Berlin"},
   "RoleCode": {"content": "ST"}},     
