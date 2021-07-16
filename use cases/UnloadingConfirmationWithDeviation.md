@@ -29,7 +29,7 @@ url -X 'POST' \
 }
 ```
 The ship-to party then uses a PUT command with the ID as parameter and sends the data of the event:
-
+```
 curl -X 'PUT' \
   'https://api.sample.com/vda_odette_ttt/V1/transport-events/7dfd1688-8398-46d9-ab6f-742422eff929' \
   -H 'accept: application/json' \
