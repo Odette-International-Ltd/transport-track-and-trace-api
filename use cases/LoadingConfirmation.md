@@ -36,7 +36,7 @@ curl -X 'PUT' \
   -H 'accept: application/json' \
   -H 'X-API-KEY: adsas' \
   -H 'Content-Type: application/json' \
-  -d '{//Consignment loades onto means of transport by ship-from
+  -d '{
  "ID": {"content": "d9cb4b05-6d4d-420a-a18c-0b3875ee828c"},
  "TypeCode": {"content": "ACTUAL"},
  "ReportedConditionTypeCode": {"content": "ISSUE_COMPLETED"},
