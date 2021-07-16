@@ -36,23 +36,33 @@ curl -X 'PUT' \
   -H 'accept: application/json' \
   -H 'X-API-KEY: adsas' \
   -H 'Content-Type: application/json' \
-  -d '{
+  -d '{//Consignment loades onto means of transport by ship-from
  "ID": {"content": "d9cb4b05-6d4d-420a-a18c-0b3875ee828c"},
  "TypeCode": {"content": "ACTUAL"},
  "ReportedConditionTypeCode": {"content": "ISSUE_COMPLETED"},
  "OccurenceDateTime": {"content": "2021-07-02T08:35:00Z"},
  "OccurrenceLocation": {
   "ID": {"content": "DOCK 15"},
-  "TypeCode": {"content": "9"}, // Loading location
+  "TypeCode": {"content": "9"},
+   // Loading location
   "PhysicalGeographicalCoordinate": {
+   //51.49674858715566, -0.1313110731869426
    "LatitudeMeasure": {"content": 51.49674858715566, "unitCode": "DD"},
    "LongitudeMeasure": {"content": 0.1313110731869426,"unitCode": "DD"},
    "LatitudeDirectionIndicator": {"content": "N"},
    "LongitudeDirectionIndicator": {"content": "W"}}},
- "ReportingParty": {
-  "ID": {"content": "A05303"},
-  "Name": {"content": "Automotive Supplier Ltd."},
-  "RoleCode": {"content": "SF"}},     
+ "SpecifiedParty": [{
+   "ID": {"content": "234543210"},
+   "Name": {"content": "Fast Transport Inc."},
+   "RoleCode": {"content": "CA"}}, // Carrier
+   {
+   "ID": {"content": "A05303"},
+   "Name": {"content": "Automotive Supplier Ltd."},
+   "RoleCode": {"content": "DDA"}},//Report responsible party
+  {                                //i.e. the party who reports the event
+   "ID": {"content": "A05303"},
+   "Name": {"content": "Automotive Supplier Ltd."},
+   "RoleCode": {"content": "SF"}}],// Ship-from
  "ReferencedTransportMovement": {
   "StageCode": {"content": "12"},//At departure
   "ModeCode": {"content": "3"},  //Road transport
@@ -74,6 +84,8 @@ curl -X 'PUT' \
     { "ID": { "content": "ODA05303000000007" }},
     { "ID": { "content": "ODA05303000000008" }},
     { "ID": { "content": "ODA05303000000009" }},
-    { "ID": { "content": "ODA05303000000010" }}]}]
+    { "ID": { "content": "ODA05303000000010" }}]
+  }
+ ]
 }'
 ```   
