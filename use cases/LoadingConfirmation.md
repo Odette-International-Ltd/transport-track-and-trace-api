@@ -49,6 +49,10 @@ curl -X 'PUT' \
    "LongitudeMeasure": {"content": 0.1313110731869426,"unitCode": "DD"},
    "LatitudeDirectionIndicator": {"content": "N"},
    "LongitudeDirectionIndicator": {"content": "W"}}},
+ "ReportingParty": {
+  "ID": {"content": "A05303"},
+  "Name": {"content": "Automotive Supplier Ltd."},
+  "RoleCode": {"content": "SF"}},     
  "ReferencedTransportMovement": {
   "StageCode": {"content": "12"},//At departure
   "ModeCode": {"content": "3"},  //Road transport
