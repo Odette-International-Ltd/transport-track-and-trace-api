@@ -47,10 +47,15 @@ curl -X 'PUT' \
    "LongitudeMeasure": {"content": 13.393288898331475,"unitCode": "DD"},
    "LatitudeDirectionIndicator": {"content": "N"},
    "LongitudeDirectionIndicator": {"content": "E"}}},
- "SpecifiedParty": {
+ "SpecifiedParty": [
+ { //Report responsible party, i.e. the party who reports the event
   "ID": {"content": "A05303"},
   "Name": {"content": "Vereinigte Fahrzeugwerke Berlin"},
-  "RoleCode": {"content": "ST"}},     
+  "RoleCode": {"content": "DDA"}},     
+ { //Ship-to 
+  "ID": {"content": "A05303"},
+  "Name": {"content": "Vereinigte Fahrzeugwerke Berlin"},
+  "RoleCode": {"content": "ST"}}],
  "ReferencedTransportMovement": {
    "UsedTransportMeans": {
    "TypeCode": {"content": "T01"   },
