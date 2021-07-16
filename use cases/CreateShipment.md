@@ -34,229 +34,89 @@ curl -X 'PUT' \
   -H 'X-API-KEY: asdfgh' \
   -d '{
  "ID": {
-  "content": "2KODA05303020210003"
- },
- "ConsignorAssignedID": {
-  "content": "2KODA05303020210003"
- },
- "GrossWeightMeasure": {
-  "content": 15,
-  "unitCode": "TNE"
- },
- "GrossVolumeMeasure": {
-  "content": 18,
-  "unitCode": "MTQ"
- },
- "ConsignmentItemQuantity": {
-  "content": 10
- },
- "StatusCode": {
-  "content": "NO_STATUS"
- },
- "SpecifiedDeliveryTerms": {
-  "DeliveryTypeCode": {
-   "content": "EXW"
-  },
-  "Description": {
-   "content": "Ex works"
-  },
-  "RelevantLocation": {
-   "Name": {
-    "content": "London"
-   }
-  }
- },
- "IncludedConsignmentItem": [
+ "ID": {"content": "2KODA05303020210003"},
+ "ConsignorAssignedID": {"content": "2KODA05303020210003"},
+ "GrossWeightMeasure": {"content": 15,"unitCode": "TNE"},
+ "GrossVolumeMeasure": {"content": 18,"unitCode": "MTQ"},
+ "ConsignmentItemQuantity": {"content": 10 },
+ "StatusCode": {"content": "NO_STATUS"},
+ "SpecifiedDeliveryTerms": {"DeliveryTypeCode": {"content": "EXW"  },
+  "Description": {"content": "Ex works"},
+  "RelevantLocation": {"Name": {"content": "London"}}},
+ "IncludedConsignmentItem": [{
+   "ID": {"content": "ODA05303000000001"},
+   "SequenceNumeric": {"content": 1},
+   "GrossWeightMeasure": {"content": 1500,"unitCode": "KGM"},
+   "GrossVolumeMeasure": {"content": 1.8,"unitCode": "MTQ"},
+   "ConsignmentID": {"content": "2KODA05303020210003"},
+   "StatusCode": {"content": "READY_FOR_PICKUP"},
+   "LinearDimension": {"WidthMeasure": {"content": 100,"unitCode": "CMT"},
+    "LengthMeasure": {"content": 120,"unitCode": "CMT"},
+    "HeightMeasure": {"content": 150,"unitCode": "CMT"}},
+   "OriginCountry": {"ID": {"content": "GB"}},
+   "LogisticsLabelShippingMarks": [{
+     "LogisticsLabel": {"ID": {"content": "6JODA05303000000001"},
+      "LayoutTypeCode": {"content": "GTL3"},
+      "SizeCode": {"content": "A5"}}}]},
   {
-   "ID": {
-    "content": "ODA05303000000001"
-   },
-   "SequenceNumeric": {
-    "content": 1
-   },
-   "GrossWeightMeasure": {
-    "content": 1500,
-    "unitCode": "KGM"
-   },
-   "GrossVolumeMeasure": {
-    "content": 1.8,
-    "unitCode": "MTQ"
-   },
-   "ConsignmentID": {
-    "content": "2KODA05303020210003"
-   },
-   "LinearDimension": {
-    "WidthMeasure": {
-     "content": 100,
-     "unitCode": "CMT"
-    },
-    "LengthMeasure": {
-     "content": 120,
-     "unitCode": "CMT"
-    },
-    "HeightMeasure": {
-     "content": 150,
-     "unitCode": "CMT"
-    }
-   },
-   "OriginCountry": {
-    "ID": {
-     "content": "GB"
-    }
-   },
-   "LogisticsLabelShippingMarks": [
+   "ID": {"content": "ODA05303000000002"},
+   "SequenceNumeric": {"content": 2},
+   "GrossWeightMeasure": {"content": 1500,"unitCode": "KGM"},
+   "GrossVolumeMeasure": {"content": 1.8,"unitCode": "MTQ"},
+   "ConsignmentID": {"content": "2KODA05303020210003"},
+   "StatusCode": {"content": "READY_FOR_PICKUP"},
+   "LinearDimension": {"WidthMeasure": {"content": 100,"unitCode": "CMT"},
+    "LengthMeasure": {"content": 120,"unitCode": "CMT"},
+    "HeightMeasure": {"content": 150,"unitCode": "CMT"}},
+   "OriginCountry": {"ID": {"content": "GB"}},
+   "LogisticsLabelShippingMarks": [{
+     "LogisticsLabel": {"ID": {"content": "6JODA05303000000002"},
+      "LayoutTypeCode": {"content": "GTL3"},
+      "SizeCode": {"content": "A5"}}}]},
     {
-     "LogisticsLabel": {
-      "ID": {
-       "content": "6JODA05303000000001"
-      },
-      "LayoutTypeCode": {
-       "content": "GTL3"
-      },
-      "SizeCode": {
-       "content": "A5"
-      }
-     }
-    }
-   ]
-  },
+   "ID": {"content": "ODA05303000000003"},
+   "SequenceNumeric": {"content": 3},
+   "GrossWeightMeasure": {"content": 1500,"unitCode": "KGM"},
+   "GrossVolumeMeasure": {"content": 1.8,"unitCode": "MTQ"},
+   "ConsignmentID": {"content": "2KODA05303020210003"},
+   "StatusCode": {"content": "READY_FOR_PICKUP"},
+   "LinearDimension": {"WidthMeasure": {"content": 100,"unitCode": "CMT"},
+    "LengthMeasure": {"content": 120,"unitCode": "CMT"},
+    "HeightMeasure": {"content": 150,"unitCode": "CMT"}},
+   "OriginCountry": {"ID": {"content": "GB"}},
+   "LogisticsLabelShippingMarks": [{
+     "LogisticsLabel": {"ID": {"content": "6JODA05303000000003"},
+      "LayoutTypeCode": {"content": "GTL3"},
+      "SizeCode": {"content": "A5"}}}]}
+ ], 
+  // And so on for all 10 THU
+ "ConsignmentParty": [{
+   "ID": {"content": "A05303", "schemeAgencyID": "10"},
+   "Name": {"content": "Automotive Supplier Ltd."},
+   "RoleCode": {"content": "SF"},
+   "PostalAddress": {"PostcodeCode": {"content": "SW1P 2BN"},
+    "StreetName": {"content": "71 Great Peter Street"},
+    "CityName": {"content": "London"},
+    "CountryID": {"content": "GB"}}},
   {
-   "ID": {
-    "content": "ODA05303000000002"
-   },
-   "SequenceNumeric": {
-    "content": 2
-   },
-   "GrossWeightMeasure": {
-    "content": 1500,
-    "unitCode": "KGM"
-   },
-   "GrossVolumeMeasure": {
-    "content": 1.8,
-    "unitCode": "MTQ"
-   },
-   "ConsignmentID": {
-    "content": "2KODA05303020210003"
-   },
-   "LinearDimension": {
-    "WidthMeasure": {
-     "content": 100,
-     "unitCode": "CMT"
-    },
-    "LengthMeasure": {
-     "content": 120,
-     "unitCode": "CMT"
-    },
-    "HeightMeasure": {
-     "content": 150,
-     "unitCode": "CMT"
-    }
-   },
-   "OriginCountry": {
-    "ID": {
-     "content": "GB"
-    }
-   },
-   "LogisticsLabelShippingMarks": [
-    {
-     "LogisticsLabel": {
-      "ID": {
-       "content": "6JODA05303000000002"
-      },
-      "LayoutTypeCode": {
-       "content": "GTL3"
-      },
-      "SizeCode": {
-       "content": "A5"
-      }
-     }
-    }
-   ]
-  }
- ],
- // And so on for all 10 THU
- "ConsignmentParty": [
-  {
-   "ID": {
-    "content": "A05303",
-    "schemeAgencyID": "10"
-   },
-   "Name": {
-    "content": "Automotive Supplier Ltd."
-   },
-   "RoleCode": {
-    "content": "SF"
-   },
+   "ID": {"content": "987654321 ", "schemeAgencyID": "16"},
+   "Name": {"content": "Vereinigte Fahrzeugwerke Berlin" },
+   "RoleCode": {"content": "ST"},
    "PostalAddress": {
-    "PostcodeCode": {
-     "content": "SW1P 2BN"
-    },
-    "StreetName": {
-     "content": "71 Great Peter Street"
-    },
-    "CityName": {
-     "content": "London"
-    },
-    "CountryID": {
-     "content": "GB"
-    }
-   }
-  },
+     "PostcodeCode": {"content": "10117"},
+    "StreetName": {"content": "Behrenstraße 35"},
+    "CityName": {"content": "Berlin"},
+    "CountryID": {"content": "DE"}}}],
+ "LogisticsLocation": [{
+   "ID": {"content": "Dock 15"},
+   "TypeCode": {"content": "9"}},
   {
-   "ID": {
-    "content": "987654321 ",
-    "schemeAgencyID": "16"
-   },
-   "Name": {
-    "content": "Vereinigte Fahrzeugwerke Berlin"
-   },
-   "RoleCode": {
-    "content": "ST"
-   },
-   "PostalAddress": {
-    "PostcodeCode": {
-     "content": "10117"
-    },
-    "StreetName": {
-     "content": "Behrenstraße 35"
-    },
-    "CityName": {
-     "content": "Berlin"
-    },
-    "CountryID": {
-     "content": "DE"
-    }
-   }
-  }
- ],
- "LogisticsLocation": [
-  {
-   "ID": {
-    "content": "Dock 15"
-   },
-   "TypeCode": {
-    "content": "9"
-   }
-  },
-  {
-   "ID": {
-    "content": "Abladestelle 23"
-   },
-   "TypeCode": {
-    "content": "11"
-   }
-  }
- ],
+   "ID": {"content": "Abladestelle 23"},
+   "TypeCode": {"content": "11"}}],
  "HandlingInstructions": {
-  "MaximumStackabilityWeightApplicableMeasure": {
-   "content": 3000,
-   "unitCode": "KGM"
-  },
-  "MaximumStackabilityApplicableQuantity": {
-   "content": 3
-  }
- }
-}   
+  "MaximumStackabilityWeightApplicableMeasure": {"content": 3000,"unitCode": "KGM"},
+  "MaximumStackabilityApplicableQuantity": {"content": 3}}
+}'
 ```   
 The system is expected to return code 201 "Created" since the Consignment object did not exist before   
 in the database and had to be created with the provided ID as key (see also the comments on PUT in the yml file).   
