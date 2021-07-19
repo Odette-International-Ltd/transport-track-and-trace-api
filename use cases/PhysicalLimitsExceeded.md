@@ -12,9 +12,11 @@ Pre-condition | Sensors are on the transport loading unit and configured for the
   
   
   
+There are probably two main scenarios:
+1. The monitoring device stores all recorded information locally and at the end of the transport process (or a transport leg) an involved party analyses the content. If a relevant observation is stored, an event is created by this party.
+2. The monitoring device is connected to a app or other software that generates an event immediately once physical limits are exceeded.
 
-
-In case the monitored physical limit moves out of acceptable range the mobile app connects to the service providing system and uses the POST command on the /transport-events path without an ID to create an empty event in the target system and receive the unique key for the TransportEvent object.
+In either case the standard procedure to communicate an event applys.A the POST command is used with the /transport-events path without an ID to create an empty event in the target system and receive the unique key for the TransportEvent object.
 ```
 url -X 'POST' \
   'https://api.sample.com/vda_odette_ttt/V1/transport-events' \
@@ -22,7 +24,7 @@ url -X 'POST' \
   -H 'X-API-KEY: adsas' \
   -d ''
 ```  
-The server returns
+The server returns the ID
 ```
 {
   "ReturnedID": {
@@ -30,7 +32,7 @@ The server returns
   }
 }
 ```
-Then it sends the data with their PUT command using the /transport-events/{ident} path.
+Then the data set issent with PUT command using the /transport-events/{ident} path.
 
 
 
