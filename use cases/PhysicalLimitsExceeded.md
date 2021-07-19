@@ -1,6 +1,6 @@
 #Use-case "Physical Limits Exceeded"
 
-Use-case|Physical limits exceeded
+Use-case       |Physical limits exceeded
 ---------------------|---------------------------------
 Proposed by|VDA PG API
 Proposed on|06.11.2020
