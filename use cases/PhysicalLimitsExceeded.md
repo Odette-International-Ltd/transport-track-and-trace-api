@@ -32,7 +32,7 @@ The server returns the ID
   }
 }
 ```
-Then the data set issent with PUT command using the /transport-events/{ident} path.
+Then the data set is sent with PUT command using the /transport-events/{ident} path.
 
 
 
