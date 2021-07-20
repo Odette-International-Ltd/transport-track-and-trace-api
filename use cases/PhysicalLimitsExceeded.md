@@ -53,6 +53,9 @@ curl -X 'PUT' \
   "Description":{"content": "High temperature: > 60°"},
   "RelatedBinaryFile":[{
    "URIID":{"content":"https://www.fastwheels.com/log-files/abc123.csv"}}]}],  
+ "ReportingIOTDevice": [{
+  "ID": {"content": "SXEWV21FSQ"},
+  "TypeCode": {"content": "THERMOMETER"}
  "SpecifiedParty": [
   {//reporting Party
   "ID": {"content": "A021101"},
