@@ -50,7 +50,7 @@ curl -X 'PUT' \
    "LatitudeDirectionIndicator": {"content": "N"},
    "LongitudeDirectionIndicator": {"content": "E"}}},
  "RelatedObservation": [{
-  "Description":{"content": "High temperature: > 60°"},
+  "Description":{"content": "High temperature: > 60° C"},
   "RelatedBinaryFile":[{
    "URIID":{"content":"https://www.fastwheels.com/log-files/abc123.csv"}}]}],  
  "ReportingIOTDevice": [{
