@@ -33,7 +33,6 @@ curl -X 'PUT' \
   -H 'Content-Type: application/json' \
   -H 'X-API-KEY: asdfgh' \
   -d '{
- "ID": {
  "ID": {"content": "2KODA05303020210003"},
  "ConsignorAssignedID": {"content": "2KODA05303020210003"},
  "GrossWeightMeasure": {"content": 15,"unitCode": "TNE"},
