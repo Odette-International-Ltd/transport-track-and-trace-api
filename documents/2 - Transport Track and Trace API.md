@@ -227,12 +227,7 @@ The transport service provider confirms the pick-up of shipment to means of tran
 
 On arrival at Ship-To the transport service provider confirms the delivery of the shipment or transport loading unit with a proof of delivery.
 
-### 3.3.3 Transport execution
-This process phase describes all possible events that may occur from despatch of the shipment at the ship-from party to the delivery at the ship to
-
-The ship-from confirms the loading of shipment into means of transport or equipment. With this confirmation the connection between shipment and means of transport or shipment and transport equipment must be established. 
-
-### 3.3.4 Reception
+### 3.3.3 Reception
 This process phase describes the reception at the final destination of the shipment/-item .
 The ship-to confirms the reception of the shipment/-item and therefore documents the end of the actual transport process. 
 
