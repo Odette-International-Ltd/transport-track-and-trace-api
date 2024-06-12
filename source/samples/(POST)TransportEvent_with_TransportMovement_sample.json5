@@ -1,0 +1,209 @@
+{
+ "TypeCode": {
+  "content": "ACTUAL"
+ },
+ "ActualOccurrenceDateTime": {
+  "content": "202310040815UTC",
+  "format": "303"
+ },
+ "ReportedConditionTypeCode": {
+  "content": "ISSUE_COMPLETED"
+ },
+ "OccurrenceLocation": {
+  "PhysicalGeographicalCoordinate": {
+   "LatitudeMeasure": {
+    "content": 52.772096,
+    "unitCode": "DD"
+   },
+   "LongitudeMeasure": {
+    "content": 13.438072,
+    "unitCode": "DD"
+   }
+  }
+ },
+ "SpecifiedParty": [
+  {
+   "ID": [
+    {
+     "content": "887766554",
+     "schemeAgencyID": "16"
+    }
+   ],
+   "RoleCode": {
+    "content": "SF"
+   }
+  }
+ ],
+ "ReferencedTransportMovement": {
+  "ModeCode": {
+   "content": "3"
+  },
+  "ID": [
+   {
+    "content": "1",
+    "schemeAgencyID": "88"
+   }
+  ],
+  "UsedTransportMeans": [
+   {
+    "TypeCode": {
+     "content": "31",
+     "listAgencyID": "6"
+    },
+    "ID": {
+     "content": "BAR-JW 123"
+    }
+   },
+   {
+    "TypeCode": {
+     "content": "31",
+     "listAgencyID": "6"
+    },
+    "ID": {
+     "content": "BAR-JW 234"
+    }
+   }
+  ],
+  "TransportParty": [
+   {
+    "ID": [
+     {
+      "content": "987654321",
+      "schemeAgencyID": "16"
+     }
+    ],
+    "RoleCode": {
+     "content": "FW"
+    }
+   },
+   {
+    "ID": [
+     {
+      "content": "432112345",
+      "schemeAgencyID": "16"
+     }
+    ],
+    "RoleCode": {
+     "content": "CA"
+    }
+   }
+  ]
+ },
+ "ReferencedConsignment": {
+  "ID": {
+   "content": "UN88776655420230929-002"
+  },
+  "ConsignorAssignedID": {
+   "content": "20230929-002"
+  },
+  "ConsignmentItemQuantity": {
+   "content": 10
+  },
+  "TransportEvent": [
+   {
+    "TypeCode": {
+     "content": "11"
+    },
+    "RequestedOccurrenceDateTime": {
+     "content": "202309290000",
+     "format": "203"
+    }
+   },
+   {
+    "TypeCode": {
+     "content": "132"
+    },
+    "EstimatedOccurrenceDateTime": {
+     "content": "202309301000",
+     "format": "203"
+    }
+   }
+  ],
+  "IncludedConsignmentItem": [
+   {
+    "ID": {
+     "content": "UN887766554000871"
+    }
+   },
+   {
+    "ID": {
+     "content": "UN887766554000872"
+    }
+   },
+   {
+    "ID": {
+     "content": "UN887766554000873"
+    }
+   },
+   {
+    "ID": {
+     "content": "UN887766554000874"
+    }
+   },
+   {
+    "ID": {
+     "content": "UN887766554000875"
+    }
+   },
+   {
+    "ID": {
+     "content": "UN887766554000876"
+    }
+   },
+   {
+    "ID": {
+     "content": "UN887766554000877"
+    }
+   },
+   {
+    "ID": {
+     "content": "UN887766554000878"
+    }
+   },
+   {
+    "ID": {
+     "content": "UN887766554000879"
+    }
+   },
+   {
+    "ID": {
+     "content": "UN887766554000880"
+    }
+   }
+  ],
+  "LogisticsLocation": [
+   {
+    "ID": {
+     "content": "Dock 23"
+    },
+    "TypeCode": {
+     "content": "11"
+    }
+   }
+  ],
+  "ConsignmentParty": [
+   {
+    "ID": [
+     {
+      "content": "887766554",
+      "schemeAgencyID": "16"
+     }
+    ],
+    "RoleCode": {
+     "content": "SF"
+    }
+   },
+   {
+    "ID": [
+     {
+      "content": "808877664",
+      "schemeAgencyID": "16"
+     }
+    ],
+    "RoleCode": {
+     "content": "ST"
+    }
+   }
+  ]
+ }
+}
