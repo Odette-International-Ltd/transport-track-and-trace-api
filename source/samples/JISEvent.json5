@@ -1,0 +1,376 @@
+{
+ "ID": {
+  "content": "123"
+ },
+ "TypeCode": {
+  "content": "ACTUAL",
+  "listAgencyID": "10"
+ },
+ "ActualOccurrenceDateTime": {
+  "content": "202310040815UTC",
+  "format": "303"
+ },
+ "ReportedConditionTypeCode": {
+  "content": "ISSUE_COMPLETED",
+  "listAgencyID": "6"
+ },
+ "OccurrenceLocation": {
+  "Name": {
+   "content": "Versandstelle"
+  },
+  "PhysicalGeographicalCoordinate": {
+   "LatitudeMeasure": {
+    "content": 52.772096,
+    "unitCode": "DD"
+   },
+   "LongitudeMeasure": {
+    "content": 13.4380721,
+    "unitCode": "DD"
+   }
+  }
+ },
+ "SpecifiedParty": [
+  //Partner, der den Event gesendet hat 
+  {
+   "ID": [
+    {
+     // Ship-from DUNS
+     "content": "987654321",
+     "schemeAgencyID": "16"
+    }
+   ],
+   "Name": [
+    {
+     "content": "Great Gearboxes"
+    }
+   ],
+   "RoleCode": {
+    "content": "SF"
+   }
+  }
+ ],
+ "ReferencedTransportMovement": {
+  "ModeCode": {
+   //Road transport
+   "content": "3"
+  },
+  "ID": [
+   {
+    "content": "Tour Number",
+    "schemeAgencyID": "87"
+   }
+  ],
+  "UsedTransportMeans": [
+   {
+    "TypeCode": {
+     "content": "31",
+     //LKW
+     "listAgencyID": "6"
+     //CEFACT Codeliste
+    },
+    "ID": {
+     //KFZ Kennzeichen
+     "content": "HL XX 1489"
+    }
+   }
+  ],
+  "TransportParty": [
+   {
+    "ID": [
+     {
+      //DUNS des Carriers
+      "content": "123456789",
+      "schemeAgencyID": "16"
+     }
+    ],
+    "Name": [
+     {
+      "content": "Mueller und Co."
+     }
+    ],
+    "RoleCode": {
+     "content": "CA"
+    }
+   },
+   {
+    "ID": [
+     {
+      //DUNS des Spediteurs
+      "content": "234567890",
+      "schemeAgencyID": "16"
+     }
+    ],
+    "Name": [
+     {
+      "content": "Spedition Neumann"
+     }
+    ],
+    "RoleCode": {
+     "content": "FW"
+    }
+   }
+  ]
+ },
+ "ReferencedConsignment": {
+  "ID": {
+   //Sendungsnummer (global eindeutig)
+   "content": "UN98765432161233007"
+  },
+  "ConsignorAssignedID": {
+   //Sendungsnummer des Lieferanten
+   "content": "61233007"
+  },
+  "ConsignmentItemQuantity": {
+   // Anzahl der JIS Behälter oder TLU
+   "content": 3
+  },
+  "SummaryDescription": {
+   "content": "Kommentar für Abladestelle",
+   "languageID": "de"
+  },
+  "StatusCode": {
+   "content": "ISSUE_COMPLETED"
+  },
+  "ProcessID": {
+   "content": "JIS-IST"
+  },
+  "DeliveryTermsCode": {
+   "content": "EXW"
+  },
+  "DeliveryInstructionCode": {
+   "content": "340"
+  },
+  "TransportEvent": [
+   {
+    // gefordertes Lieferdatum (Eintreffdatum)
+    "TypeCode": {
+     "content": "2"
+    },
+    "RequestedOccurrenceDateTime": {
+     "content": "202406121500UTC",
+     "format": "203"
+    }
+   }
+  ],
+  "LogisticsLocation": [
+   {
+    // Abladestelle
+    "ID": {
+     "content": "11GF2"
+    },
+    "TypeCode": {
+     "content": "11"
+    }
+   },
+   {
+    // Montagelinie
+    "ID": {
+     "content": "80"
+    },
+    "TypeCode": {
+     "content": "159"
+    }
+   }
+  ],
+  "ConsignmentParty": [
+   {
+    // Ship-from
+    "ID": [
+     {
+      //DUNS
+      "content": "887766554",
+      "schemeAgencyID": "16"
+     },
+     {
+      //Lieferantennummer
+      "content": "700206",
+      "schemeAgencyID": "92"
+     }
+    ],
+    "Name": [
+     {
+      "content": "Great Gearboxes"
+     }
+    ],
+    "RoleCode": {
+     "content": "SF"
+    }
+   },
+   {
+    //Ship-to
+    "ID": [
+     {
+      //Werk
+      "content": "11",
+      "schemeAgencyID": "92"
+     },
+     {
+      //DUNS
+      "content": "808877664",
+      "schemeAgencyID": "16"
+     }
+    ],
+    "Name": [
+     {
+      "content": "Colossal Car Company"
+     }
+    ],
+    "RoleCode": {
+     "content": "ST"
+    }
+   }
+  ],
+  "IncludedConsignmentItem": [
+   {
+    "ID": { // Global eindeutige ID 
+     "content": "UN887766554682206278100"
+    },
+    "TypeCode": {
+     "content": "JIS-3JA"
+    },
+    "GrossWeightMeasure": {
+     "content": 200,
+     "unitCode": "KGM"
+    },
+    "NetWeightMeasure": {
+     "content": 100,
+     "unitCode": "KGM"
+    },
+    "IncludedJISCompartment": [
+     {
+      "CompartmentID": {
+       "content": "1"
+      },
+      "SequenceID": {
+       "content": "5348"
+      },
+      "ProductionID": {
+       "content": "2218547764"
+      },
+      "ModuleID": {
+       "content": "RW5H"
+      },
+      "GrossWeightMeasure": {
+       "content": 20,
+       "unitCode": "KGM"
+      },
+      "NetWeightMeasure": {
+       "content": 18,
+       "unitCode": "KGM"
+      }
+     },
+     {
+      "CompartmentID": {
+       "content": "2"
+      },
+      "SequenceID": {
+       "content": "5350"
+      },
+      "ProductionID": {
+       "content": "2218550924"
+      },
+      "ModuleID": {
+       "content": "RW5H"
+      },
+      "GrossWeightMeasure": {
+       "content": 20,
+       "unitCode": "KGM"
+      },
+      "NetWeightMeasure": {
+       "content": 18,
+       "unitCode": "KGM"
+      }
+     },
+     {
+      "CompartmentID": {
+       "content": "3"
+      },
+      "SequenceID": {
+       "content": "5352"
+      },
+      "ProductionID": {
+       "content": "2218547245"
+      },
+      "ModuleID": {
+       "content": "RW5H"
+      },
+      "GrossWeightMeasure": {
+       "content": 20,
+       "unitCode": "KGM"
+      },
+      "NetWeightMeasure": {
+       "content": 18,
+       "unitCode": "KGM"
+      }
+     },
+     {
+      "CompartmentID": {
+       "content": "4"
+      },
+      "SequenceID": {
+       "content": "5350"
+      },
+      "ProductionID": {
+       "content": "2218547085"
+      },
+      "ModuleID": {
+       "content": "RW5H"
+      },
+      "GrossWeightMeasure": {
+       "content": 20,
+       "unitCode": "KGM"
+      },
+      "NetWeightMeasure": {
+       "content": 18,
+       "unitCode": "KGM"
+      }
+     },
+     {
+      "CompartmentID": {
+       "content": "5"
+      },
+      "SequenceID": {
+       "content": "5355"
+      },
+      "ProductionID": {
+       "content": "221734922"
+      },
+      "ModuleID": {
+       "content": "RW5H"
+      },
+      "GrossWeightMeasure": {
+       "content": 20,
+       "unitCode": "KGM"
+      },
+      "NetWeightMeasure": {
+       "content": 18,
+       "unitCode": "KGM"
+      }
+     },
+     {
+      "CompartmentID": {
+       "content": "6"
+      },
+      "SequenceID": {
+       "content": "5355"
+      },
+      "ProductionID": {
+       "content": "2218546347"
+      },
+      "ModuleID": {
+       "content": "RW5H"
+      },
+      "GrossWeightMeasure": {
+       "content": 20,
+       "unitCode": "KGM"
+      },
+      "NetWeightMeasure": {
+       "content": 18,
+       "unitCode": "KGM"
+      }
+     }
+    ]
+   }
+  ]
+ }
+}
