@@ -1,0 +1,742 @@
+openapi: 3.0.3
+info:
+  title: Transport Track and Trace API V1.1
+  description: |
+    openAPI configuration file for Transport T&T (T3) processes version 1.1 in the automotive industry.
+    ---
+    This is the technical deliverable according to Odette recommendation OA02 (also published as VDA 4998 Part 2).   
+    It provides a framework for interoperable implementations throughout the automotive industry and its partners in the transport and IT area.
+    For further details, please refer to the above mentioned documents.
+
+    The information objects defined here provide harmonised data structures. 
+    They do not, however, provide specific information on mandatory content depending on object type and process context.
+    For this information, API service providers should add additional information on validation rules applied to the objects used in the supported operations.   
+    This validation can be done in several ways, of course. However, a very simple and straightforward way would be to use semantic validation through schematron techniques on the data received. The output of this validation process can be used as error description in the response, should the validation fail.
+
+    A compliant implementation must support:    
+    /consignments [GET]    
+    /transport-events [POST, GET]    
+    /transport-events/{id} [GET]   
+       
+    Service providers may, of course, also implement operations still marked as not-implemented (except DELETE operations), as this specification is intended to support a MVP for the moment.
+  version: 1.1.0
+servers:
+  - url: 'https://t3.odette-api.com/v1'
+paths:
+  /api/consignments/{id}:
+    description: get consignment by id
+    get:
+      tags:
+        - Consignments
+      summary: show consignment
+      operationId: get_consignment_by_id
+      parameters:
+        - name: id
+          in: path
+          description: Combination from sender DUNS number and consignment number
+          required: true
+          deprecated: false
+          allowEmptyValue: false
+          explode: false
+          allowReserved: false
+          schema:
+            type: string
+          example: 'UN88776655420230914-001'
+      responses:
+        404:
+          description: not found
+        200:
+          description: successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Consignment'
+              example:
+                ID:
+                  content: 'UN88776655420230913-001'
+                ConsignorAssignedID:
+                  content: '20230913-001'
+                ConsignmentItemQuantity:
+                  content: 3
+                StatusCode:
+                  content: READY_FOR_PICKUP
+                TransportEvent: [{TypeCode: {content: 2}, RequestedOccurrenceDateTime: {content: 202309141500, format: 303}}, {TypeCode: {content: 11}, RequestedOccurenceDateTime: {content: 20230913, format: 102}}]
+                IncludedConsignmentItem: [{ID: {content: UN8877665540000100}}, {ID: {content: UN8877665540000101}}, {ID: {content: UN8877665540000102}}]
+                LogicsticsLocation: [{ID: {content: Dock 56}, TypeCode: {content: 11}}]
+                ConsignmentParty: [{ID: [{content: 887766554, SchemeAgencyId: 16}], Name: {content: Great Gearboxes}, RoleCode: {content: SF}}, {ID: [{content: 808877664, SchemeAgencyId: 16}], Name: {content: Colossal Car Company}, RoleCode: {content: ST}}]
+                RelatedTransportEvent: [{ID: {content: 350}, TypeCode: {content: ACTUAL}, ActualOccurrenceDateTime: {content: 202309130900, format: 303}, ReportedConditionTypeCode: {content: READY_FOR_PICKUP}, OccurrenceLocation: {PhysicalGeographicalCoordinate: {LatitudeMeasure: {content: 51.496755, unitCode: DD}, LongitudeMeasure: {content: -0.131044, unitCode: DD}}}, SpecifiedParty: [{ID: [{content: 887766554, schemeAgencyID: 16}], Name: [{content: Great Gearboxes}], RoleCode: {content: SF}}]}, {ID: {content: 351}, TypeCode: {content: ACTUAL}, ActualOccurrenceDateTime: {content: 202309131000, format: 303}, ReportedConditionTypeCode: {content: ISSUE_COMPLETED}, OccurrenceLocation: {PhysicalGeographicalCoordinate: {LatitudeMeasure: {content: 51.496755, unitCode: DD}, LongitudeMeasure: {content: -0.131044, unitCode: DD}}}, SpecifiedParty: [{ID: [{content: 887766554, schemeAgencyID: 16}], Name: [{content: Great Gearboxes}], RoleCode: {content: SF}}], ReferencedTransportMovement: {ID: [{content: 9, schemeAgencyID: 87}], ModeCode: {content: 3}, UsedTransportMeans: [{ID: {content: 'BAR-JW 123'}}], TransportParty: [{ID: [{content: 432112345, SchemeAgencyId: 16}], Name: {content: Müller und Co. Spedition}, RoleCode: {content: CA}}, {ID: [{content: 432112345, SchemeAgencyId: 16}], Name: {content: Müller und Co. Spedition}, RoleCode: {content: FW}}]}}]
+  /api/transport_events/{id}:
+    description: To post or get transport events and theit related consignment
+    get:
+      tags:
+        - Transport Events
+      summary: show transport_event
+      operationId: get_transport_event_by_id
+      parameters:
+        - name: id
+          in: path
+          description: Identifier of the transport event
+          required: true
+          deprecated: false
+          allowEmptyValue: false
+          explode: false
+          allowReserved: false
+          schema:
+            type: string
+      responses:
+        404:
+          description: not found
+        200:
+          description: successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransportEvent'
+              example:
+                ID:
+                  content: '12345'
+                TypeCode:
+                  content: ACTUAL
+                ActualOccurrenceDateTime:
+                  content: '2023-09-13T13:42:43.721Z'
+                ReportedConditionTypeCode:
+                  content: READY_FOR_PICKUP
+                OccurrenceLocation:
+                  PhysicalGeographicalCoordinate:
+                    LatitudeMeasure:
+                      content: 51.496755
+                      unitCode: DD
+                    LongitudeMeasure:
+                      content: -0.131044
+                      unitCode: DD
+                  SpecifiedParty:
+                    - ID:
+                        - content: '887766554'
+                          SchemeAgencyId: '16'
+                      Name:
+                        content: Great Gearboxes
+                      RoleCode:
+                        content: SF
+                  ReferencedConsignment:
+                    ID:
+                      content: 'UN88776655420230913-001'
+                    ConsignorAssignedID:
+                      content: '20230913-001'
+                    ConsignmentItemQuantity:
+                      content: 3
+                    StatusCode:
+                      content: READY_FOR_PICKUP
+                    TransportEvent:
+                      - TypeCode:
+                          content: '2'
+                        RequestedOccurrenceDateTime:
+                          content: '202309141500'
+                          format: '303'
+                      - TypeCode:
+                          content: '11'
+                        RequestedOccurenceDateTime:
+                          content: '20230913'
+                          format: '102'
+                    IncludedConsignmentItem:
+                      - ID:
+                          content: UN8877665540000100
+                      - ID:
+                          content: UN8877665540000101
+                      - ID:
+                          content: UN8877665540000102
+                    LogicsticsLocation:
+                      ID:
+                        content: Dock 56
+                      TypeCode:
+                        content: '11'
+                    ConsignmentParty:
+                      - ID:
+                          - content: '887766554'
+                            SchemeAgencyId: '16'
+                        Name:
+                          content: Great Gearboxes
+                        RoleCode:
+                          content: SF
+                      - ID:
+                          - content: '808877664'
+                            SchemeAgencyId: '16'
+                        Name:
+                          content: Colossal Car Company
+                        RoleCode:
+                          content: ST
+      security:
+        - Bearer: []
+  /api/transport_events:
+    get:
+      tags:
+        - Transport Events
+      summary: show ID list
+      responses:
+        200:
+          description: ok
+          content:
+            application/json:
+              example: |
+                - ID:
+                    content: 1
+    post:
+      tags:
+        - Transport Events
+      summary: create event
+      requestBody:
+        content:
+          application/json:
+            {}
+        required: false
+      responses:
+        403:
+          description: forbidden
+          content:
+            application/json:
+              example: |
+                code: '403'
+                error: Not authorized
+                message: not allowed to create? this TransportEvent
+        201:
+          description: created
+          content:
+            application/json:
+              example: |
+                ReturnedID:
+                  content: 1
+  /api/me:
+    description: returns name and locale of the user
+    get:
+      tags:
+        - user
+      summary: get user information
+      operationId: get_user_name
+      responses:
+        200:
+          description: successful
+          content:
+            application/json:
+              example: '{"firstname":"John","lastname":"Smith","locale":"en"}'
+components:
+  schemas:
+    TransportEvent:
+      type: object
+      properties:
+        ID:
+          $ref: '#/components/schemas/Identifier'
+        TypeCode:
+          $ref: '#/components/schemas/Code'
+        ActualOccurrenceDateTime:
+          $ref: '#/components/schemas/DateTime'
+        ReportedConditionTypeCode:
+          $ref: '#/components/schemas/LogisticsStatusCode'
+        OccurrenceLocation:
+          $ref: '#/components/schemas/LogisticsLocation'
+        SpecifiedParty:
+          type: array
+          items:
+            $ref: '#/components/schemas/TradeParty'
+        ReferencedTransportMovement:
+          $ref: '#/components/schemas/TransportMovement'
+        ReferencedConsignment:
+          $ref: '#/components/schemas/Consignment_2'
+      required:
+        - TypeCode
+        - ActualOccurrenceDateTime
+        - ReportedConditionTypeCode
+    Consignment:
+      type: object
+      properties:
+        ID:
+# description: data content according to definition of DI 26K (IAC: OD or UN, CIN, shipment number)
+          $ref: '#/components/schemas/Identifier_2'
+        ConsignorAssignedID:
+          $ref: '#/components/schemas/Identifier'
+        ConsignmentItemQuantity:
+# description: Number of transport loading units in this shipment
+          $ref: '#/components/schemas/Quantity'
+        StatusCode:
+# description: The latest known ststus of the shipment
+          $ref: '#/components/schemas/TransportStatusCode'
+        TransportEvent:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransportEvent_II'
+        IncludedConsignmentItem:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupplyChainConsignmentItem'
+        LogisticsLocation:
+          type: array
+          items:
+            $ref: '#/components/schemas/LogisticsLocation_2'
+        ConsignmentParty:
+          description: 'At least ship-from and ship-to must be specified'
+          type: array
+          items:
+            $ref: '#/components/schemas/TradeParty_II'
+        RelatedTransportEvent:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransportEvent_2'
+      required:
+        - ID
+        - ConsignmentItemQuantity
+        - StatusCode
+    Code:
+      type: object
+      properties:
+        content:
+          enum:
+            - ACTUAL
+          type: string
+      required:
+        - content
+    Consignment_2:
+      type: object
+      properties:
+        ID:
+# description: data content according to definition of DI 26K (IAC: OD or UN, CIN, shipment number)
+          $ref: '#/components/schemas/Identifier_2'
+        ConsignorAssignedID:
+          $ref: '#/components/schemas/Identifier'
+        ConsignmentItemQuantity:
+# description: Number of transport loading units in this shipment
+          $ref: '#/components/schemas/Quantity'
+        StatusCode:
+# description: The latest known ststus of the shipment
+          $ref: '#/components/schemas/TransportStatusCode'
+        TransportEvent:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransportEvent_II'
+        IncludedConsignmentItem:
+          type: array
+          items:
+            $ref: '#/components/schemas/SupplyChainConsignmentItem'
+        LogisticsLocation:
+          type: array
+          items:
+            $ref: '#/components/schemas/LogisticsLocation_2'
+        ConsignmentParty:
+          description: 'At least ship-from and ship-to must be specified'
+          type: array
+          items:
+            $ref: '#/components/schemas/TradeParty_II'
+      required:
+        - ID
+    DateTime:
+      type: object
+      properties:
+        content:
+          type: string
+        format:
+          enum:
+            - '303'  # CCYYMMDDHHMMZZZ
+            - '304'  # CCYYMMDDHHMMSSZZZ
+          type: string
+      required:
+        - content
+    Identifier:
+      description: Globally unique ID of this TLU (a.k.a. licence plate) according to DI spec for J, 1J .. 6J
+      type: object
+      properties:
+        content:
+          type: string
+      required:
+        - content
+    Identifier_2:
+      description: 'data content according to definition of DI 26K (IAC: OD or UN, CIN, shipment number)'
+      type: object
+      properties:
+        content:
+          type: string
+      required:
+        - content
+    LogisticsLocation:
+      type: object
+      properties:
+        Name:
+          $ref: '#/components/schemas/Text'
+        PhysicalGeographicalCoordinate:
+          $ref: '#/components/schemas/GeographicalCoordinate'
+    LogisticsLocation_2:
+      type: object
+      properties:
+        ID:
+          $ref: '#/components/schemas/Identifier'
+        Name:
+          $ref: '#/components/schemas/Text'
+        TypeCode:
+          $ref: '#/components/schemas/LocationFunctionCode'
+        PhysicalGeographicalCoordinate:
+          $ref: '#/components/schemas/GeographicalCoordinate'
+    LogisticsStatusCode:
+      type: object
+      properties:
+        content:
+          enum:
+            - EN_ROUTE  # Forwarder or carrier reports: means of transport is en-route
+            - ISSUE_COMPLETED  # Ship-from reports: goods-issue (hand-over to carrier) completed
+            - LOADING_COMPLETED  # Cross-dock reports: loading onto a means of transport completed
+            - PICKUP_COMPLETED  # Forwarder or carrier reports: pick-up has been completed
+            - POD_COMPLETED  # Forwarder or carrier reports: goods have been handed over to final recipient (proof of delivery)
+            - READY_FOR_PICKUP  # Ship-from reports: shipment or THU is ready for pick-up
+            - RECEIPT_COMPLETED  # Ship-to reports: good receipt process completed
+            - UNLOADING_COMPLETED  # Ship-to or LSP reports: unloading of a shipment or THU from a means of transport completed
+          type: string
+      required:
+        - content
+    Quantity:
+      description: Number of transport loading units in this shipment
+      type: object
+      properties:
+        content:
+          type: number
+      required:
+        - content
+    SupplyChainConsignmentItem:
+      type: object
+      properties:
+        ID:
+# description: Globally unique ID of this TLU (a.k.a. licence plate) according to DI spec for J, 1J .. 6J
+          $ref: '#/components/schemas/Identifier'
+      required:
+        - ID
+    TradeParty:
+      type: object
+      properties:
+        ID:
+          type: array
+          items:
+            $ref: '#/components/schemas/Identifier_3'
+          minItems: 1
+        Name:
+          $ref: '#/components/schemas/Text'
+        RoleCode:
+          $ref: '#/components/schemas/Code_2'
+      required:
+        - RoleCode
+    TradeParty_II:
+      description: 'At least ship-from and ship-to must be specified'
+      type: object
+      properties:
+        ID:
+          type: array
+          items:
+            $ref: '#/components/schemas/Identifier_4'
+          minItems: 1
+        Name:
+          type: array
+          items:
+            $ref: '#/components/schemas/Text'
+        RoleCode:
+          $ref: '#/components/schemas/PartyRoleCode'
+      required:
+        - RoleCode
+    TransportEvent_2:
+      type: object
+      properties:
+        ID:
+          $ref: '#/components/schemas/Identifier'
+        TypeCode:
+          $ref: '#/components/schemas/Code'
+        ActualOccurrenceDateTime:
+          $ref: '#/components/schemas/DateTime'
+        ReportedConditionTypeCode:
+          $ref: '#/components/schemas/LogisticsStatusCode'
+        OccurrenceLocation:
+          $ref: '#/components/schemas/LogisticsLocation'
+        SpecifiedParty:
+          type: array
+          items:
+            $ref: '#/components/schemas/TradeParty_2'
+        ReferencedTransportMovement:
+          $ref: '#/components/schemas/TransportMovement'
+      required:
+        - TypeCode
+        - ActualOccurrenceDateTime
+        - ReportedConditionTypeCode
+    TransportEvent_II:
+      type: object
+      properties:
+        TypeCode:
+          $ref: '#/components/schemas/Code_3'
+        EstimatedOccurrenceDateTime:
+          $ref: '#/components/schemas/DateTime_2'
+        ActualOccurrenceDateTime:
+          $ref: '#/components/schemas/DateTime_2'
+        RequestedOccurrenceDateTime:
+          $ref: '#/components/schemas/DateTime_2'
+      required:
+        - TypeCode
+    TransportMovement:
+      type: object
+      properties:
+        ModeCode:
+          $ref: '#/components/schemas/TransportModeCode'
+        ID:
+          type: array
+          items:
+            $ref: '#/components/schemas/Identifier_5'
+          minItems: 1
+        ReferencedConsignmentID:
+          type: array
+          items:
+            $ref: '#/components/schemas/Identifier'
+        UsedTransportMeans:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransportMeans'
+        TransportParty:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConsignmentParty'
+    TransportStatusCode:
+      description: The latest known ststus of the shipment
+      type: object
+      properties:
+        content:
+          enum:
+            - EN_ROUTE  # Forwarder or carrier reports: means of transport is en-route
+            - ISSUE_COMPLETED  # Ship-from reports: goods-issue (hand-over to carrier) completed
+            - LOADING_COMPLETED  # Cross-dock reports: loading onto a means of transport completed
+            - NO_STATUS  # There is no specific status information (or update) available.
+            - PICKUP_COMPLETED  # Forwarder or carrier reports: pick-up has been completed
+            - POD_COMPLETED  # Forwarder or carrier reports: goods have been handed over to final recipient (proof of delivery)
+            - READY_FOR_PICKUP  # Ship-from reports: shipment or THU is ready for pick-up
+            - RECEIPT_COMPLETED  # Ship-to reports: good receipt process completed
+            - UNLOADING_COMPLETED  # Ship-to or LSP reports: unloading of a shipment or THU from a means of transport completed
+          type: string
+      required:
+        - content
+    Code_2:
+      type: object
+      properties:
+        content:
+          enum:
+            - CA  # Carrier
+            - DDA  # Report responsible party
+            - DGC  # Logistic service provider
+            - FW  # Freight forwarder
+            - SF  # Ship from
+            - ST  # Ship to
+          type: string
+      required:
+        - content
+    Code_3:
+      type: object
+      properties:
+        content:
+          enum:
+            - '2'  # Delivery date/time, requested
+            - '11'  # Despatch date and or time
+            - '132'  # Transport means arrival date time, estimated
+          type: string
+      required:
+        - content
+    ConsignmentParty:
+      type: object
+      properties:
+        ID:
+          type: array
+          items:
+            $ref: '#/components/schemas/Identifier_4'
+        Name:
+          type: array
+          items:
+            $ref: '#/components/schemas/Text'
+        RoleCode:
+          $ref: '#/components/schemas/PartyRoleCode'
+      required:
+        - RoleCode
+    DateTime_2:
+      type: object
+      properties:
+        content:
+          type: string
+        format:
+          enum:
+            - '102'  # CCYYMMDD
+            - '203'  # CCYYMMDDHHMM
+            - '303'  # CCYYMMDDHHMMZZZ
+          type: string
+      required:
+        - content
+    GeographicalCoordinate:
+      type: object
+      properties:
+        LatitudeMeasure:
+          $ref: '#/components/schemas/Measure'
+        LongitudeMeasure:
+          $ref: '#/components/schemas/Measure'
+        LatitudeDirectionIndicator:
+          $ref: '#/components/schemas/Indicator'
+        LongitudeDirectionIndicator:
+          $ref: '#/components/schemas/Indicator'
+      required:
+        - LatitudeMeasure
+        - LongitudeMeasure
+    Identifier_3:
+      type: object
+      properties:
+        content:
+          type: string
+        schemeAgencyID:
+          enum:
+            - '10'  # ODETTE
+            - '16'  # US, D&B (Dun & Bradstreet Corporation)
+          type: string
+      required:
+        - content
+        - schemeAgencyID
+    Identifier_4:
+      type: object
+      properties:
+        content:
+          type: string
+        schemeAgencyID:
+          enum:
+            - '10'  # ODETTE
+            - '16'  # US, D&B (Dun & Bradstreet Corporation)
+          type: string
+      required:
+        - content
+    Identifier_5:
+      type: object
+      properties:
+        content:
+          type: string
+        schemeID:
+          type: string
+        schemeAgencyID:
+          enum:
+            - '88'  # Assigned by owner of operation
+          type: string
+      required:
+        - content
+        - schemeAgencyID
+    LocationFunctionCode:
+      type: object
+      properties:
+        content:
+          enum:
+            - '9'  # Place of loading
+            - '11'  # Place of discharge
+          type: string
+      required:
+        - content
+    PartyRoleCode:
+      type: object
+      properties:
+        content:
+          enum:
+            - CA  # Carrier
+            - FW  # Freight forwarder
+            - SF  # Ship from
+            - ST  # Ship to
+          type: string
+      required:
+        - content
+    Text:
+      type: object
+      properties:
+        content:
+          type: string
+      required:
+        - content
+    TradeParty_2:
+      type: object
+      properties:
+        ID:
+          type: array
+          items:
+            $ref: '#/components/schemas/Identifier_3'
+          minItems: 1
+        Name:
+          type: array
+          items:
+            $ref: '#/components/schemas/Text'
+        RoleCode:
+          $ref: '#/components/schemas/Code_2'
+      required:
+        - RoleCode
+    TransportMeans:
+      type: object
+      properties:
+        TypeCode:
+          $ref: '#/components/schemas/TransportMeansTypeCode'
+        ID:
+          $ref: '#/components/schemas/Identifier'
+      required:
+        - ID
+    TransportModeCode:
+      type: object
+      properties:
+        content:
+          enum:
+            - '0'  # Transport mode not specified
+            - '1'  # Maritime transport
+            - '2'  # Rail transport
+            - '3'  # Road transport
+            - '4'  # Air transport
+            - '5'  # Mail
+            - '6'  # Multimodal transport
+            - '7'  # Fixed transport installations
+            - '8'  # Inland water transport
+            - '9'  # Transport mode not applicable
+          type: string
+      required:
+        - content
+    Indicator:
+      type: object
+      properties:
+        content:
+          pattern: |
+            true
+            false
+          type: string
+      required:
+        - content
+    Measure:
+      type: object
+      properties:
+        content:
+          type: number
+        unitCode:
+          maxLength: 3
+          minLength: 1
+          enum:
+            - DD  # degree [unit of angle]
+          type: string
+      required:
+        - content
+        - unitCode
+    TransportMeansTypeCode:
+      type: object
+      properties:
+        content:
+          enum:
+            - '31'  # Truck
+          type: string
+        listAgencyID:
+          enum:
+            - '6'
+          type: string
+      required:
+        - content
+  securitySchemes:
+    OAUTH2:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: 'https://t3.odette-api.com/oauth/token'
+          scopes:
+            all: ""
+        authorizationCode:
+          authorizationUrl: 'https://t3u.odette-api.com/oauth/authorize?'
+          tokenUrl: 'https://t3.odette-api.com/oauth/token'
+          scopes:
+            all: ""
+security:
+  - OAUTH2: [all]
