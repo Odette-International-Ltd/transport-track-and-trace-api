@@ -1,0 +1,824 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "http://odette.org/api/schemas/transportEvent1p1.json",
+  "type": "object",
+  "properties": {
+    "ID": {
+      "$ref": "#/$defs/Identifier"
+    },
+    "TypeCode": {
+      "$ref": "#/$defs/Code"
+    },
+    "ActualOccurrenceDateTime": {
+      "$ref": "#/$defs/DateTime"
+    },
+    "ReportedConditionTypeCode": {
+      "$ref": "#/$defs/LogisticsStatusCode"
+    },
+    "OccurrenceLocation": {
+      "$ref": "#/$defs/LogisticsLocation"
+    },
+    "SpecifiedParty": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/TradeParty"
+      }
+    },
+    "ReferencedTransportMovement": {
+      "$ref": "#/$defs/TransportMovement"
+    },
+    "ReferencedConsignment": {
+      "$ref": "#/$defs/Consignment"
+    }
+  },
+  "required": [
+    "TypeCode",
+    "ActualOccurrenceDateTime",
+    "ReportedConditionTypeCode"
+  ],
+  "unevaluatedProperties": false,
+  "$defs": {
+    "Code": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "ACTUAL"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ],
+      "unevaluatedProperties": false
+    },
+    "Consignment": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "description": "data content according to definition of DI 26K (IAC: OD or UN, CIN, shipment number)",
+          "$ref": "#/$defs/Identifier_2"
+        },
+        "ConsignorAssignedID": {
+          "$ref": "#/$defs/Identifier"
+        },
+        "ConsignmentItemQuantity": {
+          "description": "Number of transport loading units in this shipment",
+          "$ref": "#/$defs/Quantity"
+        },
+        "StatusCode": {
+          "description": "The latest known ststus of the shipment",
+          "$ref": "#/$defs/TransportStatusCode"
+        },
+        "TransportEvent": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TransportEvent"
+          }
+        },
+        "IncludedConsignmentItem": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SupplyChainConsignmentItem"
+          }
+        },
+        "LogisticsLocation": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LogisticsLocation_2"
+          }
+        },
+        "ConsignmentParty": {
+          "description": "At least ship-from and ship-to must be specified",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TradeParty_II"
+          }
+        }
+      },
+      "required": [
+        "ID"
+      ],
+      "unevaluatedProperties": false
+    },
+    "DateTime": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "format": {
+          "oneOf": [
+            {
+              "const": "303",
+              "description": "CCYYMMDDHHMMZZZ"
+            },
+            {
+              "const": "304",
+              "description": "CCYYMMDDHHMMSSZZZ"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ],
+      "unevaluatedProperties": false
+    },
+    "Identifier": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ],
+      "unevaluatedProperties": false
+    },
+    "LogisticsLocation": {
+      "type": "object",
+      "properties": {
+        "Name": {
+          "$ref": "#/$defs/Text"
+        },
+        "PhysicalGeographicalCoordinate": {
+          "$ref": "#/$defs/GeographicalCoordinate"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "LogisticsStatusCode": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "EN_ROUTE",
+              "description": "Forwarder or carrier reports: means of transport is en-route"
+            },
+            {
+              "const": "ISSUE_COMPLETED",
+              "description": "Ship-from reports: goods-issue (hand-over to carrier) completed"
+            },
+            {
+              "const": "LOADING_COMPLETED",
+              "description": "Cross-dock reports: loading onto a means of transport completed"
+            },
+            {
+              "const": "PICKUP_COMPLETED",
+              "description": "Forwarder or carrier reports: pick-up has been completed"
+            },
+            {
+              "const": "POD_COMPLETED",
+              "description": "Forwarder or carrier reports: goods have been handed over to final recipient (proof of delivery)"
+            },
+            {
+              "const": "READY_FOR_PICKUP",
+              "description": "Ship-from reports: shipment or THU is ready for pick-up"
+            },
+            {
+              "const": "RECEIPT_COMPLETED",
+              "description": "Ship-to reports: good receipt process completed"
+            },
+            {
+              "const": "UNLOADING_COMPLETED",
+              "description": "Ship-to or LSP reports: unloading of a shipment or THU from a means of transport completed"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ],
+      "unevaluatedProperties": false
+    },
+    "TradeParty": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Identifier_3"
+          },
+          "minItems": 1
+        },
+        "Name": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Text"
+          }
+        },
+        "RoleCode": {
+          "$ref": "#/$defs/Code_2"
+        }
+      },
+      "required": [
+        "RoleCode"
+      ],
+      "unevaluatedProperties": false
+    },
+    "TransportMovement": {
+      "type": "object",
+      "properties": {
+        "ModeCode": {
+          "$ref": "#/$defs/TransportModeCode"
+        },
+        "ID": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Identifier_4"
+          },
+          "minItems": 1
+        },
+        "ReferencedConsignmentID": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Identifier"
+          }
+        },
+        "UsedTransportMeans": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TransportMeans"
+          }
+        },
+        "TransportParty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ConsignmentParty"
+          }
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "Code_2": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "CA",
+              "description": "Carrier"
+            },
+            {
+              "const": "DDA",
+              "description": "Report responsible party"
+            },
+            {
+              "const": "DGC",
+              "description": "Logistic service provider"
+            },
+            {
+              "const": "FW",
+              "description": "Freight forwarder"
+            },
+            {
+              "const": "SF",
+              "description": "Ship from"
+            },
+            {
+              "const": "ST",
+              "description": "Ship to"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ],
+      "unevaluatedProperties": false
+    },
+    "ConsignmentParty": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Identifier_5"
+          }
+        },
+        "Name": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Text"
+          }
+        },
+        "RoleCode": {
+          "$ref": "#/$defs/PartyRoleCode"
+        }
+      },
+      "required": [
+        "RoleCode"
+      ],
+      "unevaluatedProperties": false
+    },
+    "GeographicalCoordinate": {
+      "type": "object",
+      "properties": {
+        "LatitudeMeasure": {
+          "$ref": "#/$defs/Measure"
+        },
+        "LongitudeMeasure": {
+          "$ref": "#/$defs/Measure"
+        },
+        "LatitudeDirectionIndicator": {
+          "$ref": "#/$defs/Indicator"
+        },
+        "LongitudeDirectionIndicator": {
+          "$ref": "#/$defs/Indicator"
+        }
+      },
+      "required": [
+        "LatitudeMeasure",
+        "LongitudeMeasure"
+      ],
+      "unevaluatedProperties": false
+    },
+    "Identifier_2": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ],
+      "unevaluatedProperties": false
+    },
+    "Identifier_3": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "schemeAgencyID": {
+          "oneOf": [
+            {
+              "const": "10",
+              "description": "ODETTE"
+            },
+            {
+              "const": "16",
+              "description": "US, D&B (Dun & Bradstreet Corporation)"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content",
+        "schemeAgencyID"
+      ],
+      "unevaluatedProperties": false
+    },
+    "Identifier_4": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "schemeID": {
+          "type": "string"
+        },
+        "schemeAgencyID": {
+          "oneOf": [
+            {
+              "const": "88",
+              "description": "Assigned by owner of operation"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content",
+        "schemeAgencyID"
+      ],
+      "unevaluatedProperties": false
+    },
+    "LogisticsLocation_2": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "$ref": "#/$defs/Identifier"
+        },
+        "Name": {
+          "$ref": "#/$defs/Text"
+        },
+        "TypeCode": {
+          "$ref": "#/$defs/LocationFunctionCode"
+        },
+        "PhysicalGeographicalCoordinate": {
+          "$ref": "#/$defs/GeographicalCoordinate"
+        }
+      },
+      "unevaluatedProperties": false
+    },
+    "Quantity": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "content"
+      ],
+      "unevaluatedProperties": false
+    },
+    "SupplyChainConsignmentItem": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "description": "Globally unique ID of this TLU (a.k.a. licence plate) according to DI spec for J, 1J .. 6J",
+          "$ref": "#/$defs/Identifier"
+        }
+      },
+      "required": [
+        "ID"
+      ],
+      "unevaluatedProperties": false
+    },
+    "Text": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ],
+      "unevaluatedProperties": false
+    },
+    "TradeParty_II": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Identifier_5"
+          },
+          "minItems": 1
+        },
+        "Name": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Text"
+          }
+        },
+        "RoleCode": {
+          "$ref": "#/$defs/PartyRoleCode"
+        }
+      },
+      "required": [
+        "RoleCode"
+      ],
+      "unevaluatedProperties": false
+    },
+    "TransportEvent": {
+      "type": "object",
+      "properties": {
+        "TypeCode": {
+          "$ref": "#/$defs/Code_3"
+        },
+        "EstimatedOccurrenceDateTime": {
+          "$ref": "#/$defs/DateTime_2"
+        },
+        "ActualOccurrenceDateTime": {
+          "$ref": "#/$defs/DateTime_2"
+        },
+        "RequestedOccurrenceDateTime": {
+          "$ref": "#/$defs/DateTime_2"
+        }
+      },
+      "required": [
+        "TypeCode"
+      ],
+      "unevaluatedProperties": false
+    },
+    "TransportMeans": {
+      "type": "object",
+      "properties": {
+        "TypeCode": {
+          "$ref": "#/$defs/TransportMeansTypeCode"
+        },
+        "ID": {
+          "$ref": "#/$defs/Identifier"
+        }
+      },
+      "required": [
+        "ID"
+      ],
+      "unevaluatedProperties": false
+    },
+    "TransportModeCode": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "0",
+              "description": "Transport mode not specified"
+            },
+            {
+              "const": "1",
+              "description": "Maritime transport"
+            },
+            {
+              "const": "2",
+              "description": "Rail transport"
+            },
+            {
+              "const": "3",
+              "description": "Road transport"
+            },
+            {
+              "const": "4",
+              "description": "Air transport"
+            },
+            {
+              "const": "5",
+              "description": "Mail"
+            },
+            {
+              "const": "6",
+              "description": "Multimodal transport"
+            },
+            {
+              "const": "7",
+              "description": "Fixed transport installations"
+            },
+            {
+              "const": "8",
+              "description": "Inland water transport"
+            },
+            {
+              "const": "9",
+              "description": "Transport mode not applicable"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ],
+      "unevaluatedProperties": false
+    },
+    "TransportStatusCode": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "EN_ROUTE",
+              "description": "Forwarder or carrier reports: means of transport is en-route"
+            },
+            {
+              "const": "ISSUE_COMPLETED",
+              "description": "Ship-from reports: goods-issue (hand-over to carrier) completed"
+            },
+            {
+              "const": "LOADING_COMPLETED",
+              "description": "Cross-dock reports: loading onto a means of transport completed"
+            },
+            {
+              "const": "NO_STATUS",
+              "description": "There is no specific status information (or update) available."
+            },
+            {
+              "const": "PICKUP_COMPLETED",
+              "description": "Forwarder or carrier reports: pick-up has been completed"
+            },
+            {
+              "const": "POD_COMPLETED",
+              "description": "Forwarder or carrier reports: goods have been handed over to final recipient (proof of delivery)"
+            },
+            {
+              "const": "READY_FOR_PICKUP",
+              "description": "Ship-from reports: shipment or THU is ready for pick-up"
+            },
+            {
+              "const": "RECEIPT_COMPLETED",
+              "description": "Ship-to reports: good receipt process completed"
+            },
+            {
+              "const": "UNLOADING_COMPLETED",
+              "description": "Ship-to or LSP reports: unloading of a shipment or THU from a means of transport completed"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ],
+      "unevaluatedProperties": false
+    },
+    "Code_3": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "2",
+              "description": "Delivery date/time, requested"
+            },
+            {
+              "const": "11",
+              "description": "Despatch date and or time"
+            },
+            {
+              "const": "132",
+              "description": "Transport means arrival date time, estimated"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ],
+      "unevaluatedProperties": false
+    },
+    "DateTime_2": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "format": {
+          "oneOf": [
+            {
+              "const": "102",
+              "description": "CCYYMMDD"
+            },
+            {
+              "const": "203",
+              "description": "CCYYMMDDHHMM"
+            },
+            {
+              "const": "303",
+              "description": "CCYYMMDDHHMMZZZ"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ],
+      "unevaluatedProperties": false
+    },
+    "Identifier_5": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "schemeAgencyID": {
+          "oneOf": [
+            {
+              "const": "10",
+              "description": "ODETTE"
+            },
+            {
+              "const": "16",
+              "description": "US, D&B (Dun & Bradstreet Corporation)"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ],
+      "unevaluatedProperties": false
+    },
+    "Indicator": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "pattern": "true\r\nfalse",
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ],
+      "unevaluatedProperties": false
+    },
+    "LocationFunctionCode": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "9",
+              "description": "Place of loading"
+            },
+            {
+              "const": "11",
+              "description": "Place of discharge"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ],
+      "unevaluatedProperties": false
+    },
+    "Measure": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "number"
+        },
+        "unitCode": {
+          "maxLength": 3,
+          "minLength": 1,
+          "oneOf": [
+            {
+              "const": "DD",
+              "description": "degree [unit of angle]"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content",
+        "unitCode"
+      ],
+      "unevaluatedProperties": false
+    },
+    "PartyRoleCode": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "CA",
+              "description": "Carrier"
+            },
+            {
+              "const": "FW",
+              "description": "Freight forwarder"
+            },
+            {
+              "const": "SF",
+              "description": "Ship from"
+            },
+            {
+              "const": "ST",
+              "description": "Ship to"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ],
+      "unevaluatedProperties": false
+    },
+    "TransportMeansTypeCode": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "31",
+              "description": "Truck"
+            }
+          ],
+          "type": "string"
+        },
+        "listAgencyID": {
+          "oneOf": [
+            {
+              "const": "6"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ],
+      "unevaluatedProperties": false
+    }
+  }
+}
