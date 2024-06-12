@@ -1,0 +1,4354 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "ID": {
+      "description": "data content according to definition of DI 26K (IAC: OD or UN, CIN, shipment number)",
+      "$ref": "#/$defs/Identifier"
+    },
+    "ConsignorAssignedID": {
+      "description": "Shipment number",
+      "$ref": "#/$defs/Identifier"
+    },
+    "GrossWeightMeasure": {
+      "$ref": "#/$defs/WeightUnitMeasure"
+    },
+    "NetWeightMeasure": {
+      "$ref": "#/$defs/WeightUnitMeasure"
+    },
+    "ConsignmentItemQuantity": {
+      "description": "Number of transport loading units in this shipment",
+      "$ref": "#/$defs/Quantity"
+    },
+    "SummaryDescription": {
+      "$ref": "#/$defs/Text"
+    },
+    "StatusCode": {
+      "description": "The latest known ststus of the shipment",
+      "$ref": "#/$defs/TransportStatusCode"
+    },
+    "ProcessID": {
+      "$ref": "#/$defs/Identifier"
+    },
+    "DeliveryTermsCode": {
+      "$ref": "#/$defs/DeliveryTermsCode"
+    },
+    "DeliveryInstructionCode": {
+      "$ref": "#/$defs/DocumentCode"
+    },
+    "TransportEvent": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/TransportEvent"
+      }
+    },
+    "UtilizedTransportEquipment": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/LogisticsTransportEquipment"
+      }
+    },
+    "MainCarriageTransportMovement": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/LogisticsTransportMovement"
+      }
+    },
+    "SpecifiedTransportMovement": {
+      "$ref": "#/$defs/LogisticsTransportMovement_2"
+    },
+    "LogisticsLocation": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/LogisticsLocation"
+      }
+    },
+    "ConsignmentParty": {
+      "description": "At least ship-from and ship-to must be specified",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/TradeParty"
+      }
+    },
+    "IncludedConsignmentItem": {
+      "$ref": "#/$defs/ConsignmentItem"
+    },
+    "RelatedTransportEvent": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/TransportEvent_II"
+      }
+    }
+  },
+  "required": [
+    "ID"
+  ],
+  "$defs": {
+    "ConsignmentItem": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "$ref": "#/$defs/Identifier"
+        },
+        "TypeCode": {
+          "$ref": "#/$defs/GoodsTypeCode"
+        },
+        "GrossWeightMeasure": {
+          "$ref": "#/$defs/WeightUnitMeasure"
+        },
+        "NetWeightMeasure": {
+          "$ref": "#/$defs/WeightUnitMeasure"
+        },
+        "IncludedJISCompartment": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/IncludedJISCompartment"
+          }
+        }
+      },
+      "required": [
+        "ID"
+      ]
+    },
+    "DeliveryTermsCode": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "1",
+              "description": "Delivery arranged by the supplier"
+            },
+            {
+              "const": "2",
+              "description": "Delivery arranged by logistic service provider"
+            },
+            {
+              "const": "CFR",
+              "description": "Cost and Freight (insert named port of destination)"
+            },
+            {
+              "const": "CIF",
+              "description": "Cost, Insurance and Freight (insert named port of destination)"
+            },
+            {
+              "const": "CIP",
+              "description": "Carriage and Insurance Paid to (insert named place of destination)"
+            },
+            {
+              "const": "CPT",
+              "description": "Carriage Paid To (insert named place of destination)"
+            },
+            {
+              "const": "DAP",
+              "description": "Delivered At Place (insert named place of destination)"
+            },
+            {
+              "const": "DAT",
+              "description": "Delivered At Terminal (insert named terminal at port or place of destination)"
+            },
+            {
+              "const": "DDP",
+              "description": "Delivered Duty Paid (insert named place of destination)"
+            },
+            {
+              "const": "EXW",
+              "description": "Ex Works (insert named place of delivery)"
+            },
+            {
+              "const": "FAS",
+              "description": "Free Alongside Ship (insert named port of shipment)"
+            },
+            {
+              "const": "FCA",
+              "description": "Free Carrier (insert named place of delivery)"
+            },
+            {
+              "const": "FOB",
+              "description": "Free On Board (insert named port of shipment)"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "DocumentCode": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "7",
+              "description": "Process data report"
+            },
+            {
+              "const": "225",
+              "description": "Repair order"
+            },
+            {
+              "const": "307",
+              "description": "Sequenced delivery schedule"
+            },
+            {
+              "const": "340",
+              "description": "Shipping instructions"
+            },
+            {
+              "const": "632",
+              "description": "Goods receipt"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "Identifier": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "LogisticsLocation": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "$ref": "#/$defs/Identifier"
+        },
+        "Name": {
+          "$ref": "#/$defs/Text_2"
+        },
+        "TypeCode": {
+          "$ref": "#/$defs/LocationFunctionCode"
+        },
+        "PhysicalGeographicalCoordinate": {
+          "$ref": "#/$defs/GeographicalCoordinate"
+        }
+      }
+    },
+    "LogisticsTransportEquipment": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "description": "ID of the means of transport, this shipment is currently loaded on",
+          "$ref": "#/$defs/Identifier"
+        }
+      },
+      "required": [
+        "ID"
+      ]
+    },
+    "LogisticsTransportMovement": {
+      "type": "object",
+      "properties": {
+        "StageCode": {
+          "$ref": "#/$defs/TransportMovementStageCode"
+        },
+        "ModeCode": {
+          "$ref": "#/$defs/TransportModeCode"
+        }
+      }
+    },
+    "LogisticsTransportMovement_2": {
+      "type": "object",
+      "properties": {
+        "ModeCode": {
+          "$ref": "#/$defs/TransportModeCode_2"
+        }
+      }
+    },
+    "Quantity": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "Text": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "languageID": {
+          "oneOf": [
+            {
+              "const": "aa",
+              "description": "Afar"
+            },
+            {
+              "const": "AA",
+              "description": "Afar"
+            },
+            {
+              "const": "ab",
+              "description": "Abkhazian"
+            },
+            {
+              "const": "AB",
+              "description": "Abkhazian"
+            },
+            {
+              "const": "ae",
+              "description": "Avestan"
+            },
+            {
+              "const": "AE",
+              "description": "Avestan"
+            },
+            {
+              "const": "af",
+              "description": "Afrikaans"
+            },
+            {
+              "const": "AF",
+              "description": "Afrikaans"
+            },
+            {
+              "const": "ak",
+              "description": "Akan"
+            },
+            {
+              "const": "AK",
+              "description": "Akan"
+            },
+            {
+              "const": "am",
+              "description": "Amharic"
+            },
+            {
+              "const": "AM",
+              "description": "Amharic"
+            },
+            {
+              "const": "an",
+              "description": "Aragonese"
+            },
+            {
+              "const": "AN",
+              "description": "Aragonese"
+            },
+            {
+              "const": "ar",
+              "description": "Arabic"
+            },
+            {
+              "const": "AR",
+              "description": "Arabic"
+            },
+            {
+              "const": "as",
+              "description": "Assamese"
+            },
+            {
+              "const": "AS",
+              "description": "Assamese"
+            },
+            {
+              "const": "av",
+              "description": "Avaric"
+            },
+            {
+              "const": "AV",
+              "description": "Avaric"
+            },
+            {
+              "const": "ay",
+              "description": "Aymara"
+            },
+            {
+              "const": "AY",
+              "description": "Aymara"
+            },
+            {
+              "const": "az",
+              "description": "Azerbaijani"
+            },
+            {
+              "const": "AZ",
+              "description": "Azerbaijani"
+            },
+            {
+              "const": "ba",
+              "description": "Bashkir"
+            },
+            {
+              "const": "BA",
+              "description": "Bashkir"
+            },
+            {
+              "const": "be",
+              "description": "Belarusian"
+            },
+            {
+              "const": "BE",
+              "description": "Belarusian"
+            },
+            {
+              "const": "bg",
+              "description": "Bulgarian"
+            },
+            {
+              "const": "BG",
+              "description": "Bulgarian"
+            },
+            {
+              "const": "bh",
+              "description": "Bihari"
+            },
+            {
+              "const": "BH",
+              "description": "Bihari"
+            },
+            {
+              "const": "bi",
+              "description": "Bislama"
+            },
+            {
+              "const": "BI",
+              "description": "Bislama"
+            },
+            {
+              "const": "bm",
+              "description": "Bambara"
+            },
+            {
+              "const": "BM",
+              "description": "Bambara"
+            },
+            {
+              "const": "bn",
+              "description": "Bengali"
+            },
+            {
+              "const": "BN",
+              "description": "Bengali"
+            },
+            {
+              "const": "bo",
+              "description": "Tibetan"
+            },
+            {
+              "const": "BO",
+              "description": "Tibetan"
+            },
+            {
+              "const": "br",
+              "description": "Breton"
+            },
+            {
+              "const": "BR",
+              "description": "Breton"
+            },
+            {
+              "const": "bs",
+              "description": "Bosnian"
+            },
+            {
+              "const": "BS",
+              "description": "Bosnian"
+            },
+            {
+              "const": "ca",
+              "description": "Catalan; Valencian"
+            },
+            {
+              "const": "CA",
+              "description": "Catalan; Valencian"
+            },
+            {
+              "const": "ce",
+              "description": "Chechen"
+            },
+            {
+              "const": "CE",
+              "description": "Chechen"
+            },
+            {
+              "const": "ch",
+              "description": "Chamorro"
+            },
+            {
+              "const": "CH",
+              "description": "Chamorro"
+            },
+            {
+              "const": "co",
+              "description": "Corsican"
+            },
+            {
+              "const": "CO",
+              "description": "Corsican"
+            },
+            {
+              "const": "cr",
+              "description": "Cree"
+            },
+            {
+              "const": "CR",
+              "description": "Cree"
+            },
+            {
+              "const": "cs",
+              "description": "Czech"
+            },
+            {
+              "const": "CS",
+              "description": "Czech"
+            },
+            {
+              "const": "cu",
+              "description": "Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic"
+            },
+            {
+              "const": "CU",
+              "description": "Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic"
+            },
+            {
+              "const": "cv",
+              "description": "Chuvash"
+            },
+            {
+              "const": "CV",
+              "description": "Chuvash"
+            },
+            {
+              "const": "cy",
+              "description": "Welsh"
+            },
+            {
+              "const": "CY",
+              "description": "Welsh"
+            },
+            {
+              "const": "da",
+              "description": "Danish"
+            },
+            {
+              "const": "DA",
+              "description": "Danish"
+            },
+            {
+              "const": "de",
+              "description": "German"
+            },
+            {
+              "const": "DE",
+              "description": "German"
+            },
+            {
+              "const": "dv",
+              "description": "Divehi; Dhivehi; Maldivian"
+            },
+            {
+              "const": "DV",
+              "description": "Divehi; Dhivehi; Maldivian"
+            },
+            {
+              "const": "dz",
+              "description": "Dzongkha"
+            },
+            {
+              "const": "DZ",
+              "description": "Dzongkha"
+            },
+            {
+              "const": "ee",
+              "description": "Ewe"
+            },
+            {
+              "const": "EE",
+              "description": "Ewe"
+            },
+            {
+              "const": "el",
+              "description": "Greek; Modern (1453-)"
+            },
+            {
+              "const": "EL",
+              "description": "Greek; Modern (1453-)"
+            },
+            {
+              "const": "en",
+              "description": "English"
+            },
+            {
+              "const": "EN",
+              "description": "English"
+            },
+            {
+              "const": "eo",
+              "description": "Esperanto"
+            },
+            {
+              "const": "EO",
+              "description": "Esperanto"
+            },
+            {
+              "const": "es",
+              "description": "Spanish; Castilian"
+            },
+            {
+              "const": "ES",
+              "description": "Spanish; Castilian"
+            },
+            {
+              "const": "et",
+              "description": "Estonian"
+            },
+            {
+              "const": "ET",
+              "description": "Estonian"
+            },
+            {
+              "const": "eu",
+              "description": "Basque"
+            },
+            {
+              "const": "EU",
+              "description": "Basque"
+            },
+            {
+              "const": "fa",
+              "description": "Persian"
+            },
+            {
+              "const": "FA",
+              "description": "Persian"
+            },
+            {
+              "const": "ff",
+              "description": "Fulah"
+            },
+            {
+              "const": "FF",
+              "description": "Fulah"
+            },
+            {
+              "const": "fi",
+              "description": "Finnish"
+            },
+            {
+              "const": "FI",
+              "description": "Finnish"
+            },
+            {
+              "const": "fj",
+              "description": "Fijian"
+            },
+            {
+              "const": "FJ",
+              "description": "Fijian"
+            },
+            {
+              "const": "fo",
+              "description": "Faroese"
+            },
+            {
+              "const": "FO",
+              "description": "Faroese"
+            },
+            {
+              "const": "fr",
+              "description": "French"
+            },
+            {
+              "const": "FR",
+              "description": "French"
+            },
+            {
+              "const": "fy",
+              "description": "Western Frisian"
+            },
+            {
+              "const": "FY",
+              "description": "Western Frisian"
+            },
+            {
+              "const": "ga",
+              "description": "Irish"
+            },
+            {
+              "const": "GA",
+              "description": "Irish"
+            },
+            {
+              "const": "gd",
+              "description": "Gaelic; Scottish Gaelic"
+            },
+            {
+              "const": "GD",
+              "description": "Gaelic; Scottish Gaelic"
+            },
+            {
+              "const": "gl",
+              "description": "Galician"
+            },
+            {
+              "const": "GL",
+              "description": "Galician"
+            },
+            {
+              "const": "gn",
+              "description": "Guarani"
+            },
+            {
+              "const": "GN",
+              "description": "Guarani"
+            },
+            {
+              "const": "gu",
+              "description": "Gujarati"
+            },
+            {
+              "const": "GU",
+              "description": "Gujarati"
+            },
+            {
+              "const": "gv",
+              "description": "Manx"
+            },
+            {
+              "const": "GV",
+              "description": "Manx"
+            },
+            {
+              "const": "ha",
+              "description": "Hausa"
+            },
+            {
+              "const": "HA",
+              "description": "Hausa"
+            },
+            {
+              "const": "he",
+              "description": "Hebrew"
+            },
+            {
+              "const": "HE",
+              "description": "Hebrew"
+            },
+            {
+              "const": "hi",
+              "description": "Hindi"
+            },
+            {
+              "const": "HI",
+              "description": "Hindi"
+            },
+            {
+              "const": "ho",
+              "description": "Hiri Motu"
+            },
+            {
+              "const": "HO",
+              "description": "Hiri Motu"
+            },
+            {
+              "const": "hr",
+              "description": "Croatian"
+            },
+            {
+              "const": "HR",
+              "description": "Croatian"
+            },
+            {
+              "const": "ht",
+              "description": "Haitian; Haitian Creole"
+            },
+            {
+              "const": "HT",
+              "description": "Haitian; Haitian Creole"
+            },
+            {
+              "const": "hu",
+              "description": "Hungarian"
+            },
+            {
+              "const": "HU",
+              "description": "Hungarian"
+            },
+            {
+              "const": "hy",
+              "description": "Armenian"
+            },
+            {
+              "const": "HY",
+              "description": "Armenian"
+            },
+            {
+              "const": "hz",
+              "description": "Herero"
+            },
+            {
+              "const": "HZ",
+              "description": "Herero"
+            },
+            {
+              "const": "ia",
+              "description": "Interlingua (International Auxiliary Language Association)"
+            },
+            {
+              "const": "IA",
+              "description": "Interlingua (International Auxiliary Language Association)"
+            },
+            {
+              "const": "id",
+              "description": "Indonesian"
+            },
+            {
+              "const": "ID",
+              "description": "Indonesian"
+            },
+            {
+              "const": "ie",
+              "description": "Interlingue"
+            },
+            {
+              "const": "IE",
+              "description": "Interlingue"
+            },
+            {
+              "const": "ig",
+              "description": "Igbo"
+            },
+            {
+              "const": "IG",
+              "description": "Igbo"
+            },
+            {
+              "const": "ii",
+              "description": "Sichuan Yi"
+            },
+            {
+              "const": "II",
+              "description": "Sichuan Yi"
+            },
+            {
+              "const": "ik",
+              "description": "Inupiaq"
+            },
+            {
+              "const": "IK",
+              "description": "Inupiaq"
+            },
+            {
+              "const": "io",
+              "description": "Ido"
+            },
+            {
+              "const": "IO",
+              "description": "Ido"
+            },
+            {
+              "const": "is",
+              "description": "Icelandic"
+            },
+            {
+              "const": "IS",
+              "description": "Icelandic"
+            },
+            {
+              "const": "it",
+              "description": "Italian"
+            },
+            {
+              "const": "IT",
+              "description": "Italian"
+            },
+            {
+              "const": "iu",
+              "description": "Inuktiut"
+            },
+            {
+              "const": "IU",
+              "description": "Inuktiut"
+            },
+            {
+              "const": "ja",
+              "description": "Japanese"
+            },
+            {
+              "const": "JA",
+              "description": "Japanese"
+            },
+            {
+              "const": "jv",
+              "description": "Javanese"
+            },
+            {
+              "const": "JV",
+              "description": "Javanese"
+            },
+            {
+              "const": "ka",
+              "description": "Georgian"
+            },
+            {
+              "const": "KA",
+              "description": "Georgian"
+            },
+            {
+              "const": "kg",
+              "description": "Kongo"
+            },
+            {
+              "const": "KG",
+              "description": "Kongo"
+            },
+            {
+              "const": "ki",
+              "description": "Kikuyu; Gikuyu"
+            },
+            {
+              "const": "KI",
+              "description": "Kikuyu; Gikuyu"
+            },
+            {
+              "const": "kj",
+              "description": "Kuanyama; Kwanyama"
+            },
+            {
+              "const": "KJ",
+              "description": "Kuanyama; Kwanyama"
+            },
+            {
+              "const": "kk",
+              "description": "Kazakh"
+            },
+            {
+              "const": "KK",
+              "description": "Kazakh"
+            },
+            {
+              "const": "kl",
+              "description": "Kalaallisut; Greenlandic"
+            },
+            {
+              "const": "KL",
+              "description": "Kalaallisut; Greenlandic"
+            },
+            {
+              "const": "km",
+              "description": "Central Khmer"
+            },
+            {
+              "const": "KM",
+              "description": "Central Khmer"
+            },
+            {
+              "const": "kn",
+              "description": "Kannada"
+            },
+            {
+              "const": "KN",
+              "description": "Kannada"
+            },
+            {
+              "const": "ko",
+              "description": "Korean"
+            },
+            {
+              "const": "KO",
+              "description": "Korean"
+            },
+            {
+              "const": "kr",
+              "description": "Kanuri"
+            },
+            {
+              "const": "KR",
+              "description": "Kanuri"
+            },
+            {
+              "const": "ks",
+              "description": "Kashmiri"
+            },
+            {
+              "const": "KS",
+              "description": "Kashmiri"
+            },
+            {
+              "const": "ku",
+              "description": "Kurdish"
+            },
+            {
+              "const": "KU",
+              "description": "Kurdish"
+            },
+            {
+              "const": "kv",
+              "description": "Komi"
+            },
+            {
+              "const": "KV",
+              "description": "Komi"
+            },
+            {
+              "const": "kw",
+              "description": "Cornish"
+            },
+            {
+              "const": "KW",
+              "description": "Cornish"
+            },
+            {
+              "const": "ky",
+              "description": "Kirghiz; Kyrgyz"
+            },
+            {
+              "const": "KY",
+              "description": "Kirghiz; Kyrgyz"
+            },
+            {
+              "const": "la",
+              "description": "Latin"
+            },
+            {
+              "const": "LA",
+              "description": "Latin"
+            },
+            {
+              "const": "lb",
+              "description": "Luxembourgish; Letzeburgesch"
+            },
+            {
+              "const": "LB",
+              "description": "Luxembourgish; Letzeburgesch"
+            },
+            {
+              "const": "lg",
+              "description": "Ganda"
+            },
+            {
+              "const": "LG",
+              "description": "Ganda"
+            },
+            {
+              "const": "li",
+              "description": "Limburgan; Limburger; Limburgish"
+            },
+            {
+              "const": "LI",
+              "description": "Limburgan; Limburger; Limburgish"
+            },
+            {
+              "const": "ln",
+              "description": "Lingala"
+            },
+            {
+              "const": "LN",
+              "description": "Lingala"
+            },
+            {
+              "const": "lo",
+              "description": "Lao"
+            },
+            {
+              "const": "LO",
+              "description": "Lao"
+            },
+            {
+              "const": "lt",
+              "description": "Lithuanian"
+            },
+            {
+              "const": "LT",
+              "description": "Lithuanian"
+            },
+            {
+              "const": "lu",
+              "description": "Luba-Katanga"
+            },
+            {
+              "const": "LU",
+              "description": "Luba-Katanga"
+            },
+            {
+              "const": "lv",
+              "description": "Latvian"
+            },
+            {
+              "const": "LV",
+              "description": "Latvian"
+            },
+            {
+              "const": "mg",
+              "description": "Malagasy"
+            },
+            {
+              "const": "MG",
+              "description": "Malagasy"
+            },
+            {
+              "const": "mh",
+              "description": "Marshallese"
+            },
+            {
+              "const": "MH",
+              "description": "Marshallese"
+            },
+            {
+              "const": "mi",
+              "description": "Maori"
+            },
+            {
+              "const": "MI",
+              "description": "Maori"
+            },
+            {
+              "const": "mk",
+              "description": "Macedonian"
+            },
+            {
+              "const": "MK",
+              "description": "Macedonian"
+            },
+            {
+              "const": "ml",
+              "description": "Malayalam"
+            },
+            {
+              "const": "ML",
+              "description": "Malayalam"
+            },
+            {
+              "const": "mn",
+              "description": "Mongolian"
+            },
+            {
+              "const": "MN",
+              "description": "Mongolian"
+            },
+            {
+              "const": "mo",
+              "description": "Moldavian; Moldovan"
+            },
+            {
+              "const": "MO",
+              "description": "Moldavian; Moldovan"
+            },
+            {
+              "const": "mr",
+              "description": "Marathi"
+            },
+            {
+              "const": "MR",
+              "description": "Marathi"
+            },
+            {
+              "const": "ms",
+              "description": "Malay"
+            },
+            {
+              "const": "MS",
+              "description": "Malay"
+            },
+            {
+              "const": "mt",
+              "description": "Maltese"
+            },
+            {
+              "const": "MT",
+              "description": "Maltese"
+            },
+            {
+              "const": "my",
+              "description": "Burmese"
+            },
+            {
+              "const": "MY",
+              "description": "Burmese"
+            },
+            {
+              "const": "na",
+              "description": "Nauru"
+            },
+            {
+              "const": "NA",
+              "description": "Nauru"
+            },
+            {
+              "const": "nb",
+              "description": "Bokmal Norwegian; Norwegian Bokmal"
+            },
+            {
+              "const": "NB",
+              "description": "Bokmal Norwegian; Norwegian Bokmal"
+            },
+            {
+              "const": "nd",
+              "description": "Ndebele; North; North Ndebele"
+            },
+            {
+              "const": "ND",
+              "description": "Ndebele; North; North Ndebele"
+            },
+            {
+              "const": "ne",
+              "description": "Nepali"
+            },
+            {
+              "const": "NE",
+              "description": "Nepali"
+            },
+            {
+              "const": "ng",
+              "description": "Ndonga"
+            },
+            {
+              "const": "NG",
+              "description": "Ndonga"
+            },
+            {
+              "const": "nl",
+              "description": "Dutch; Flemish"
+            },
+            {
+              "const": "NL",
+              "description": "Dutch; Flemish"
+            },
+            {
+              "const": "nn",
+              "description": "Norwegian Nynorsk; Nynorsk, Norwegian"
+            },
+            {
+              "const": "NN",
+              "description": "Norwegian Nynorsk; Nynorsk, Norwegian"
+            },
+            {
+              "const": "no",
+              "description": "Norwegian"
+            },
+            {
+              "const": "NO",
+              "description": "Norwegian"
+            },
+            {
+              "const": "nr",
+              "description": "Ndebele; South; South Ndebele"
+            },
+            {
+              "const": "NR",
+              "description": "Ndebele; South; South Ndebele"
+            },
+            {
+              "const": "nv",
+              "description": "Navajo; Navaho"
+            },
+            {
+              "const": "NV",
+              "description": "Navajo; Navaho"
+            },
+            {
+              "const": "ny",
+              "description": "Chichewa; Chewa; Nyanja"
+            },
+            {
+              "const": "NY",
+              "description": "Chichewa; Chewa; Nyanja"
+            },
+            {
+              "const": "oc",
+              "description": "Occitan (post 1500); Provencal"
+            },
+            {
+              "const": "OC",
+              "description": "Occitan (post 1500); Provencal"
+            },
+            {
+              "const": "oj",
+              "description": "Ojibwa"
+            },
+            {
+              "const": "OJ",
+              "description": "Ojibwa"
+            },
+            {
+              "const": "om",
+              "description": "Oromo"
+            },
+            {
+              "const": "OM",
+              "description": "Oromo"
+            },
+            {
+              "const": "or",
+              "description": "Oriya"
+            },
+            {
+              "const": "OR",
+              "description": "Oriya"
+            },
+            {
+              "const": "os",
+              "description": "Ossetian; Ossetic"
+            },
+            {
+              "const": "OS",
+              "description": "Ossetian; Ossetic"
+            },
+            {
+              "const": "pa",
+              "description": "Panjabi; Punjabi"
+            },
+            {
+              "const": "PA",
+              "description": "Panjabi; Punjabi"
+            },
+            {
+              "const": "pi",
+              "description": "Pali"
+            },
+            {
+              "const": "PI",
+              "description": "Pali"
+            },
+            {
+              "const": "pl",
+              "description": "Polish"
+            },
+            {
+              "const": "PL",
+              "description": "Polish"
+            },
+            {
+              "const": "ps",
+              "description": "Pushto; Pashto"
+            },
+            {
+              "const": "PS",
+              "description": "Pushto; Pashto"
+            },
+            {
+              "const": "pt",
+              "description": "Portuguese"
+            },
+            {
+              "const": "PT",
+              "description": "Portuguese"
+            },
+            {
+              "const": "qu",
+              "description": "Quechua"
+            },
+            {
+              "const": "QU",
+              "description": "Quechua"
+            },
+            {
+              "const": "rm",
+              "description": "Romansh"
+            },
+            {
+              "const": "RM",
+              "description": "Romansh"
+            },
+            {
+              "const": "rn",
+              "description": "Rundi"
+            },
+            {
+              "const": "RN",
+              "description": "Rundi"
+            },
+            {
+              "const": "ro",
+              "description": "Romanian"
+            },
+            {
+              "const": "RO",
+              "description": "Romanian"
+            },
+            {
+              "const": "ru",
+              "description": "Russian"
+            },
+            {
+              "const": "RU",
+              "description": "Russian"
+            },
+            {
+              "const": "rw",
+              "description": "Kinyarwanda"
+            },
+            {
+              "const": "RW",
+              "description": "Kinyarwanda"
+            },
+            {
+              "const": "sa",
+              "description": "Sanskrit"
+            },
+            {
+              "const": "SA",
+              "description": "Sanskrit"
+            },
+            {
+              "const": "sc",
+              "description": "Sardinian"
+            },
+            {
+              "const": "SC",
+              "description": "Sardinian"
+            },
+            {
+              "const": "sd",
+              "description": "Sindhi"
+            },
+            {
+              "const": "SD",
+              "description": "Sindhi"
+            },
+            {
+              "const": "se",
+              "description": "Northern Sami"
+            },
+            {
+              "const": "SE",
+              "description": "Northern Sami"
+            },
+            {
+              "const": "sg",
+              "description": "Sango"
+            },
+            {
+              "const": "SG",
+              "description": "Sango"
+            },
+            {
+              "const": "si",
+              "description": "Sinhala; Sinhalese"
+            },
+            {
+              "const": "SI",
+              "description": "Sinhala; Sinhalese"
+            },
+            {
+              "const": "sk",
+              "description": "Slovak"
+            },
+            {
+              "const": "SK",
+              "description": "Slovak"
+            },
+            {
+              "const": "sl",
+              "description": "Slovenian"
+            },
+            {
+              "const": "SL",
+              "description": "Slovenian"
+            },
+            {
+              "const": "sm",
+              "description": "Samoan"
+            },
+            {
+              "const": "SM",
+              "description": "Samoan"
+            },
+            {
+              "const": "sn",
+              "description": "Shona"
+            },
+            {
+              "const": "SN",
+              "description": "Shona"
+            },
+            {
+              "const": "so",
+              "description": "Somali"
+            },
+            {
+              "const": "SO",
+              "description": "Somali"
+            },
+            {
+              "const": "sq",
+              "description": "Albanian"
+            },
+            {
+              "const": "SQ",
+              "description": "Albanian"
+            },
+            {
+              "const": "sr",
+              "description": "Serbian"
+            },
+            {
+              "const": "SR",
+              "description": "Serbian"
+            },
+            {
+              "const": "ss",
+              "description": "Swati"
+            },
+            {
+              "const": "SS",
+              "description": "Swati"
+            },
+            {
+              "const": "st",
+              "description": "Sotho, Southern"
+            },
+            {
+              "const": "ST",
+              "description": "Sotho, Southern"
+            },
+            {
+              "const": "su",
+              "description": "Sundanese"
+            },
+            {
+              "const": "SU",
+              "description": "Sundanese"
+            },
+            {
+              "const": "sv",
+              "description": "Swedish"
+            },
+            {
+              "const": "SV",
+              "description": "Swedish"
+            },
+            {
+              "const": "sw",
+              "description": "Swahili"
+            },
+            {
+              "const": "SW",
+              "description": "Swahili"
+            },
+            {
+              "const": "ta",
+              "description": "Tamil"
+            },
+            {
+              "const": "TA",
+              "description": "Tamil"
+            },
+            {
+              "const": "te",
+              "description": "Telugu"
+            },
+            {
+              "const": "TE",
+              "description": "Telugu"
+            },
+            {
+              "const": "tg",
+              "description": "Tajik"
+            },
+            {
+              "const": "TG",
+              "description": "Tajik"
+            },
+            {
+              "const": "th",
+              "description": "Thai"
+            },
+            {
+              "const": "TH",
+              "description": "Thai"
+            },
+            {
+              "const": "ti",
+              "description": "Tigrinya"
+            },
+            {
+              "const": "TI",
+              "description": "Tigrinya"
+            },
+            {
+              "const": "tk",
+              "description": "Turkmen"
+            },
+            {
+              "const": "TK",
+              "description": "Turkmen"
+            },
+            {
+              "const": "tl",
+              "description": "Tagalog"
+            },
+            {
+              "const": "TL",
+              "description": "Tagalog"
+            },
+            {
+              "const": "tn",
+              "description": "Tswana"
+            },
+            {
+              "const": "TN",
+              "description": "Tswana"
+            },
+            {
+              "const": "to",
+              "description": "Tonga (Tonga Islands)"
+            },
+            {
+              "const": "TO",
+              "description": "Tonga (Tonga Islands)"
+            },
+            {
+              "const": "tr",
+              "description": "Turkish"
+            },
+            {
+              "const": "TR",
+              "description": "Turkish"
+            },
+            {
+              "const": "ts",
+              "description": "Tsonga"
+            },
+            {
+              "const": "TS",
+              "description": "Tsonga"
+            },
+            {
+              "const": "tt",
+              "description": "Tatar"
+            },
+            {
+              "const": "TT",
+              "description": "Tatar"
+            },
+            {
+              "const": "tw",
+              "description": "Twi"
+            },
+            {
+              "const": "TW",
+              "description": "Twi"
+            },
+            {
+              "const": "ty",
+              "description": "Tahitian"
+            },
+            {
+              "const": "TY",
+              "description": "Tahitian"
+            },
+            {
+              "const": "ug",
+              "description": "Uighur; Uyghur"
+            },
+            {
+              "const": "UG",
+              "description": "Uighur; Uyghur"
+            },
+            {
+              "const": "uk",
+              "description": "Ukrainian"
+            },
+            {
+              "const": "UK",
+              "description": "Ukrainian"
+            },
+            {
+              "const": "ur",
+              "description": "Urdu"
+            },
+            {
+              "const": "UR",
+              "description": "Urdu"
+            },
+            {
+              "const": "uz",
+              "description": "Uzbek"
+            },
+            {
+              "const": "UZ",
+              "description": "Uzbek"
+            },
+            {
+              "const": "ve",
+              "description": "Venda"
+            },
+            {
+              "const": "VE",
+              "description": "Venda"
+            },
+            {
+              "const": "vi",
+              "description": "Vietnamese"
+            },
+            {
+              "const": "VI",
+              "description": "Vietnamese"
+            },
+            {
+              "const": "vo",
+              "description": "Volapük"
+            },
+            {
+              "const": "VO",
+              "description": "Volapük"
+            },
+            {
+              "const": "wa",
+              "description": "Walloon"
+            },
+            {
+              "const": "WA",
+              "description": "Walloon"
+            },
+            {
+              "const": "wo",
+              "description": "Wolof"
+            },
+            {
+              "const": "WO",
+              "description": "Wolof"
+            },
+            {
+              "const": "xh",
+              "description": "Xhosa"
+            },
+            {
+              "const": "XH",
+              "description": "Xhosa"
+            },
+            {
+              "const": "yi",
+              "description": "Yiddish"
+            },
+            {
+              "const": "YI",
+              "description": "Yiddish"
+            },
+            {
+              "const": "yo",
+              "description": "Yoruba"
+            },
+            {
+              "const": "YO",
+              "description": "Yoruba"
+            },
+            {
+              "const": "za",
+              "description": "Zhuang; Chuang"
+            },
+            {
+              "const": "ZA",
+              "description": "Zhuang; Chuang"
+            },
+            {
+              "const": "zh",
+              "description": "Chinese"
+            },
+            {
+              "const": "ZH",
+              "description": "Chinese"
+            },
+            {
+              "const": "zu",
+              "description": "Zulu"
+            },
+            {
+              "const": "ZU",
+              "description": "Zulu"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "TradeParty": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Identifier_2"
+          },
+          "minItems": 1
+        },
+        "Name": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Text_2"
+          }
+        },
+        "RoleCode": {
+          "$ref": "#/$defs/PartyRoleCode"
+        }
+      },
+      "required": [
+        "RoleCode"
+      ]
+    },
+    "TransportEvent": {
+      "type": "object",
+      "properties": {
+        "TypeCode": {
+          "$ref": "#/$defs/Code"
+        },
+        "EstimatedOccurrenceDateTime": {
+          "$ref": "#/$defs/DateTime"
+        },
+        "RequestedOccurrenceDateTime": {
+          "$ref": "#/$defs/DateTime_2"
+        }
+      },
+      "required": [
+        "TypeCode"
+      ]
+    },
+    "TransportEvent_II": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "$ref": "#/$defs/Identifier"
+        },
+        "TypeCode": {
+          "$ref": "#/$defs/Code_2"
+        },
+        "ActualOccurrenceDateTime": {
+          "$ref": "#/$defs/DateTime_3"
+        },
+        "ReportedConditionTypeCode": {
+          "$ref": "#/$defs/LogisticsStatusCode"
+        },
+        "OccurrenceLocation": {
+          "$ref": "#/$defs/LogisticsLocation_2"
+        },
+        "SpecifiedParty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TradeParty_II"
+          }
+        },
+        "ReferencedTransportMovement": {
+          "$ref": "#/$defs/TransportMovement"
+        },
+        "ReferencedConsignment": {
+          "$ref": "#/$defs/Consignment"
+        }
+      },
+      "required": [
+        "TypeCode",
+        "ActualOccurrenceDateTime",
+        "ReportedConditionTypeCode"
+      ]
+    },
+    "TransportStatusCode": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "EN_ROUTE",
+              "description": "Forwarder or carrier reports: means of transport is en-route"
+            },
+            {
+              "const": "ISSUE_COMPLETED",
+              "description": "Ship-from reports: goods-issue (hand-over to carrier) completed"
+            },
+            {
+              "const": "LOADING_COMPLETED",
+              "description": "Cross-dock reports: loading onto a means of transport completed"
+            },
+            {
+              "const": "NO_STATUS",
+              "description": "There is no specific status information (or update) available."
+            },
+            {
+              "const": "PICKUP_COMPLETED",
+              "description": "Forwarder or carrier reports: pick-up has been completed"
+            },
+            {
+              "const": "POD_COMPLETED",
+              "description": "Forwarder or carrier reports: goods have been handed over to final recipient (proof of delivery)"
+            },
+            {
+              "const": "READY_FOR_PICKUP",
+              "description": "Ship-from reports: shipment or THU is ready for pick-up"
+            },
+            {
+              "const": "RECEIPT_COMPLETED",
+              "description": "Ship-to reports: good receipt process completed"
+            },
+            {
+              "const": "UNLOADING_COMPLETED",
+              "description": "Ship-to or LSP reports: unloading of a shipment or THU from a means of transport completed"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "WeightUnitMeasure": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "number"
+        },
+        "unitCode": {
+          "oneOf": [
+            {
+              "const": "KGM"
+            },
+            {
+              "const": "TNE"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content",
+        "unitCode"
+      ]
+    },
+    "Code": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "2",
+              "description": "Delivery date/time, requested"
+            },
+            {
+              "const": "11",
+              "description": "Despatch date and or time"
+            },
+            {
+              "const": "132",
+              "description": "Transport means arrival date time, estimated"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "Code_2": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "ACTUAL"
+            },
+            {
+              "const": "ESTIMATED"
+            },
+            {
+              "const": "REQUESTED"
+            },
+            {
+              "const": "SCHEDULED"
+            }
+          ],
+          "type": "string"
+        },
+        "listAgencyID": {
+          "oneOf": [
+            {
+              "const": "10",
+              "description": "ODETTE"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "Consignment": {
+      "type": "object"
+    },
+    "DateTime": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "format": {
+          "oneOf": [
+            {
+              "const": "102",
+              "description": "CCYYMMDD"
+            },
+            {
+              "const": "203",
+              "description": "CCYYMMDDHHMM"
+            },
+            {
+              "const": "303",
+              "description": "CCYYMMDDHHMMZZZ"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "DateTime_2": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "format": {
+          "oneOf": [
+            {
+              "const": "102",
+              "description": "CCYYMMDD"
+            },
+            {
+              "const": "203",
+              "description": "CCYYMMDDHHMM"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "DateTime_3": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "format": {
+          "oneOf": [
+            {
+              "const": "303",
+              "description": "CCYYMMDDHHMMZZZ"
+            },
+            {
+              "const": "304",
+              "description": "CCYYMMDDHHMMSSZZZ"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "GeographicalCoordinate": {
+      "type": "object",
+      "properties": {
+        "LatitudeMeasure": {
+          "$ref": "#/$defs/Measure"
+        },
+        "LongitudeMeasure": {
+          "$ref": "#/$defs/Measure"
+        },
+        "LatitudeDirectionIndicator": {
+          "$ref": "#/$defs/Indicator"
+        },
+        "LongitudeDirectionIndicator": {
+          "$ref": "#/$defs/Indicator"
+        }
+      },
+      "required": [
+        "LatitudeMeasure",
+        "LongitudeMeasure"
+      ]
+    },
+    "GoodsTypeCode": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "ZZZ",
+              "description": "Mutually defined"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "Identifier_2": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "schemeAgencyID": {
+          "oneOf": [
+            {
+              "const": "10",
+              "description": "ODETTE"
+            },
+            {
+              "const": "16",
+              "description": "US, D&B (Dun & Bradstreet Corporation)"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "IncludedJISCompartment": {
+      "type": "object",
+      "properties": {
+        "CompartmentID": {
+          "$ref": "#/$defs/Identifier_3"
+        },
+        "SequenceID": {
+          "$ref": "#/$defs/Identifier_3"
+        },
+        "ProductionID": {
+          "$ref": "#/$defs/Identifier_3"
+        },
+        "ModuleID": {
+          "$ref": "#/$defs/Identifier_3"
+        },
+        "GrossWeightMeasure": {
+          "$ref": "#/$defs/WeightUnitMeasure"
+        },
+        "NetWeightMeasure": {
+          "$ref": "#/$defs/WeightUnitMeasure"
+        }
+      }
+    },
+    "LocationFunctionCode": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "11",
+              "description": "Place of discharge"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "LogisticsLocation_2": {
+      "type": "object",
+      "properties": {
+        "Name": {
+          "$ref": "#/$defs/Text_2"
+        },
+        "PhysicalGeographicalCoordinate": {
+          "$ref": "#/$defs/GeographicalCoordinate"
+        }
+      }
+    },
+    "LogisticsStatusCode": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "EN_ROUTE",
+              "description": "Forwarder or carrier reports: means of transport is en-route"
+            },
+            {
+              "const": "ISSUE_COMPLETED",
+              "description": "Ship-from reports: goods-issue (hand-over to carrier) completed"
+            },
+            {
+              "const": "PICKUP_COMPLETED",
+              "description": "Forwarder or carrier reports: pick-up has been completed"
+            },
+            {
+              "const": "POD_COMPLETED",
+              "description": "Forwarder or carrier reports: goods have been handed over to final recipient (proof of delivery)"
+            },
+            {
+              "const": "READY_FOR_PICKUP",
+              "description": "Ship-from reports: shipment or THU is ready for pick-up"
+            },
+            {
+              "const": "RECEIPT_COMPLETED",
+              "description": "Ship-to reports: good receipt process completed"
+            },
+            {
+              "const": "UNLOADING_COMPLETED",
+              "description": "Ship-to or LSP reports: unloading of a shipment or THU from a means of transport completed"
+            }
+          ],
+          "type": "string"
+        },
+        "listAgencyID": {
+          "oneOf": [
+            {
+              "const": "6"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "PartyRoleCode": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "CA",
+              "description": "Carrier"
+            },
+            {
+              "const": "FW",
+              "description": "Freight forwarder"
+            },
+            {
+              "const": "SF",
+              "description": "Ship from"
+            },
+            {
+              "const": "ST",
+              "description": "Ship to"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "Text_2": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "TradeParty_II": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Identifier_4"
+          },
+          "minItems": 1
+        },
+        "Name": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Text_2"
+          }
+        },
+        "RoleCode": {
+          "$ref": "#/$defs/Code_3"
+        }
+      },
+      "required": [
+        "RoleCode"
+      ]
+    },
+    "TransportModeCode": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "0",
+              "description": "Transport mode not specified"
+            },
+            {
+              "const": "1",
+              "description": "Maritime transport"
+            },
+            {
+              "const": "2",
+              "description": "Rail transport"
+            },
+            {
+              "const": "3",
+              "description": "Road transport"
+            },
+            {
+              "const": "4",
+              "description": "Air transport"
+            },
+            {
+              "const": "5",
+              "description": "Mail"
+            },
+            {
+              "const": "6",
+              "description": "Multimodal transport"
+            },
+            {
+              "const": "7",
+              "description": "Fixed transport installations"
+            },
+            {
+              "const": "8",
+              "description": "Inland water transport"
+            },
+            {
+              "const": "9",
+              "description": "Transport mode not applicable"
+            }
+          ],
+          "type": "string"
+        },
+        "listAgencyID": {
+          "oneOf": [
+            {
+              "const": "6"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "TransportModeCode_2": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "0",
+              "description": "Transport mode not specified"
+            },
+            {
+              "const": "1",
+              "description": "Maritime transport"
+            },
+            {
+              "const": "2",
+              "description": "Rail transport"
+            },
+            {
+              "const": "3",
+              "description": "Road transport"
+            },
+            {
+              "const": "4",
+              "description": "Air transport"
+            },
+            {
+              "const": "5",
+              "description": "Mail"
+            },
+            {
+              "const": "6",
+              "description": "Multimodal transport"
+            },
+            {
+              "const": "7",
+              "description": "Fixed transport installations"
+            },
+            {
+              "const": "8",
+              "description": "Inland water transport"
+            },
+            {
+              "const": "9",
+              "description": "Transport mode not applicable"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "TransportMovement": {
+      "type": "object",
+      "properties": {
+        "ModeCode": {
+          "$ref": "#/$defs/TransportModeCode_2"
+        },
+        "ID": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Identifier_5"
+          },
+          "minItems": 1
+        },
+        "ReferencedConsignmentID": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Identifier"
+          }
+        },
+        "UsedTransportMeans": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TransportMeans"
+          }
+        },
+        "TransportParty": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ConsignmentParty"
+          }
+        }
+      }
+    },
+    "TransportMovementStageCode": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "12",
+              "description": "At departure"
+            }
+          ],
+          "type": "string"
+        },
+        "listAgencyID": {
+          "oneOf": [
+            {
+              "const": "6"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "Code_3": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "CA",
+              "description": "Carrier"
+            },
+            {
+              "const": "DDA",
+              "description": "Report responsible party"
+            },
+            {
+              "const": "DGC",
+              "description": "Logistic service provider"
+            },
+            {
+              "const": "FW",
+              "description": "Freight forwarder"
+            },
+            {
+              "const": "SF",
+              "description": "Ship from"
+            },
+            {
+              "const": "ST",
+              "description": "Ship to"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "ConsignmentParty": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Identifier_2"
+          }
+        },
+        "Name": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Text_2"
+          }
+        },
+        "RoleCode": {
+          "$ref": "#/$defs/PartyRoleCode_2"
+        }
+      },
+      "required": [
+        "RoleCode"
+      ]
+    },
+    "Identifier_3": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "schemeID": {
+          "type": "string"
+        },
+        "schemeName": {
+          "type": "string"
+        },
+        "schemeAgencyID": {
+          "oneOf": [
+            {
+              "const": "1",
+              "description": "CCC (Customs Co-operation Council)"
+            },
+            {
+              "const": "2",
+              "description": "CEC (Commission of the European Communities)"
+            },
+            {
+              "const": "3",
+              "description": "IATA (International Air Transport Association)"
+            },
+            {
+              "const": "4",
+              "description": "ICC (International Chamber of Commerce)"
+            },
+            {
+              "const": "5",
+              "description": "ISO (International Organization for Standardization)"
+            },
+            {
+              "const": "6",
+              "description": "UN/ECE (United Nations - Economic Commission for Europe)"
+            },
+            {
+              "const": "7",
+              "description": "CEFIC (Conseil Europeen des Federations de l'Industrie Chimique)"
+            },
+            {
+              "const": "8",
+              "description": "EDIFICE"
+            },
+            {
+              "const": "9",
+              "description": "GS1"
+            },
+            {
+              "const": "10",
+              "description": "ODETTE"
+            },
+            {
+              "const": "11",
+              "description": "Lloyd's register of shipping"
+            },
+            {
+              "const": "12",
+              "description": "UIC (International union of railways)"
+            },
+            {
+              "const": "13",
+              "description": "ICAO (International Civil Aviation Organization)"
+            },
+            {
+              "const": "14",
+              "description": "ICS (International Chamber of Shipping)"
+            },
+            {
+              "const": "15",
+              "description": "RINET (Reinsurance and Insurance Network)"
+            },
+            {
+              "const": "16",
+              "description": "US, D&B (Dun & Bradstreet Corporation)"
+            },
+            {
+              "const": "17",
+              "description": "S.W.I.F.T."
+            },
+            {
+              "const": "18",
+              "description": "Conventions on SAD and transit (EC and EFTA)"
+            },
+            {
+              "const": "19",
+              "description": "FRRC (Federal Reserve Routing Code)"
+            },
+            {
+              "const": "20",
+              "description": "BIC (Bureau International des Containeurs)"
+            },
+            {
+              "const": "21",
+              "description": "Assigned by transport company"
+            },
+            {
+              "const": "22",
+              "description": "US, ISA (Information Systems Agreement)"
+            },
+            {
+              "const": "23",
+              "description": "FR, EDITRANSPORT"
+            },
+            {
+              "const": "24",
+              "description": "AU, ROA (Railways of Australia)"
+            },
+            {
+              "const": "25",
+              "description": "EDITEX (Europe)"
+            },
+            {
+              "const": "26",
+              "description": "NL, Foundation Uniform Transport Code"
+            },
+            {
+              "const": "27",
+              "description": "US, FDA (Food and Drug Administration)"
+            },
+            {
+              "const": "28",
+              "description": "EDITEUR (European book sector electronic data interchange group)"
+            },
+            {
+              "const": "29",
+              "description": "GB, FLEETNET"
+            },
+            {
+              "const": "30",
+              "description": "GB, ABTA (Association of British Travel Agencies)"
+            },
+            {
+              "const": "31",
+              "description": "FI, Finish State Railway"
+            },
+            {
+              "const": "32",
+              "description": "PL, Polish State Railway"
+            },
+            {
+              "const": "33",
+              "description": "BG, Bulgaria State Railway"
+            },
+            {
+              "const": "34",
+              "description": "RO, Rumanian State Railway"
+            },
+            {
+              "const": "35",
+              "description": "CZ, Tchechian State Railway"
+            },
+            {
+              "const": "36",
+              "description": "HU, Hungarian State Railway"
+            },
+            {
+              "const": "37",
+              "description": "GB, British Railways"
+            },
+            {
+              "const": "38",
+              "description": "ES, Spanish National Railway"
+            },
+            {
+              "const": "39",
+              "description": "SE, Swedish State Railway"
+            },
+            {
+              "const": "40",
+              "description": "NO, Norwegian State Railway"
+            },
+            {
+              "const": "41",
+              "description": "DE, German Railway"
+            },
+            {
+              "const": "42",
+              "description": "AT, Austrian Federal Railways"
+            },
+            {
+              "const": "43",
+              "description": "LU, Luxembourg National Railway Company"
+            },
+            {
+              "const": "44",
+              "description": "IT, Italian State Railways"
+            },
+            {
+              "const": "45",
+              "description": "NL, Netherlands Railways"
+            },
+            {
+              "const": "46",
+              "description": "CH, Swiss Federal Railways"
+            },
+            {
+              "const": "47",
+              "description": "DK, Danish State Railways"
+            },
+            {
+              "const": "48",
+              "description": "FR, French National Railway Company"
+            },
+            {
+              "const": "49",
+              "description": "BE, Belgian National Railway Company"
+            },
+            {
+              "const": "50",
+              "description": "PT, Portuguese Railways"
+            },
+            {
+              "const": "51",
+              "description": "SK, Slovakian State Railways"
+            },
+            {
+              "const": "52",
+              "description": "IE, Irish Transport Company"
+            },
+            {
+              "const": "53",
+              "description": "FIATA (International Federation of Freight Forwarders Associations)"
+            },
+            {
+              "const": "54",
+              "description": "IMO (International Maritime Organisation)"
+            },
+            {
+              "const": "55",
+              "description": "US, DOT (United States Department of Transportation)"
+            },
+            {
+              "const": "56",
+              "description": "TW, Trade-van"
+            },
+            {
+              "const": "57",
+              "description": "TW, Chinese Taipei Customs"
+            },
+            {
+              "const": "58",
+              "description": "EUROFER"
+            },
+            {
+              "const": "59",
+              "description": "DE, EDIBAU"
+            },
+            {
+              "const": "60",
+              "description": "Assigned by national trade agency"
+            },
+            {
+              "const": "61",
+              "description": "Association Europeenne des Constructeurs de Materiel Aerospatial (AECMA)"
+            },
+            {
+              "const": "62",
+              "description": "US, DIstilled Spirits Council of the United States (DISCUS)"
+            },
+            {
+              "const": "63",
+              "description": "North Atlantic Treaty Organization (NATO)"
+            },
+            {
+              "const": "64",
+              "description": "FR, CLEEP"
+            },
+            {
+              "const": "65",
+              "description": "GS1 France"
+            },
+            {
+              "const": "66",
+              "description": "MY, Malaysian Customs and Excise"
+            },
+            {
+              "const": "67",
+              "description": "MY, Malaysia Central Bank"
+            },
+            {
+              "const": "68",
+              "description": "GS1 Italy"
+            },
+            {
+              "const": "69",
+              "description": "US, National Alcohol Beverage Control Association (NABCA)"
+            },
+            {
+              "const": "70",
+              "description": "MY, Dagang.Net"
+            },
+            {
+              "const": "71",
+              "description": "US, FCC (Federal Communications Commission)"
+            },
+            {
+              "const": "72",
+              "description": "US, MARAD (Maritime Administration)"
+            },
+            {
+              "const": "73",
+              "description": "US, DSAA (Defense Security Assistance Agency)"
+            },
+            {
+              "const": "74",
+              "description": "US, NRC (Nuclear Regulatory Commission)"
+            },
+            {
+              "const": "75",
+              "description": "US, ODTC (Office of Defense Trade Controls)"
+            },
+            {
+              "const": "76",
+              "description": "US, ATF (Bureau of Alcohol, Tobacco and Firearms)"
+            },
+            {
+              "const": "77",
+              "description": "US, BXA (Bureau of Export Administration)"
+            },
+            {
+              "const": "78",
+              "description": "US, FWS (Fish and Wildlife Service)"
+            },
+            {
+              "const": "79",
+              "description": "US, OFAC (Office of Foreign Assets Control)"
+            },
+            {
+              "const": "80",
+              "description": "BRMA/RAA - LIMNET - RINET Joint Venture"
+            },
+            {
+              "const": "81",
+              "description": "RU, (SFT) Society for Financial Telecommunications"
+            },
+            {
+              "const": "82",
+              "description": "NO, Enhetsregisteret ved Bronnoysundregisterne"
+            },
+            {
+              "const": "83",
+              "description": "US, National Retail Federation"
+            },
+            {
+              "const": "84",
+              "description": "DE, BRD (Gesetzgeber der Bundesrepublik Deutschland)"
+            },
+            {
+              "const": "85",
+              "description": "North America, Telecommunications Industry Forum"
+            },
+            {
+              "const": "86",
+              "description": "Assigned by party originating the message"
+            },
+            {
+              "const": "87",
+              "description": "Assigned by carrier"
+            },
+            {
+              "const": "88",
+              "description": "Assigned by owner of operation"
+            },
+            {
+              "const": "89",
+              "description": "Assigned by distributor"
+            },
+            {
+              "const": "90",
+              "description": "Assigned by manufacturer"
+            },
+            {
+              "const": "91",
+              "description": "Assigned by seller or seller's agent"
+            },
+            {
+              "const": "92",
+              "description": "Assigned by buyer or buyer's agent"
+            },
+            {
+              "const": "93",
+              "description": "AT, Austrian Customs"
+            },
+            {
+              "const": "94",
+              "description": "AT, Austrian PTT"
+            },
+            {
+              "const": "95",
+              "description": "AU, Australian Customs Service"
+            },
+            {
+              "const": "96",
+              "description": "CA, Revenue Canada, Customs and Excise"
+            },
+            {
+              "const": "97",
+              "description": "CH, Administration federale des contributions"
+            },
+            {
+              "const": "98",
+              "description": "CH, Direction generale des douanes"
+            },
+            {
+              "const": "99",
+              "description": "CH, Division des importations et exportations, OFAEE"
+            },
+            {
+              "const": "100",
+              "description": "CH, Entreprise des PTT"
+            },
+            {
+              "const": "101",
+              "description": "CH, Carbura"
+            },
+            {
+              "const": "102",
+              "description": "CH, Centrale suisse pour l'importation du charbon"
+            },
+            {
+              "const": "103",
+              "description": "CH, Office fiduciaire des importateurs de denrees alimentaires"
+            },
+            {
+              "const": "104",
+              "description": "CH, Association suisse code des articles"
+            },
+            {
+              "const": "105",
+              "description": "DK, Ministry of taxation, Central Customs and Tax Administration"
+            },
+            {
+              "const": "106",
+              "description": "FR, Direction generale des douanes et droits indirects"
+            },
+            {
+              "const": "107",
+              "description": "FR, INSEE"
+            },
+            {
+              "const": "108",
+              "description": "FR, Banque de France"
+            },
+            {
+              "const": "109",
+              "description": "GB, H.M. Customs & Excise"
+            },
+            {
+              "const": "110",
+              "description": "IE, Revenue Commissioners, Customs AEP project"
+            },
+            {
+              "const": "111",
+              "description": "US, U.S. Customs Service"
+            },
+            {
+              "const": "112",
+              "description": "US, U.S. Census Bureau"
+            },
+            {
+              "const": "113",
+              "description": "GS1 US"
+            },
+            {
+              "const": "114",
+              "description": "US, ABA (American Bankers Association)"
+            },
+            {
+              "const": "116",
+              "description": "US, ANSI ASC X12"
+            },
+            {
+              "const": "117",
+              "description": "AT, Geldausgabeautomaten-Service Gesellschaft m.b.H."
+            },
+            {
+              "const": "118",
+              "description": "SE, Svenska Bankfoereningen"
+            },
+            {
+              "const": "119",
+              "description": "IT, Associazione Bancaria Italiana"
+            },
+            {
+              "const": "120",
+              "description": "IT, Socieata' Interbancaria per l'Automazione"
+            },
+            {
+              "const": "121",
+              "description": "CH, Telekurs AG"
+            },
+            {
+              "const": "122",
+              "description": "CH, Swiss Securities Clearing Corporation"
+            },
+            {
+              "const": "123",
+              "description": "NO, Norwegian Interbank Research Organization"
+            },
+            {
+              "const": "124",
+              "description": "NO, Norwegian Bankers' Association"
+            },
+            {
+              "const": "125",
+              "description": "FI, The Finnish Bankers' Association"
+            },
+            {
+              "const": "126",
+              "description": "US, NCCMA (Account Analysis Codes)"
+            },
+            {
+              "const": "127",
+              "description": "DE, ARE (AbRechnungs Einheit)"
+            },
+            {
+              "const": "128",
+              "description": "BE, Belgian Bankers' Association"
+            },
+            {
+              "const": "129",
+              "description": "BE, Belgian Ministry of Finance"
+            },
+            {
+              "const": "130",
+              "description": "DK, Danish Bankers Association"
+            },
+            {
+              "const": "131",
+              "description": "DE, German Bankers Association"
+            },
+            {
+              "const": "132",
+              "description": "GB, BACS Limited"
+            },
+            {
+              "const": "133",
+              "description": "GB, Association for Payment Clearing Services"
+            },
+            {
+              "const": "134",
+              "description": "GB, APACS (Association of payment clearing services)"
+            },
+            {
+              "const": "135",
+              "description": "GB, The Clearing House"
+            },
+            {
+              "const": "136",
+              "description": "GS1 UK"
+            },
+            {
+              "const": "137",
+              "description": "AT, Verband oesterreichischer Banken und Bankiers"
+            },
+            {
+              "const": "138",
+              "description": "FR, CFONB (Comite francais d'organ. et de normalisation bancaires)"
+            },
+            {
+              "const": "139",
+              "description": "Universal Postal Union (UPU)"
+            },
+            {
+              "const": "140",
+              "description": "CEC (Commission of the European Communities), DG/XXI-01"
+            },
+            {
+              "const": "141",
+              "description": "CEC (Commission of the European Communities), DG/XXI-B-1"
+            },
+            {
+              "const": "142",
+              "description": "CEC (Commission of the European Communities), DG/XXXIV"
+            },
+            {
+              "const": "143",
+              "description": "NZ, New Zealand Customs"
+            },
+            {
+              "const": "144",
+              "description": "NL, Netherlands Customs"
+            },
+            {
+              "const": "145",
+              "description": "SE, Swedish Customs"
+            },
+            {
+              "const": "146",
+              "description": "DE, German Customs"
+            },
+            {
+              "const": "147",
+              "description": "BE, Belgian Customs"
+            },
+            {
+              "const": "148",
+              "description": "ES, Spanish Customs"
+            },
+            {
+              "const": "149",
+              "description": "IL, Israel Customs"
+            },
+            {
+              "const": "150",
+              "description": "HK, Hong Kong Customs"
+            },
+            {
+              "const": "151",
+              "description": "JP, Japan Customs"
+            },
+            {
+              "const": "152",
+              "description": "SA, Saudi Arabia Customs"
+            },
+            {
+              "const": "153",
+              "description": "IT, Italian Customs"
+            },
+            {
+              "const": "154",
+              "description": "GR, Greek Customs"
+            },
+            {
+              "const": "155",
+              "description": "PT, Portuguese Customs"
+            },
+            {
+              "const": "156",
+              "description": "LU, Luxembourg Customs"
+            },
+            {
+              "const": "157",
+              "description": "NO, Norwegian Customs"
+            },
+            {
+              "const": "158",
+              "description": "FI, Finnish Customs"
+            },
+            {
+              "const": "159",
+              "description": "IS, Iceland Customs"
+            },
+            {
+              "const": "160",
+              "description": "LI, Liechtenstein authority"
+            },
+            {
+              "const": "161",
+              "description": "UNCTAD (United Nations - Conference on Trade And Development)"
+            },
+            {
+              "const": "162",
+              "description": "CEC (Commission of the European Communities), DG/XIII-D-5"
+            },
+            {
+              "const": "163",
+              "description": "US, FMC (Federal Maritime Commission)"
+            },
+            {
+              "const": "164",
+              "description": "US, DEA (Drug Enforcement Agency)"
+            },
+            {
+              "const": "165",
+              "description": "US, DCI (Distribution Codes, INC.)"
+            },
+            {
+              "const": "166",
+              "description": "US, National Motor Freight Classification Association"
+            },
+            {
+              "const": "167",
+              "description": "US, AIAG (Automotive Industry Action Group)"
+            },
+            {
+              "const": "168",
+              "description": "US, FIPS (Federal Information Publishing Standard)"
+            },
+            {
+              "const": "169",
+              "description": "CA, SCC (Standards Council of Canada)"
+            },
+            {
+              "const": "170",
+              "description": "CA, CPA (Canadian Payment Association)"
+            },
+            {
+              "const": "171",
+              "description": "NL, Interpay Girale Services"
+            },
+            {
+              "const": "172",
+              "description": "NL, Interpay Debit Card Services"
+            },
+            {
+              "const": "173",
+              "description": "NO, NORPRO"
+            },
+            {
+              "const": "174",
+              "description": "DE, DIN (Deutsches Institut fuer Normung)"
+            },
+            {
+              "const": "175",
+              "description": "FCI (Factors Chain International)"
+            },
+            {
+              "const": "176",
+              "description": "BR, Banco Central do Brazil"
+            },
+            {
+              "const": "177",
+              "description": "AU, LIFA (Life Insurance Federation of Australia)"
+            },
+            {
+              "const": "178",
+              "description": "AU, SAA (Standards Association of Australia)"
+            },
+            {
+              "const": "179",
+              "description": "US, Air transport association of America"
+            },
+            {
+              "const": "180",
+              "description": "DE, BIA (Berufsgenossenschaftliches Institut fuer Arbeitssicherheit)"
+            },
+            {
+              "const": "181",
+              "description": "Edibuild"
+            },
+            {
+              "const": "182",
+              "description": "US, Standard Carrier Alpha Code (Motor)"
+            },
+            {
+              "const": "183",
+              "description": "US, American Petroleum Institute"
+            },
+            {
+              "const": "184",
+              "description": "AU, ACOS (Australian Chamber of Shipping)"
+            },
+            {
+              "const": "185",
+              "description": "DE, BDI (Bundesverband der Deutschen Industrie e.V.)"
+            },
+            {
+              "const": "186",
+              "description": "US, GSA (General Services Administration)"
+            },
+            {
+              "const": "187",
+              "description": "US, DLMSO (Defense Logistics Management Standards Office)"
+            },
+            {
+              "const": "188",
+              "description": "US, NIST (National Institute of Standards and Technology)"
+            },
+            {
+              "const": "189",
+              "description": "US, DoD (Department of Defense)"
+            },
+            {
+              "const": "190",
+              "description": "US, VA (Department of Veterans Affairs)"
+            },
+            {
+              "const": "191",
+              "description": "IAPSO (United Nations Inter-Agency Procurement Services Office)"
+            },
+            {
+              "const": "192",
+              "description": "Shipper's association"
+            },
+            {
+              "const": "193",
+              "description": "EU, European Telecommunications Informatics Services (ETIS)"
+            },
+            {
+              "const": "194",
+              "description": "AU, AQIS (Australian Quarantine and Inspection Service)"
+            },
+            {
+              "const": "195",
+              "description": "CO, DIAN (Direccion de Impuestos y Aduanas Nacionales)"
+            },
+            {
+              "const": "196",
+              "description": "US, COPAS (Council of Petroleum Accounting Society)"
+            },
+            {
+              "const": "197",
+              "description": "US, DISA (Data Interchange Standards Association)"
+            },
+            {
+              "const": "198",
+              "description": "CO, Superintendencia Bancaria De Colombia"
+            },
+            {
+              "const": "199",
+              "description": "FR, Direction de la Comptabilite Publique"
+            },
+            {
+              "const": "200",
+              "description": "GS1 Netherlands"
+            },
+            {
+              "const": "201",
+              "description": "US, WSSA(Wine and Spirits Shippers Association)"
+            },
+            {
+              "const": "202",
+              "description": "PT, Banco de Portugal"
+            },
+            {
+              "const": "203",
+              "description": "FR, GALIA (Groupement pour l'Amelioration des Liaisons dans l'Industrie Automobile)"
+            },
+            {
+              "const": "204",
+              "description": "DE, VDA (Verband der Automobilindustrie E.V.)"
+            },
+            {
+              "const": "205",
+              "description": "IT, ODETTE Italy"
+            },
+            {
+              "const": "206",
+              "description": "NL, ODETTE Netherlands"
+            },
+            {
+              "const": "207",
+              "description": "ES, ODETTE Spain"
+            },
+            {
+              "const": "208",
+              "description": "SE, ODETTE Sweden"
+            },
+            {
+              "const": "209",
+              "description": "GB, ODETTE United Kingdom"
+            },
+            {
+              "const": "210",
+              "description": "EU, EDI for financial, informational, cost, accounting, auditing and social areas (EDIFICAS) - Europe"
+            },
+            {
+              "const": "211",
+              "description": "FR, EDI for financial, informational, cost, accounting, auditing and social areas (EDIFICAS) - France"
+            },
+            {
+              "const": "212",
+              "description": "DE, Deutsch Telekom AG"
+            },
+            {
+              "const": "213",
+              "description": "JP, NACCS Center (Nippon Automated Cargo Clearance System Operations Organization)"
+            },
+            {
+              "const": "214",
+              "description": "US, AISI (American Iron and Steel Institute)"
+            },
+            {
+              "const": "215",
+              "description": "AU, APCA (Australian Payments Clearing Association)"
+            },
+            {
+              "const": "216",
+              "description": "US, Department of Labor"
+            },
+            {
+              "const": "217",
+              "description": "US, N.A.I.C. (National Association of Insurance Commissioners)"
+            },
+            {
+              "const": "218",
+              "description": "GB, The Association of British Insurers"
+            },
+            {
+              "const": "219",
+              "description": "FR, d'ArvA"
+            },
+            {
+              "const": "220",
+              "description": "FI, Finnish tax board"
+            },
+            {
+              "const": "221",
+              "description": "FR, CNAMTS (Caisse Nationale de l'Assurance Maladie des Travailleurs Salaries)"
+            },
+            {
+              "const": "222",
+              "description": "DK, Danish National Board of Health"
+            },
+            {
+              "const": "223",
+              "description": "DK, Danish Ministry of Home Affairs"
+            },
+            {
+              "const": "224",
+              "description": "US, Aluminum Association"
+            },
+            {
+              "const": "225",
+              "description": "US, CIDX (Chemical Industry Data Exchange)"
+            },
+            {
+              "const": "226",
+              "description": "US, Carbide Manufacturers"
+            },
+            {
+              "const": "227",
+              "description": "US, NWDA (National Wholesale Druggist Association)"
+            },
+            {
+              "const": "228",
+              "description": "US, EIA (Electronic Industry Association)"
+            },
+            {
+              "const": "229",
+              "description": "US, American Paper Institute"
+            },
+            {
+              "const": "230",
+              "description": "US, VICS (Voluntary Inter-Industry Commerce Standards)"
+            },
+            {
+              "const": "231",
+              "description": "Copper and Brass Fabricators Council"
+            },
+            {
+              "const": "232",
+              "description": "GB, Inland Revenue"
+            },
+            {
+              "const": "233",
+              "description": "US, OMB (Office of Management and Budget)"
+            },
+            {
+              "const": "234",
+              "description": "DE, Siemens AG"
+            },
+            {
+              "const": "235",
+              "description": "AU, Tradegate (Electronic Commerce Australia)"
+            },
+            {
+              "const": "236",
+              "description": "US, United States Postal Service (USPS)"
+            },
+            {
+              "const": "237",
+              "description": "US, United States health industry"
+            },
+            {
+              "const": "238",
+              "description": "US, TDCC (Transportation Data Coordinating Committee)"
+            },
+            {
+              "const": "239",
+              "description": "US, HL7 (Health Level 7)"
+            },
+            {
+              "const": "240",
+              "description": "US, CHIPS (Clearing House Interbank Payment Systems)"
+            },
+            {
+              "const": "241",
+              "description": "PT, SIBS (Sociedade Interbancaria de Servicos)"
+            },
+            {
+              "const": "244",
+              "description": "US, Department of Health and Human Services"
+            },
+            {
+              "const": "245",
+              "description": "GS1 Denmark"
+            },
+            {
+              "const": "246",
+              "description": "GS1 Germany"
+            },
+            {
+              "const": "247",
+              "description": "US, HBICC (Health Industry Business Communication Council)"
+            },
+            {
+              "const": "248",
+              "description": "US, ASTM (American Society of Testing and Materials)"
+            },
+            {
+              "const": "249",
+              "description": "IP (Institute of Petroleum)"
+            },
+            {
+              "const": "250",
+              "description": "US, UOP (Universal Oil Products)"
+            },
+            {
+              "const": "251",
+              "description": "AU, HIC (Health Insurance Commission)"
+            },
+            {
+              "const": "252",
+              "description": "AU, AIHW (Australian Institute of Health and Welfare)"
+            },
+            {
+              "const": "253",
+              "description": "AU, NCCH (National Centre for Classification in Health)"
+            },
+            {
+              "const": "254",
+              "description": "AU, DOH (Australian Department of Health)"
+            },
+            {
+              "const": "255",
+              "description": "AU, ADA (Australian Dental Association)"
+            },
+            {
+              "const": "256",
+              "description": "US, AAR (Association of American Railroads)"
+            },
+            {
+              "const": "257",
+              "description": "ECCMA (Electronic Commerce Code Management Association)"
+            },
+            {
+              "const": "258",
+              "description": "JP, Japanese Ministry of Transport"
+            },
+            {
+              "const": "259",
+              "description": "JP, Japanese Maritime Safety Agency"
+            },
+            {
+              "const": "260",
+              "description": "ebIX (European forum for energy Business Information eXchange)"
+            },
+            {
+              "const": "261",
+              "description": "EEG7, European Expert Group 7 (Insurance)"
+            },
+            {
+              "const": "262",
+              "description": "DE, GDV (Gesamtverband der Deutschen Versicherungswirtschaft e.V.)"
+            },
+            {
+              "const": "263",
+              "description": "CA, CSIO (Centre for Study of Insurance Operations)"
+            },
+            {
+              "const": "264",
+              "description": "FR, AGF (Assurances Generales de France)"
+            },
+            {
+              "const": "265",
+              "description": "SE, Central bank"
+            },
+            {
+              "const": "266",
+              "description": "US, DoA (Department of Agriculture)"
+            },
+            {
+              "const": "267",
+              "description": "RU, Central Bank of Russia"
+            },
+            {
+              "const": "268",
+              "description": "FR, DGI (Direction Generale des Impots)"
+            },
+            {
+              "const": "269",
+              "description": "GRE (Reference Group of Experts)"
+            },
+            {
+              "const": "270",
+              "description": "Concord EDI group"
+            },
+            {
+              "const": "271",
+              "description": "InterContainer InterFrigo"
+            },
+            {
+              "const": "272",
+              "description": "Joint Automotive Industry agency"
+            },
+            {
+              "const": "273",
+              "description": "CH, SCC (Swiss Chambers of Commerce)"
+            },
+            {
+              "const": "274",
+              "description": "ITIGG (International Transport Implementation Guidelines Group)"
+            },
+            {
+              "const": "275",
+              "description": "ES, Banco de España"
+            },
+            {
+              "const": "276",
+              "description": "Assigned by Port Community"
+            },
+            {
+              "const": "277",
+              "description": "BIGNet (Business Information Group Network)"
+            },
+            {
+              "const": "278",
+              "description": "Eurogate"
+            },
+            {
+              "const": "279",
+              "description": "NL, Graydon"
+            },
+            {
+              "const": "280",
+              "description": "FR, Euler"
+            },
+            {
+              "const": "281",
+              "description": "GS1 Belgium and Luxembourg"
+            },
+            {
+              "const": "282",
+              "description": "DE, Creditreform International e.V."
+            },
+            {
+              "const": "283",
+              "description": "DE, Hermes Kreditversicherungs AG"
+            },
+            {
+              "const": "284",
+              "description": "TW, Taiwanese Bankers' Association"
+            },
+            {
+              "const": "285",
+              "description": "ES, Asociación Española de Banca"
+            },
+            {
+              "const": "286",
+              "description": "SE, TCO (Tjänstemännes Central Organisation)"
+            },
+            {
+              "const": "287",
+              "description": "DE, FORTRAS (Forschungs- und Entwicklungsgesellschaft für Transportwesen GMBH)"
+            },
+            {
+              "const": "288",
+              "description": "OSJD (Organizacija Sotrudnichestva Zeleznih Dorog)"
+            },
+            {
+              "const": "289",
+              "description": "JP,JIPDEC/ECPC  (Japan Information Processing Development Center / Electronic Commerce Promotion Center)"
+            },
+            {
+              "const": "290",
+              "description": "JP, JAMA"
+            },
+            {
+              "const": "291",
+              "description": "JP, JAPIA"
+            },
+            {
+              "const": "292",
+              "description": "FI, TIEKE The Information Technology Development Centre of Finland"
+            },
+            {
+              "const": "293",
+              "description": "DE, BDEW (Bundesverband der Energie- und Wasserwirtschaft e.V.)"
+            },
+            {
+              "const": "294",
+              "description": "GS1 Austria"
+            },
+            {
+              "const": "295",
+              "description": "AU, Australian Therapeutic Goods Administration"
+            },
+            {
+              "const": "296",
+              "description": "ITU (International Telecommunication Union)"
+            },
+            {
+              "const": "297",
+              "description": "IT, Ufficio IVA"
+            },
+            {
+              "const": "298",
+              "description": "GS1 Spain"
+            },
+            {
+              "const": "299",
+              "description": "BE, Seagha"
+            },
+            {
+              "const": "300",
+              "description": "SE, Swedish International Freight Association"
+            },
+            {
+              "const": "301",
+              "description": "DE, BauDatenbank GmbH"
+            },
+            {
+              "const": "302",
+              "description": "DE, Bundesverband des Deutschen Textileinzelhandels e.V."
+            },
+            {
+              "const": "303",
+              "description": "GB, Trade Service Information Ltd (TSI)"
+            },
+            {
+              "const": "304",
+              "description": "DE, Bundesverband Deutscher Heimwerker-, Bau- und Gartenfachmaerkte e.V."
+            },
+            {
+              "const": "305",
+              "description": "ETSO (European Transmission System Operator)"
+            },
+            {
+              "const": "306",
+              "description": "SMDG (Ship-planning Message Design Group)"
+            },
+            {
+              "const": "307",
+              "description": "JP, Ministry of Justice"
+            },
+            {
+              "const": "309",
+              "description": "JP, JASTPRO (Japan Association for Simplification of International Trade Procedures)"
+            },
+            {
+              "const": "310",
+              "description": "DE, SAP AG (Systeme, Anwendungen und Produkte)"
+            },
+            {
+              "const": "311",
+              "description": "JP, TDB (Teikoku Databank, Ltd.)"
+            },
+            {
+              "const": "312",
+              "description": "FR, AGRO EDI EUROPE"
+            },
+            {
+              "const": "313",
+              "description": "FR, Groupement National Interprofessionnel des Semences et Plants"
+            },
+            {
+              "const": "314",
+              "description": "OAGi (Open Applications Group, Incorporated)"
+            },
+            {
+              "const": "315",
+              "description": "US, STAR (Standards for Technology in Automotive Retail)"
+            },
+            {
+              "const": "316",
+              "description": "GS1 Finland"
+            },
+            {
+              "const": "317",
+              "description": "GS1 Brazil"
+            },
+            {
+              "const": "318",
+              "description": "IETF (Internet Engineering Task Force)"
+            },
+            {
+              "const": "319",
+              "description": "FR, GTF"
+            },
+            {
+              "const": "320",
+              "description": "DK, Danish National IT and Telcom Agency (ITA)"
+            },
+            {
+              "const": "321",
+              "description": "EASEE-Gas (European Association for the Streamlining of Energy Exchange for gas)"
+            },
+            {
+              "const": "322",
+              "description": "IS, ICEPRO"
+            },
+            {
+              "const": "323",
+              "description": "PROTECT"
+            },
+            {
+              "const": "324",
+              "description": "GS1 Ireland"
+            },
+            {
+              "const": "325",
+              "description": "GS1 Russia"
+            },
+            {
+              "const": "326",
+              "description": "GS1 Poland"
+            },
+            {
+              "const": "327",
+              "description": "GS1 Estonia"
+            },
+            {
+              "const": "328",
+              "description": "Assigned by ultimate recipient of the message"
+            },
+            {
+              "const": "329",
+              "description": "Assigned by loading dock operator"
+            },
+            {
+              "const": "330",
+              "description": "Nordic Ediel Group"
+            },
+            {
+              "const": "331",
+              "description": "US, Agricultural Marketing Service (AMS)"
+            },
+            {
+              "const": "332",
+              "description": "DE, DVGW Service & Consult GmbH"
+            },
+            {
+              "const": "333",
+              "description": "US, Animal and Plant Health Inspection Service (APHIS)"
+            },
+            {
+              "const": "334",
+              "description": "US, Bureau of Labor Statistics (BLS)"
+            },
+            {
+              "const": "335",
+              "description": "US, Bureau of Transportation Statistics (BTS)"
+            },
+            {
+              "const": "336",
+              "description": "US, Customs and Border Protection (CBP)"
+            },
+            {
+              "const": "337",
+              "description": "US, Center for Disease Control (CDC)"
+            },
+            {
+              "const": "338",
+              "description": "US, Consumer Product Safety Commission (CPSC)"
+            },
+            {
+              "const": "339",
+              "description": "US, Directorate of Defense Trade Controls (DDTC)"
+            },
+            {
+              "const": "340",
+              "description": "US, Environmental Protection Agency (EPA)"
+            },
+            {
+              "const": "341",
+              "description": "US, Federal Aviation Administration (FAA)"
+            },
+            {
+              "const": "342",
+              "description": "US, Foreign Agriculture Service (FAS)"
+            },
+            {
+              "const": "343",
+              "description": "US, Federal Motor Carrier Safety Administration (FMCSA)"
+            },
+            {
+              "const": "344",
+              "description": "US, Food Safety Inspection Service (FSIS)"
+            },
+            {
+              "const": "345",
+              "description": "US, Foreign Trade Zones Board (FTZB)"
+            },
+            {
+              "const": "346",
+              "description": "US, The Grain Inspection, Packers and Stockyards Administration (GIPSA)"
+            },
+            {
+              "const": "347",
+              "description": "US, Import Administration (IA)"
+            },
+            {
+              "const": "348",
+              "description": "US, Internal Revenue Service (IRS)"
+            },
+            {
+              "const": "349",
+              "description": "US, International Trade Commission (ITC)"
+            },
+            {
+              "const": "350",
+              "description": "US, National Highway Traffic Safety Administration (NHTSA)"
+            },
+            {
+              "const": "351",
+              "description": "US, National Marine Fisheries Service (NMFS)"
+            },
+            {
+              "const": "352",
+              "description": "US, Office of Fossil Energy (OFE)"
+            },
+            {
+              "const": "353",
+              "description": "US, Office of Foreign Missions (OFM)"
+            },
+            {
+              "const": "354",
+              "description": "US, Bureau of Oceans and International Environmental and Scientific Affairs (OES)"
+            },
+            {
+              "const": "355",
+              "description": "US, Office of Naval Intelligence (ONI)"
+            },
+            {
+              "const": "356",
+              "description": "US, Pipeline and Hazardous Materials Safety Administration (PHMSA)"
+            },
+            {
+              "const": "357",
+              "description": "US, Alcohol and Tobacco Tax and Trade Bureau (TTB)"
+            },
+            {
+              "const": "358",
+              "description": "US, Army Corp of Engineers (USACE)"
+            },
+            {
+              "const": "359",
+              "description": "US, Agency for International Development (USAID)"
+            },
+            {
+              "const": "360",
+              "description": "US, Coast Guard (USCG)"
+            },
+            {
+              "const": "361",
+              "description": "US, Office of the United States Trade Representative (USTR)"
+            },
+            {
+              "const": "362",
+              "description": "International Commission for the Conservation of Atlantic Tunas (ICCAT)"
+            },
+            {
+              "const": "363",
+              "description": "Inter-American Tropical Tuna Commission (IATTC)"
+            },
+            {
+              "const": "364",
+              "description": "Commission for the Conservation of Southern Bluefin Tuna (CCSBT)"
+            },
+            {
+              "const": "365",
+              "description": "Indian Ocean Tuna Commission (IOTC)"
+            },
+            {
+              "const": "366",
+              "description": "International Botanical Congress"
+            },
+            {
+              "const": "367",
+              "description": "International Commission on Zoological Nomenclature"
+            },
+            {
+              "const": "368",
+              "description": "International Society for Horticulture Science"
+            },
+            {
+              "const": "369",
+              "description": "Chemical Abstract Service (CAS)"
+            },
+            {
+              "const": "370",
+              "description": "Social Security Administration (SSA)"
+            },
+            {
+              "const": "371",
+              "description": "INMARSAT"
+            },
+            {
+              "const": "372",
+              "description": "Agent of ship at the intended port of arrival"
+            },
+            {
+              "const": "373",
+              "description": "US Air Force"
+            },
+            {
+              "const": "374",
+              "description": "US, Bureau of Explosives"
+            },
+            {
+              "const": "375",
+              "description": "Basel Convention Secretariat"
+            },
+            {
+              "const": "376",
+              "description": "PANTONE"
+            },
+            {
+              "const": "377",
+              "description": "IS, National Registry of Iceland"
+            },
+            {
+              "const": "378",
+              "description": "IS, Internal Revenue Directorate of Iceland"
+            },
+            {
+              "const": "379",
+              "description": "IANA (Internet Assigned Numbers Authority)"
+            },
+            {
+              "const": "380",
+              "description": "Korea Customs Service"
+            },
+            {
+              "const": "381",
+              "description": "Israel Tax Authority"
+            },
+            {
+              "const": "382",
+              "description": "Israeli Ministry of Interior"
+            },
+            {
+              "const": "383",
+              "description": "FR, LUMD (Logistique Urbaine Mutualisée Durable)"
+            },
+            {
+              "const": "384",
+              "description": "DE, BiPRO (Brancheninitiative Prozessoptimierung)"
+            },
+            {
+              "const": "385",
+              "description": "JO, Jordan Ministry of Agriculture"
+            },
+            {
+              "const": "386",
+              "description": "JO, Jordan Customs"
+            },
+            {
+              "const": "387",
+              "description": "JO, Jordan Food & Drug Administration"
+            },
+            {
+              "const": "388",
+              "description": "JO, Jordan Institution for Standards and Metrology"
+            },
+            {
+              "const": "389",
+              "description": "JO, Jordan Telecommunication Regulatory Commission"
+            },
+            {
+              "const": "390",
+              "description": "JO, Jordan Nuclear Regulatory Commission"
+            },
+            {
+              "const": "391",
+              "description": "JO, Jordan Ministry of Environment"
+            },
+            {
+              "const": "392",
+              "description": "Hazardous waste collector"
+            },
+            {
+              "const": "393",
+              "description": "Hazardous waste generator"
+            },
+            {
+              "const": "394",
+              "description": "Marketing agent"
+            },
+            {
+              "const": "395",
+              "description": "BE, TELEBIB Centre"
+            },
+            {
+              "const": "396",
+              "description": "BE, BNB"
+            },
+            {
+              "const": "397",
+              "description": "BE, FSMA"
+            },
+            {
+              "const": "398",
+              "description": "FR, PHAST"
+            },
+            {
+              "const": "399",
+              "description": "EXIS (Exis Technologies Ltd.)"
+            },
+            {
+              "const": "400",
+              "description": "FAO (Food and Agriculture Organisation)"
+            },
+            {
+              "const": "401",
+              "description": "CH, Spedlogswiss"
+            },
+            {
+              "const": "402",
+              "description": "JP, National Tax Agency"
+            },
+            {
+              "const": "403",
+              "description": "Comite Européen de Normalisation"
+            },
+            {
+              "const": "404",
+              "description": "Assigned by logistics service provider"
+            },
+            {
+              "const": "405",
+              "description": "Assigned by transport ministry"
+            },
+            {
+              "const": "406",
+              "description": "AR, Customs Administration of Argentina"
+            },
+            {
+              "const": "407",
+              "description": "BO, Customs Administration of Bolivia"
+            },
+            {
+              "const": "408",
+              "description": "BR, Customs Administration of Brazil"
+            },
+            {
+              "const": "409",
+              "description": "PY, Customs Administration of Paraguay"
+            },
+            {
+              "const": "410",
+              "description": "UY, Customs Administration of Uruguay"
+            },
+            {
+              "const": "411",
+              "description": "VE, Customs Administration of Venezuela"
+            },
+            {
+              "const": "412",
+              "description": "IN, Customs Administration of India"
+            },
+            {
+              "const": "413",
+              "description": "JP, JEC (UN/CEFACT Japan Committee)"
+            },
+            {
+              "const": "ZZZ",
+              "description": "Mutually defined"
+            }
+          ],
+          "type": "string"
+        },
+        "schemeAgencyName": {
+          "type": "string"
+        },
+        "schemeVersionID": {
+          "type": "string"
+        },
+        "schemeDataURI": {
+          "type": "string"
+        },
+        "schemeURI": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "Identifier_4": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "schemeAgencyID": {
+          "oneOf": [
+            {
+              "const": "10",
+              "description": "ODETTE"
+            },
+            {
+              "const": "16",
+              "description": "US, D&B (Dun & Bradstreet Corporation)"
+            },
+            {
+              "const": "91",
+              "description": "Assigned by seller or seller's agent"
+            },
+            {
+              "const": "92",
+              "description": "Assigned by buyer or buyer's agent"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content",
+        "schemeAgencyID"
+      ]
+    },
+    "Identifier_5": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "schemeID": {
+          "type": "string"
+        },
+        "schemeAgencyID": {
+          "oneOf": [
+            {
+              "const": "87",
+              "description": "Assigned by carrier"
+            },
+            {
+              "const": "88",
+              "description": "Assigned by owner of operation"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content",
+        "schemeAgencyID"
+      ]
+    },
+    "Indicator": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "pattern": "true\r\nfalse",
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "Measure": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "number"
+        },
+        "unitCode": {
+          "maxLength": 3,
+          "minLength": 1,
+          "oneOf": [
+            {
+              "const": "DD",
+              "description": "degree [unit of angle]"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content",
+        "unitCode"
+      ]
+    },
+    "TransportMeans": {
+      "type": "object",
+      "properties": {
+        "TypeCode": {
+          "$ref": "#/$defs/TransportMeansTypeCode"
+        },
+        "ID": {
+          "$ref": "#/$defs/Identifier"
+        }
+      },
+      "required": [
+        "ID"
+      ]
+    },
+    "PartyRoleCode_2": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "CA",
+              "description": "Carrier"
+            },
+            {
+              "const": "FW",
+              "description": "Freight forwarder"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    },
+    "TransportMeansTypeCode": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "oneOf": [
+            {
+              "const": "31",
+              "description": "Truck"
+            }
+          ],
+          "type": "string"
+        },
+        "listAgencyID": {
+          "oneOf": [
+            {
+              "const": "6"
+            }
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ]
+    }
+  }
+}
